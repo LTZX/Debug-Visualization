@@ -8,3 +8,12 @@
   stroke: #fff;
   stroke-width: 1.5px;
 }
+
+/* for code */
+#code{
+  height: calc(calc(100vh - 100px) * 0.3);
+  overflow-y: scroll;
+}
+/* for bar chart */
+
+/* for pie chart */
