@@ -1,4 +1,4 @@
-/* for force directed */
+/* ======== for force directed ======== */
 .links line {
   stroke: #999;
   stroke-opacity: 0.6;
@@ -9,11 +9,71 @@
   stroke-width: 1.5px;
 }
 
-/* for code */
+/* ======== for code ======== */
 #code{
   height: calc(calc(100vh - 100px) * 0.3);
-  overflow-y: scroll;
+  overflow-y: auto;
 }
-/* for bar chart */
+/* ======== for bar chart ======== */
+.toolTip {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: absolute;
+    display: none;
+    width: auto;
+    height: auto;
+    background: none repeat scroll 0 0 white;
+    border: 0 none;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: -3px 3px 15px #888888;
+    color: black;
+    font: 12px sans-serif;
+    padding: 5px;
+    text-align: center;
+}
 
-/* for pie chart */
+text {
+    font: 10px sans-serif;
+    color: white;
+}
+text.value {
+    font-size: 120%;
+    fill: white;
+}
+
+.axisHorizontal path{
+    fill: none;
+}
+
+.axisHorizontal .tick line {
+    stroke-width: 1;
+    stroke: rgba(0, 0, 0, 0.2);
+}
+
+.bar {
+    fill-opacity: .8;
+}
+/* ======== for pie chart ======== */
+svg {
+    -webkit-filter: drop-shadow( 0px 3px 3px rgba(0,0,0,.3) );
+    filter: drop-shadow( 0px 3px 3px rgba(0,0,0,.25) );
+}
+
+/*Styling for the lines connecting the labels to the slices*/
+polyline{
+    opacity: .3;
+    stroke: black;
+    stroke-width: 2px;
+    fill: none;
+}
+
+/* Make the percentage on the text labels bold*/
+.labelName tspan {
+    font-style: normal;
+    font-weight: 700;
+}
+
+/* In biology we generally italicise species names. */
+.labelName {
+    font-size: 0.9em;
+    font-style: italic;
+}

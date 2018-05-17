@@ -1,34 +1,35 @@
-var width = $("#forced-directed").width();
-var height = $("#page-content-wrapper").height();
+var widthf = $("#forced-directed").width();
+var heightf = $("#page-content-wrapper").height();
+var str = d3.min([widthf,heightf]);
 
-var color = d3.scaleOrdinal(d3.schemeCategory20);
-
+var colorf = d3.scaleOrdinal(d3.schemeCategory20);
+var scalestr = d3.scaleLinear().domain([430,830]).range([-15, -80]);
 var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.id; }))
-    .force("charge", d3.forceManyBody())
-    .force("center", d3.forceCenter(width / 2, height / 2));
+    .force("charge", d3.forceManyBody().strength(scalestr(str)))
+    .force("center", d3.forceCenter(widthf / 2, heightf / 2));
 
-d3.json("data/miserables.json", function(error, graph) {
+d3.json("data/force-directed.json", function(error, graph) {
   if (error) throw error;
-  var svg = d3.select("#forced-directed")
+  var svgf = d3.select("#forced-directed")
     .append("svg")
-    .attr("width", width)
-    .attr("height", height)
+    .attr("width", widthf)
+    .attr("height", heightf)
 
-  var link = svg.append("g")
+  var link = svgf.append("g")
       .attr("class", "links")
     .selectAll("line")
     .data(graph.links)
     .enter().append("line")
       .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
 
-  var node = svg.append("g")
+  var node = svgf.append("g")
       .attr("class", "nodes")
     .selectAll("circle")
     .data(graph.nodes)
     .enter().append("circle")
       .attr("r", 5)
-      .attr("fill", function(d) { return color(d.group); })
+      .attr("fill", function(d) { return colorf(d.group); })
       .call(d3.drag()
           .on("start", dragstarted)
           .on("drag", dragged)
