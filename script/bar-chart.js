@@ -77,7 +77,7 @@ d3.json("data/bar-chart.json", function(error, input) {
               div.style("left", d3.event.pageX+10+"px");
               div.style("top", d3.event.pageY-25+"px");
               div.style("display", "inline-block");
-              div.html((d.label)+"<br>"+(d.value)+"%");
+              div.html((d.label)+"<br>"+(d.value));
           });
   bar
           .on("mouseout", function(d){
