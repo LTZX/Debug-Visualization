@@ -1,3 +1,14 @@
+var ncolor = "class", nsize = "lines";
+
+function cutstr(str){
+  var i = 0;
+  for(var char in str){
+    if(char == '-') break;
+    i += 1;
+  }
+  return str.substring(0,i);
+}
+
 d3.json("data/data.json", function(error, data) {
     console.log(data);
     // === set up the selections
@@ -5,12 +16,12 @@ d3.json("data/data.json", function(error, data) {
     //$('#classes').append()
     for(each in groupby){
       for(ele in groupby[each]){
-        $('#'+each+'options').append('<option>'+ele+'</option>');
+        $('#o'+each).append('<option>'+ele+'</option>');
       }
     }
     var methods = data.force.nodes;
     for(each in methods){
-      $('#methodoptions').append('<option>'+methods[each].id+'</option>');
+      $('#omethod').append('<option>'+ methods[each].data['MID'] + ' - ' + methods[each].data.name+'</option>');
     }
     var f = data.filedata;
     $('#table1').append('<td>'+f["lines-of-code"]+'</td><td>'+f.lines+
@@ -27,6 +38,7 @@ d3.json("data/data.json", function(error, data) {
       .attr("fill", function(d) { return colorf(d.data[that.id]); })
       d3.select("#cblock")
       .text("Color of Node: " + that.id);
+      ncolor = that.id
     })
     d3.selectAll(".bugbutton").on('click',function(){
       if(this.id === "show"){
@@ -49,4 +61,31 @@ d3.json("data/data.json", function(error, data) {
         .text("Size Of Node: Number of Lines");
       }
     })
+
+    var groupby = data.groupby;
+    d3.selectAll(".listselect").on('change', function(){
+      $('.methodselect').selectpicker('deselectAll');
+      d3.selectAll(".node").attr("fill", "grey")
+      var selected = [];
+      for(each in groupby){
+        var val = $("#o"+each).val();
+        for(select in val){
+          for(ele in groupby[each][val[select]]){
+            var ele = groupby[each][val[select]][ele]
+            d3.select("#node"+ele)
+            .attr("fill", function(d) { return colorf(d.data[ncolor]); })
+          } } }
+    })
+
+    d3.selectAll(".methodselect").on('change', function(){
+      $('.listselect').selectpicker('deselectAll');
+      d3.selectAll(".node").attr("fill", "grey")
+      var val = $("#omethod").val();
+      for(ele in val){
+        var id = cutstr(ele)
+        d3.select("#node"+id)
+        .attr("fill", function(d) { return colorf(d.data[ncolor]); })
+      }
+    })
+
 })

@@ -47,8 +47,10 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand"> <a href="#"> Function Menu </a> </li>
-            <li class="active"><a href="#">Reset Everything</a></li>
-
+            <li class="active"><a href="./index.html">Reset Everything</a></li>
+            <li><a href="#">All Methods</a></li>
+            <select id="omethod" class="selectpicker methodselect" data-live-search="true" data-actions-box="true" multiple title="Methods" data-width="100%" data-size="5">
+            </select>
             <li><a href="#">Group By</a></li>
             <div class="btn-group" role="group" aria-label="Basic example">
               <button type="button" class="btn btn-primary gbbutton" id="class">Class</button>
@@ -74,20 +76,18 @@
                 </ul-->
 
             <li><a href="#">List of Classes</a></li>
-            <select id="classoptions" class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Classes" data-width="100%" data-size="5">
+            <select id="oclass" class="selectpicker listselect" data-live-search="true" data-actions-box="true" multiple title="List of Classes" data-width="100%" data-size="5">
             </select>
             <li><a href="#">List of Files</a></li>
-            <select id="fileoptions" class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Files" data-width="100%" data-size="5">
+            <select id="ofile" class="selectpicker listselect" data-live-search="true" data-actions-box="true" multiple title="List of Files" data-width="100%" data-size="5">
             </select>
             <li><a href="#">List of Directory</a></li>
-            <select id="directoryoptions" class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Directory" data-width="100%" data-size="5">
+            <select id="odirectory" class="selectpicker listselect" data-live-search="true" data-actions-box="true" multiple title="List of Directory" data-width="100%" data-size="5">
             </select>
             <li><a href="#">List of Author</a></li>
-            <select id="authoroptions" class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Author" data-width="100%" data-size="5">
+            <select id="oauthor" class="selectpicker listselect" data-live-search="true" data-actions-box="true" multiple title="List of Author" data-width="100%" data-size="5">
             </select>
-            <li><a href="#">List of Methods</a></li>
-            <select id="methodoptions" class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Methods" data-width="100%" data-size="5">
-            </select>
+
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->

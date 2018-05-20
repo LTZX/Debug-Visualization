@@ -100,6 +100,12 @@ for each in git:
             if each not in groupby['author'][commit['author']]:
                 groupby['author'][commit['author']].append(each)
 
+#namelist = {}
+#for each in methods:
+#    each = methods[each]
+#    if each['name'] not in namelist:
+#        namelist[each['name']] = each['MID']
+
 data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'git':git}
 with open('data.json', 'w') as outfile:
     json.dump(data, outfile)
