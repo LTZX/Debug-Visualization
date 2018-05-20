@@ -19,6 +19,25 @@ d3.json("data/data.json", function(error, data) {
     $('#table2').append('<td>'+f.file +'</td><td>'+f.directory+'</td><td>'+f.bug+
     '</td><td>'+f["time-range"][0]+' ~ '+f["time-range"][1]+'</td><td>'+f.author+
     '</td>');
-    console.log(data.force)
+
     drawforce(data.force);
+    d3.selectAll(".gbbutton").on('click',function(){
+      var that = this;
+      d3.selectAll(".node")
+      .attr("fill", function(d) { return colorf(d.data[that.id]); })
+    })
+    d3.selectAll(".bugbutton").on('click',function(){
+      if(this.id === "show"){
+        d3.selectAll(".node")
+        .attr("r", function(d){ return scalebug(d.data.bugs.length); })
+        d3.selectAll(".true")
+        .style("stroke", "red");
+      } else {
+        d3.selectAll(".node")
+        .attr("r", function(d){ return scalesize(d.data.lines); })
+        .style("stroke", "#fff")
+        d3.selectAll(".link")
+        .style("stroke", "#999")
+      }
+    })
 })

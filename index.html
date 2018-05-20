@@ -50,29 +50,16 @@
             <li class="active"><a href="#">Reset Everything</a></li>
 
             <li><a href="#">Group By</a></li>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-primary active">
-                <input type="radio" name="options" id="option1" autocomplete="off" checked> Class
-              </label>
-              <label class="btn btn-primary">
-                <input type="radio" name="options" id="option2" autocomplete="off"> File
-              </label>
-              <label class="btn btn-primary">
-                <input type="radio" name="options" id="option3" autocomplete="off"> Directory
-              </label>
-              <label class="btn btn-primary">
-                <input type="radio" name="options" id="option4" autocomplete="off"> Author
-              </label>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-primary gbbutton" id="class">Class</button>
+              <button type="button" class="btn btn-primary gbbutton" id="file">File</button>
+              <button type="button" class="btn btn-primary gbbutton" id="directory">Directory</button>
             </div>
 
             <li><a href="#">Bugs</a></li>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-primary active">
-                <input type="radio" name="options" id="showbug" autocomplete="off" checked> Show Bugs
-              </label>
-              <label class="btn btn-primary">
-                <input type="radio" name="options" id="hidebug" autocomplete="off"> Hide Bugs
-              </label>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-primary bugbutton" id="show">Show Bugs</button>
+              <button type="button" class="btn btn-primary bugbutton" id="hide">Hide Bugs</button>
             </div>
 
             <!--li>

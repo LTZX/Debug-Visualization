@@ -1,7 +1,7 @@
 import json
 
 filedata = {'lines-of-code':37, 'lines':50, 'method':7,
-            'class':3, 'file':3, 'directory':3, 'comment-lines': 13,
+            'class':3, 'file':3, 'directory':2, 'comment-lines': 13,
             'comments': '26%', 'time-range': ['2018-05-08', '2018-05-15'],
             'author': ['AAA', 'BBB', 'CCC'], 'bug':3}
 
@@ -15,16 +15,16 @@ methods = {'0':{'name': 'main', 'class': 'api', 'file': 'apt.java',
             'directory': 'Java/Database', 'lines': 5, 'bugs': [4], 'MID': '2',
             'related': ['0','3'], 'relations': ['3','4']}, 
            '3':{'name': 'calculateArea', 'class': 'sensor', 'file': 'sensor.java',
-            'directory': 'Java/Sensor', 'lines': 3, 'bugs': [], 'MID': '3',
+            'directory': 'Java/Database', 'lines': 3, 'bugs': [], 'MID': '3',
             'related': ['6'], 'relations': ['0']},
            '4':{'name': 'calculateArea', 'class': 'sensor', 'file': 'sensor.java',
-            'directory': 'Java/Sensor', 'lines': 3, 'bugs': [], 'MID': '4',
+            'directory': 'Java/Database', 'lines': 3, 'bugs': [], 'MID': '4',
             'related': ['6'], 'relations': ['1']},
            '5':{'name': 'calculateArea', 'class': 'sensor', 'file': 'sensor.java',
-            'directory': 'Java/Sensor', 'lines': 4, 'bugs': [], 'MID': '5',
+            'directory': 'Java/Database', 'lines': 4, 'bugs': [], 'MID': '5',
             'related': ['6'], 'relations': ['2']},
            '6':{'name': 'main', 'class': 'sensor', 'file': 'sensor.java',
-            'directory': 'Java/Sensor', 'lines': 18, 'bugs': [2,12], 'MID': '6',
+            'directory': 'Java/Database', 'lines': 18, 'bugs': [2,12], 'MID': '6',
             'related': [], 'relations': []}}
 relations = {'0': {'from':'6', 'to':'3'},
              '1': {'from':'6', 'to':'4'},
@@ -60,29 +60,24 @@ git = { '0': [
             {'author':'BBB', 'time':'2018-05-15 08:32:12', 'comment':'gdfg6','GID':'8d'},
         ]
     }
-force = {'nodes':[], 'links':[]}
+
+bugs = []
 for each in methods:
     each = methods[each]
-    node = {'id': each['MID'], 'group': each['class'], 'data': each}
+    if len(each['bugs']) != 0:
+        bugs.append(each['MID'])
+        
+force = {'nodes':[], 'links':[]}
+for each in methods:
+    bug = each in bugs
+    each = methods[each]
+    node = {'id': each['MID'], 'bug': bug, 'data': each}
     force['nodes'].append(node)
 
 for each in relations:
-    link = {'source': relations[each]['from'], 'target': relations[each]['to']}
+    bug = relations[each]['from'] in bugs
+    link = {'source': relations[each]['from'], 'target': relations[each]['to'], 'bug': bug}
     force['links'].append(link)
-
-bugs = {'methods':[], 'relations':[]}
-for each in methods:
-    each = methods[each]
-    if len(each['bugs']) == 0:
-        continue
-    else:
-        bugs['methods'].append(each['MID'])
-        for related in each['related']:
-            if related not in bugs['methods']:
-                bugs['methods'].append(related)
-        for relation in each['relations']:
-            if relation not in bugs['relations']:
-                bugs['relations'].append(relations)
                 
 groupby = {'class':{}, 'file':{}, 'directory':{}, 'author': {}}
 for each in methods:
@@ -105,7 +100,7 @@ for each in git:
             if each not in groupby['author'][commit['author']]:
                 groupby['author'][commit['author']].append(each)
 
-data = {'filedata': filedata, 'force': force, 'bugs': bugs, 'groupby': groupby, 'git':git}
+data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'git':git}
 with open('data.json', 'w') as outfile:
     json.dump(data, outfile)
 

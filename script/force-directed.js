@@ -1,18 +1,19 @@
+var colorf = d3.scaleOrdinal(d3.schemeCategory20);
+var scalesize, scalebug;
 function drawforce(graph){
   var widthf = $("#forced-directed").width();
   var heightf = $("#page-content-wrapper").height() - 120;
   var str = d3.max([widthf,heightf]);
 
-  var colorf = d3.scaleOrdinal(d3.schemeCategory20);
   var scalestr = d3.scaleLinear().domain([430,830]).range([-15, -80]);
+  scalesize = d3.scaleLinear().domain([0,d3.max(graph.nodes, function(d){ return d.data.lines; })]).range([5,20]);
+  scalebug = d3.scaleLinear().domain([0,d3.max(graph.nodes, function(d){ return d.data.bugs.length; })]).range([5,20]);
+
   var simulation = d3.forceSimulation()
       .force("link", d3.forceLink().id(function(d) { return d.id; }))
       .force("charge", d3.forceManyBody().strength(function(){
-        if(str < 430){
-          return -15;
-        } else {
-          return scalestr(str);
-        }
+        if(str < 430){ return -15; }
+        else { return scalestr(str); }
       }))
       .force("center", d3.forceCenter(widthf / 2, heightf / 2));
 
@@ -22,25 +23,28 @@ function drawforce(graph){
       .attr("height", heightf)
 
     var link = svgf.append("g")
-        .attr("class", "links")
+      .attr("class", "links")
       .selectAll("line")
       .data(graph.links)
       .enter().append("line")
+      .attr("class", function(d){ return "link " + d.bug; })
 
     var node = svgf.append("g")
         .attr("class", "nodes")
       .selectAll("circle")
       .data(graph.nodes)
       .enter().append("circle")
-        .attr("r", 5)
-        .attr("fill", function(d) { return colorf(d.group); })
+        .attr("class", function(d){ return "node " + d.bug; })
+        .attr("id", function(d){ return "node" + d.id; })
+        .attr("r", function(d){ return scalesize(d.data.lines); })
+        .attr("fill", function(d) { return colorf(d.data.class); })
         .call(d3.drag()
             .on("start", dragstarted)
             .on("drag", dragged)
             .on("end", dragended));
 
     node.append("title")
-        .text(function(d) { return d.data.name; });
+        .text(function(d) { return d.data.name + " Class: " + d.data.class; });
 
     simulation
         .nodes(graph.nodes)
