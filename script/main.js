@@ -33,6 +33,7 @@ d3.json("data/data.json", function(error, data) {
         d3.selectAll(".node")
         .attr("r", function(d){ return scalebug(d.data.bugs.length); })
         d3.selectAll(".true")
+        .style("stroke-width", "2px")
         .style("stroke", "red");
         d3.select("#sblock")
         .text("Size Of Node: Number of Bugs");
@@ -40,8 +41,10 @@ d3.json("data/data.json", function(error, data) {
         d3.selectAll(".node")
         .attr("r", function(d){ return scalesize(d.data.lines); })
         .style("stroke", "#fff")
+        .style("stroke-width", "1.5px")
         d3.selectAll(".link")
         .style("stroke", "#999")
+        .style("stroke-width", "1px")
         d3.select("#sblock")
         .text("Size Of Node: Number of Lines");
       }
