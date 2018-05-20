@@ -1,4 +1,4 @@
-var colorf = d3.scaleOrdinal(d3.schemeCategory20);
+var colorf = d3.scaleOrdinal(d3.schemeCategory10);
 var scalesize, scalebug;
 function drawforce(graph){
   var widthf = $("#forced-directed").width();
@@ -21,6 +21,20 @@ function drawforce(graph){
       .append("svg")
       .attr("width", widthf)
       .attr("height", heightf)
+
+    svgf.append("text")
+    .text("Color of Node: Class")
+    .attr("id", "cblock")
+    .attr("transform", "translate(50,50)")
+    .style("font-size", "12px")
+    .style("text-transform", "capitalize")
+
+    svgf.append("text")
+    .text("Size Of Node: Number of Lines")
+    .attr("id", "sblock")
+    .attr("transform", "translate(50,70)")
+    .style("font-size", "12px")
+    .style("text-transform", "capitalize")
 
     var link = svgf.append("g")
       .attr("class", "links")
