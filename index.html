@@ -48,6 +48,7 @@
         <ul class="sidebar-nav">
             <li class="sidebar-brand"> <a href="#"> Function Menu </a> </li>
             <li class="active"><a href="#">Reset Everything</a></li>
+            
             <li><a href="#">Group By</a></li>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-primary active">
@@ -63,6 +64,17 @@
                 <input type="radio" name="options" id="option4" autocomplete="off"> Author
               </label>
             </div>
+
+            <li><a href="#">Bugs</a></li>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-primary active">
+                <input type="radio" name="options" id="showbug" autocomplete="off" checked> Show Bugs
+              </label>
+              <label class="btn btn-primary">
+                <input type="radio" name="options" id="hidebug" autocomplete="off"> Hide Bugs
+              </label>
+            </div>
+
             <!--li>
                 <a href="#groupby" data-toggle="collapse" aria-expanded="false">Group By</a>
                 <ul class="collapse list-unstyled" id="groupby">
@@ -73,38 +85,21 @@
                       <button type="button" class="btn btn-secondary">Author</button>
                     </div>
                 </ul-->
+
             <li><a href="#">List of Classes</a></li>
-            <select class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Classes" data-width="100%" data-size="5">
-                <option>Mustard</option>
-                <option>Ketchup</option>
-                <option>Relish</option>
-                <option>fsaf</option>
-                <option>gawhehgw</option>
-                <option>faedfeg</option>
-                <option>awgeewf</option>
-                <option>gawefda</option>
-                <option>gawegfwe</option>
-                <option>zvcdwsav</option>
+            <select id="classoptions" class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Classes" data-width="100%" data-size="5">
             </select>
             <li><a href="#">List of Files</a></li>
-            <select class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Classes" data-width="100%" data-size="5">
-                <option>Mustard</option>
-                <option>Ketchup</option>
+            <select id="fileoptions" class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Files" data-width="100%" data-size="5">
             </select>
             <li><a href="#">List of Directory</a></li>
-            <select class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Directory" data-width="100%" data-size="5">
-                <option>Mustard</option>
-                <option>Ketchup</option>
+            <select id="directoryoptions" class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Directory" data-width="100%" data-size="5">
             </select>
             <li><a href="#">List of Author</a></li>
-            <select class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Author" data-width="100%" data-size="5">
-                <option>Mustard</option>
-                <option>Ketchup</option>
+            <select id="authoroptions" class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Author" data-width="100%" data-size="5">
             </select>
             <li><a href="#">List of Methods</a></li>
-            <select class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Methods" data-width="100%" data-size="5">
-                <option>Mustard</option>
-                <option>Ketchup</option>
+            <select id="methodoptions" class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Methods" data-width="100%" data-size="5">
             </select>
         </ul>
     </div>
@@ -159,6 +154,7 @@
         $("#wrapper").toggleClass("toggled");
     });
   </script>
+  <script src="script/main.js"></script>
   <script src="script/force-directed.js"></script>
   <script src="script/bar-chart.js"></script>
   <script src="script/donutChart.js"></script>

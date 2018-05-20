@@ -67,7 +67,7 @@ for each in methods:
     force['nodes'].append(node)
 
 for each in relations:
-    link = {'source': relations[each]['from'], 'target': relations[each]['to'], 'value':1, 'RID': each}
+    link = {'source': relations[each]['from'], 'target': relations[each]['to'], 'value':1}
     force['links'].append(link)
 
 bugs = {'methods':[], 'relations':[]}
