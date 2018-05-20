@@ -1,0 +1,12 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6</pre></td><td><pre style="margin: 0; line-height: 125%">    <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> String <span style="color: #0066BB; font-weight: bold">reverseString</span><span style="color: #333333">(</span>String str<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+        <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>str<span style="color: #333333">.</span><span style="color: #0000CC">isEmpty</span><span style="color: #333333">())</span>
+            <span style="color: #008800; font-weight: bold">return</span> str<span style="color: #333333">;</span>
+        <span style="color: #888888">//Calling Function Recursively</span>
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0066BB; font-weight: bold">reverseString</span><span style="color: #333333">(</span>str<span style="color: #333333">.</span><span style="color: #0000CC">substring</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">))</span> <span style="color: #333333">+</span> str<span style="color: #333333">.</span><span style="color: #0000CC">charAt</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">);</span>
+    <span style="color: #333333">}</span>
+</pre></td></tr></table></div>

@@ -1,0 +1,10 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5</pre></td><td><pre style="margin: 0; line-height: 125%">    <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">main</span><span style="color: #333333">(</span>String<span style="color: #333333">[]</span> args<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+        String str <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;Welcome to Beginnersbook&quot;</span><span style="color: #333333">;</span>
+        String reversed <span style="color: #333333">=</span> reverseString<span style="color: #333333">(</span>str<span style="color: #333333">);</span>
+        System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;The reversed string is: &quot;</span> <span style="color: #333333">+</span> reversed<span style="color: #333333">);</span>
+    <span style="color: #333333">}</span>
+</pre></td></tr></table></div>

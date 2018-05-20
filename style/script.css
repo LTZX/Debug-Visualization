@@ -12,7 +12,7 @@
 /* ======== for code ======== */
 #code{
   height: calc(calc(100vh - 100px) * 0.3);
-  overflow-y: auto;
+  overflow: auto;
 }
 /* ======== for bar chart ======== */
 .toolTip {

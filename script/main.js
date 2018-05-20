@@ -88,4 +88,10 @@ d3.json("data/data.json", function(error, data) {
       }
     })
 
+    var codes = data.code;
+    d3.selectAll('.node').on('click',function(d){
+      $('#code').empty();
+      $('#code').append(codes[d.id])
+    })
+
 })

@@ -101,6 +101,11 @@ for each in git:
                 groupby['author'][commit['author']] = []
             if each not in groupby['author'][commit['author']]:
                 groupby['author'][commit['author']].append(each)
+codes = {}
+for each in methods:
+    with open(each+'.txt', 'r') as myfile:
+      codes[each] = myfile.read()
+
 
 #namelist = {}
 #for each in methods:
@@ -108,7 +113,7 @@ for each in git:
 #    if each['name'] not in namelist:
 #        namelist[each['name']] = each['MID']
 
-data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'git':git}
+data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'git':git, 'code': codes}
 with open('data.json', 'w') as outfile:
     json.dump(data, outfile)
 

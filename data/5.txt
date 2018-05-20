@@ -1,0 +1,8 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4</pre></td><td><pre style="margin: 0; line-height: 125%">    <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">calculateArea</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">double</span> r<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+        <span style="color: #333399; font-weight: bold">double</span> area <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">3.14</span><span style="color: #333333">*</span>r<span style="color: #333333">*</span>r<span style="color: #333333">;</span>
+        System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Area of the circle: &quot;</span><span style="color: #333333">+</span>area<span style="color: #333333">+</span><span style="background-color: #fff0f0">&quot; sq units&quot;</span><span style="color: #333333">);</span>
+    <span style="color: #333333">}</span>
+</pre></td></tr></table></div>
