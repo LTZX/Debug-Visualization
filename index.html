@@ -15,6 +15,12 @@
   <link rel="stylesheet" href="style/simple-sidebar.css">
   <link rel="stylesheet" href="style/script.css">
 
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
 </head>
 <body>
   <header>
@@ -25,8 +31,9 @@
         </div>
         <ul class="nav navbar-nav">
           <li class="active"><a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a></li>
+          <li><a href="#About">About</a></li>
+          <li><a href="#Contact">Contact</a></li>
           <!--
-          <li><a href="#">Page 1</a></li>
           <li><a href="#">Page 2</a></li>
           <li><a href="#">Page 3</a></li>
           -->
@@ -40,11 +47,65 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand"> <a href="#"> Function Menu </a> </li>
-            <li> <a href="#">Bugs</a> </li>
-            <li> <a href="#">Coverage</a> </li>
-            <li> <a href="#">Other1</a> </li>
-            <li> <a href="#">Other2</a> </li>
-            <li> <a href="#">About</a> </li>
+            <li class="active"><a href="#">Reset Everything</a></li>
+            <li><a href="#">Group By</a></li>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-primary active">
+                <input type="radio" name="options" id="option1" autocomplete="off" checked> Class
+              </label>
+              <label class="btn btn-primary">
+                <input type="radio" name="options" id="option2" autocomplete="off"> File
+              </label>
+              <label class="btn btn-primary">
+                <input type="radio" name="options" id="option3" autocomplete="off"> Directory
+              </label>
+              <label class="btn btn-primary">
+                <input type="radio" name="options" id="option4" autocomplete="off"> Author
+              </label>
+            </div>
+            <!--li>
+                <a href="#groupby" data-toggle="collapse" aria-expanded="false">Group By</a>
+                <ul class="collapse list-unstyled" id="groupby">
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-secondary">Class</button>
+                      <button type="button" class="btn btn-secondary">File</button>
+                      <button type="button" class="btn btn-secondary">Directory</button>
+                      <button type="button" class="btn btn-secondary">Author</button>
+                    </div>
+                </ul-->
+            <li><a href="#">List of Classes</a></li>
+            <select class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Classes" data-width="100%" data-size="5">
+                <option>Mustard</option>
+                <option>Ketchup</option>
+                <option>Relish</option>
+                <option>fsaf</option>
+                <option>gawhehgw</option>
+                <option>faedfeg</option>
+                <option>awgeewf</option>
+                <option>gawefda</option>
+                <option>gawegfwe</option>
+                <option>zvcdwsav</option>
+            </select>
+            <li><a href="#">List of Files</a></li>
+            <select class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Classes" data-width="100%" data-size="5">
+                <option>Mustard</option>
+                <option>Ketchup</option>
+            </select>
+            <li><a href="#">List of Directory</a></li>
+            <select class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Directory" data-width="100%" data-size="5">
+                <option>Mustard</option>
+                <option>Ketchup</option>
+            </select>
+            <li><a href="#">List of Author</a></li>
+            <select class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Author" data-width="100%" data-size="5">
+                <option>Mustard</option>
+                <option>Ketchup</option>
+            </select>
+            <li><a href="#">List of Methods</a></li>
+            <select class="selectpicker" data-live-search="true" data-actions-box="true" multiple title="List of Methods" data-width="100%" data-size="5">
+                <option>Mustard</option>
+                <option>Ketchup</option>
+            </select>
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
