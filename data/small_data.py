@@ -1,4 +1,3 @@
-import json
 
 filedata = {'lines-of-code':37, 'lines':50, 'method':7,
             'class':3, 'file':3, 'directory':2, 'comment-lines': 13,
@@ -60,6 +59,9 @@ git = { '0': [
             {'author':'BBB', 'time':'2018-05-15 08:32:12', 'comment':'gdfg6','GID':'8d'},
         ]
     }
+
+#==================================
+import json
 
 bugs = []
 for each in methods:
