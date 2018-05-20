@@ -1,13 +1,19 @@
 function drawforce(graph){
   var widthf = $("#forced-directed").width();
-  var heightf = $("#page-content-wrapper").height();
-  var str = d3.min([widthf,heightf]);
+  var heightf = $("#page-content-wrapper").height() - 120;
+  var str = d3.max([widthf,heightf]);
 
   var colorf = d3.scaleOrdinal(d3.schemeCategory20);
   var scalestr = d3.scaleLinear().domain([430,830]).range([-15, -80]);
   var simulation = d3.forceSimulation()
       .force("link", d3.forceLink().id(function(d) { return d.id; }))
-      .force("charge", d3.forceManyBody().strength(scalestr(str)))
+      .force("charge", d3.forceManyBody().strength(function(){
+        if(str < 430){
+          return -15;
+        } else {
+          return scalestr(str);
+        }
+      }))
       .force("center", d3.forceCenter(widthf / 2, heightf / 2));
 
     var svgf = d3.select("#forced-directed")
@@ -20,7 +26,6 @@ function drawforce(graph){
       .selectAll("line")
       .data(graph.links)
       .enter().append("line")
-        .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
 
     var node = svgf.append("g")
         .attr("class", "nodes")
@@ -35,7 +40,7 @@ function drawforce(graph){
             .on("end", dragended));
 
     node.append("title")
-        .text(function(d) { return d.id; });
+        .text(function(d) { return d.data.name; });
 
     simulation
         .nodes(graph.nodes)

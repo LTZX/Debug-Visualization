@@ -1,9 +1,9 @@
 import json
 
-filedata = {'lines-of-code':37, 'lines':50, 'methods':7,
-            'classes':3, 'files':3, 'dictories':3, 'comment-lines': 13,
-            'comments': 0.26, 'time-range': ['2018-05-08', '2018-05-15'],
-            'authors': ['AAA', 'BBB', 'CCC']}
+filedata = {'lines-of-code':37, 'lines':50, 'method':7,
+            'class':3, 'file':3, 'directory':3, 'comment-lines': 13,
+            'comments': '26%', 'time-range': ['2018-05-08', '2018-05-15'],
+            'author': ['AAA', 'BBB', 'CCC'], 'bug':3}
 
 methods = {'0':{'name': 'main', 'class': 'api', 'file': 'apt.java',
             'directory': 'Java/API', 'lines': 5, 'bugs': [], 'MID': '0',
@@ -63,11 +63,11 @@ git = { '0': [
 force = {'nodes':[], 'links':[]}
 for each in methods:
     each = methods[each]
-    node = {'id': each['name'], 'group': each['class'], 'data': each, 'MID': each['MID']}
+    node = {'id': each['MID'], 'group': each['class'], 'data': each}
     force['nodes'].append(node)
 
 for each in relations:
-    link = {'source': relations[each]['from'], 'target': relations[each]['to'], 'value':1}
+    link = {'source': relations[each]['from'], 'target': relations[each]['to']}
     force['links'].append(link)
 
 bugs = {'methods':[], 'relations':[]}

@@ -48,7 +48,7 @@
         <ul class="sidebar-nav">
             <li class="sidebar-brand"> <a href="#"> Function Menu </a> </li>
             <li class="active"><a href="#">Reset Everything</a></li>
-            
+
             <li><a href="#">Group By</a></li>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-primary active">
@@ -106,7 +106,37 @@
     <!-- /#sidebar-wrapper -->
     <div id="page-content-wrapper" class="container-fluid">
       <div class="row">
-        <div id="forced-directed" class="col-md-7">
+        <div class="col-md-7">
+          <div class="row">
+            <table class="table">
+              <thead class="thead-light">
+                <tr class="tablerow">
+                  <th scope="col">Lines of Codes</th>
+                  <th scope="col">Lines</th>
+                  <th scope="col">Comment Percentage</th>
+                  <th scope="col">Method</th>
+                  <th scope="col">Class</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="tablerow" id="table1"></tr>
+              </tbody>
+              <thead class="thead-light">
+                <tr class="tablerow">
+                  <th scope="col">File</th>
+                  <th scope="col">Directory</th>
+                  <th scope="col">Bug</th>
+                  <th scope="col">Time Range</th>
+                  <th scope="col">Author/s</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="tablerow" id="table2"></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="row" id="forced-directed">
+          </div>
         </div>
         <div class="col-md-5">
           <div id="code" class="row">
