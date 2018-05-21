@@ -106,7 +106,6 @@ for each in methods:
     with open('codes/'+each+'.txt', 'r') as myfile:
       codes[each] = myfile.read()
 
-
 #namelist = {}
 #for each in methods:
 #    each = methods[each]
