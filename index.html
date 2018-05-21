@@ -9,17 +9,21 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/d3-selection-multi.v0.4.min.js"></script>
+  <script src='https://npmcdn.com/babel-core@5.8.34/browser.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
   <link rel="stylesheet" href="style/overall.css">
   <link rel="stylesheet" href="style/simple-sidebar.css">
   <link rel="stylesheet" href="style/script.css">
 
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
-
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
 
 </head>
 <body>
@@ -144,11 +148,11 @@
           <div id="gitdata" class="row">
             <div id="exTab2" class="container">
               <ul  class="nav nav-pills">
-                <li class="active"> <a  href="#gittime" data-toggle="tab">Time Line</a> </li>
+                <li class="active"> <a  href="#line-chart" data-toggle="tab">Time Line</a> </li>
                 <li><a href="#gittable" data-toggle="tab">Table</a> </li>
               </ul>
               <div class="tab-content clearfix">
-                <div class="tab-pane active" id="gittime"> </div>
+                <div class="tab-pane active" id="line-chart"> </div>
                 <div class="tab-pane" id="gittable"> </div>
               </div>
             </div>
@@ -164,18 +168,13 @@
     </div>
   </footer>
 
-  <!-- script for menubar action-->
-  <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-  </script>
   <script src="script/main.js"></script>
   <script src="script/force-directed.js"></script>
   <script src="script/bar-chart.js"></script>
   <script src="script/donutChart.js"></script>
   <script src="script/pie-chart.js"></script>
+  <script src="script/line-chart.js"></script>
+  <script src="script/git-table.js"></script>
 
 </body>
 </html>

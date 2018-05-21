@@ -1,5 +1,10 @@
 var ncolor = "class", nsize = "lines";
 
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
+
 function cutstr(str){
   var i = 0;
   for(var char in str){
@@ -94,6 +99,10 @@ d3.json("data/data.json", function(error, data) {
       $('#code').append(codes[d.id])
     })
 
-    d3.select('')
+    //fancy table
+    //$('#gittable').append(data.tmp);
 
+    //$(document).ready(function() {
+    //    $('#example').DataTable();
+    //} );
 })

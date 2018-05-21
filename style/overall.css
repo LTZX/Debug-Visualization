@@ -79,3 +79,11 @@ body {
   padding : 5px 15px;
   height: 100%;
 }
+
+#gittable{
+  overflow-y: auto;
+  height: 100%;
+}
+#gittablecontent{
+  overflow-y: auto;
+}
