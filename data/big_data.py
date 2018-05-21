@@ -1,8 +1,7 @@
-
 filedata = {'lines-of-code':288, 'lines':376, 'method':28,
             'class':11, 'file':12, 'directory':5, 'comment-lines': 15,
-            'comments': '5.0%', 'time-range': ['', ''],
-            'author': ['', '', ''], 'bug':}
+            'comments': '5.0%', 'time-range': ['2018-05-08', '2018-06-15'],
+            'author': ['zhiyi', 'xiaojie', 'yumeng','ruolan'], 'bug':8}
 
 methods = {'0':{'name': 'main', 'class': 'Application', 'file': 'Application.java',
             'directory': '/java', 'lines': 3, 'bugs': [], 'MID': '1',
@@ -134,14 +133,62 @@ relations = {'0': {'from':'2', 'to':'4'},
              '19': {'from':'21', 'to':'17'},
              '20': {'from':'22', 'to':'16'}
             }
-            
-git = { '6' :[
-            {'author':'AAA', 'time':'2018-05-08 03:42:31', 'comment':'x','GID':'1d'},
-            {'author':'CCC', 'time':'2018-05-11 08:32:12', 'comment':'cer2w','GID':'5p'},
-            {'author':'BBB', 'time':'2018-05-15 08:32:12', 'comment':'gdfg6','GID':'8d'},
+
+git = { '0': [
+            {'author':'ruolan', 'time':'2018-05-08 12:32:32', 'comment':'zxcas','GID':'1b'},
+            {'author':'xiaoju', 'time':'2018-05-12 12:32:32', 'comment':'dasfe','GID':'3c'},
+            {'author':'ruolan', 'time':'2018-05-13 12:32:32', 'comment':'qwreqwr','GID':'5c'}
+        ],
+        '1': [
+            {'author':'yumeng', 'time':'2018-05-10 12:32:32', 'comment':'rsddtgs','GID':'8j'}
+        ],
+        '2': [
+            {'author':'zhiyi', 'time':'2018-05-08 12:32:32', 'comment':'trey','GID':'7k'},
+            {'author':'zhiyi', 'time':'2018-05-10 12:32:32', 'comment':'ghffgh','GID':'3f'},
+            {'author':'yumeng', 'time':'2018-05-15 12:32:32', 'comment':'wrfef','GID':'5k'}
+        ],
+        '3' :[
+            {'author':'ruolan', 'time':'2018-05-11 12:32:32', 'comment':'8i87o','GID':'9h'}
+        ],
+        '4' :[
+            {'author':'zhiyi', 'time':'2018-05-11 08:32:12', 'comment':'dsfgg','GID':'4v'}
+        ],
+        '5' :[
+            {'author':'xiaoju', 'time':'2018-05-11 03:42:31', 'comment':'asfdsg','GID':'9o'}
+        ],
+        '6' :[
+            {'author':'ruolan', 'time':'2018-05-08 03:42:31', 'comment':'x','GID':'1d'},
+            {'author':'xiaoju', 'time':'2018-05-11 08:32:12', 'comment':'cer2w','GID':'5p'},
+            {'author':'zhiyi', 'time':'2018-05-15 08:32:12', 'comment':'gdfg6','GID':'8d'},
+        ]
+        '7': [
+            {'author':'ruolan', 'time':'2018-06-08 12:32:32', 'comment':'zxcase','GID':'1a'},
+            {'author':'xiaoju', 'time':'2018-06-12 12:32:32', 'comment':'dasfee','GID':'3b'},
+            {'author':'ruolan', 'time':'2018-06-13 12:32:32', 'comment':'qwreqwre','GID':'5b'}
+        ],
+        '8': [
+            {'author':'yumeng', 'time':'2018-06-10 12:32:32', 'comment':'rsddtgse','GID':'8c'}
+        ],
+        '9': [
+            {'author':'yumeng', 'time':'2018-06-08 12:32:32', 'comment':'treye','GID':'7d'},
+            {'author':'yumeng', 'time':'2018-06-10 12:32:32', 'comment':'ghffghe','GID':'3e'},
+            {'author':'zhiyi', 'time':'2018-06-15 12:32:32', 'comment':'wrfefe','GID':'5f'}
+        ],
+        '10' :[
+            {'author':'ruolan', 'time':'2018-06-11 12:32:32', 'comment':'8i87oe','GID':'9g'}
+        ],
+        '11' :[
+            {'author':'zhiyi', 'time':'2018-06-11 08:32:12', 'comment':'dsfgge','GID':'4h'}
+        ],
+        '12' :[
+            {'author':'xiaoju', 'time':'2018-06-11 03:42:31', 'comment':'asfdsge','GID':'9i'}
+        ],
+        '13' :[
+            {'author':'ruolan', 'time':'2018-06-08 03:42:31', 'comment':'xe','GID':'1j'},
+            {'author':'xiaoju', 'time':'2018-06-11 08:32:12', 'comment':'cer2we','GID':'5k'},
+            {'author':'zhiyi', 'time':'2018-06-15 08:32:12', 'comment':'gdfg6e','GID':'8l'},
         ]
     }
-
 #==================================
 import json
 
