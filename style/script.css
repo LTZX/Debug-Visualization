@@ -9,11 +9,7 @@
   stroke-width: 1.5px;
 }
 
-/* ======== for code ======== */
-#code{
-  height: calc(calc(100vh - 100px) * 0.3);
-  overflow: auto;
-}
+
 /* ======== for bar chart ======== */
 .toolTip {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

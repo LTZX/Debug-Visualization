@@ -1,4 +1,4 @@
-<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+<!-- HTML generated using hilite.me --><div class="codediv"><table class="codetable"><tr><td><pre style="margin: 0; line-height: 125%"> 1
  2
  3
  4
@@ -16,7 +16,7 @@
 16
 17
 18</pre></td><td><pre style="margin: 0; line-height: 125%">    <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">main</span><span style="color: #333333">(</span>String args<span style="color: #333333">[])</span> <span style="color: #333333">{</span>
-        JavaExample obj <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> JavaExample<span style="color: #333333">();</span>
+        <span class="hasbug">JavaExample obj <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> JavaExample<span style="color: #333333">();</span> </span>
         <span style="color: #888888">/* This statement will call the first area() method</span>
 <span style="color: #888888">         * because we are passing only one argument with</span>
 <span style="color: #888888">         * the &quot;f&quot; suffix. f is used to denote the float numbers</span>
@@ -26,7 +26,7 @@
 	 <span style="color: #888888">/* This will call the second method because we are passing </span>
 <span style="color: #888888">	  * two arguments and only second method has two arguments</span>
 <span style="color: #888888">	  */</span>
-	 obj<span style="color: #333333">.</span><span style="color: #0000CC">calculateArea</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">22</span><span style="color: #333333">);</span>
+	 <span class="hasbug">obj<span style="color: #333333">.</span><span style="color: #0000CC">calculateArea</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">22</span><span style="color: #333333">);</span> </span>
 	 <span style="color: #888888">/* This will call the second method because we have not suffixed</span>
 <span style="color: #888888">	  * the value with &quot;f&quot; when we do not suffix a float value with f </span>
 <span style="color: #888888">	  * then it is considered as type double.</span>

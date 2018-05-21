@@ -103,7 +103,7 @@ for each in git:
                 groupby['author'][commit['author']].append(each)
 codes = {}
 for each in methods:
-    with open(each+'.txt', 'r') as myfile:
+    with open('codes/'+each+'.txt', 'r') as myfile:
       codes[each] = myfile.read()
 
 

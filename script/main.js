@@ -94,4 +94,6 @@ d3.json("data/data.json", function(error, data) {
       $('#code').append(codes[d.id])
     })
 
+    d3.select('')
+
 })
