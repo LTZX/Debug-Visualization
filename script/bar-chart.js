@@ -2,8 +2,8 @@ var div = d3.select("body").append("div").attr("class", "toolTip");
 
 d3.json("data/bar-chart.json", function(error, input) {
   var data = input.data;
-  var widthb = $("#bar-chart").width() - 30;
-  var heightb = $("#page-content-wrapper").height() * 0.4 - 60;
+  var widthb = $("#exTab1").width() - 30;
+  var heightb = $("#exTab1").height() - 10;
   var axisMargin = 20,
       marginb = 30,
       valueMargin = 4,

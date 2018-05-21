@@ -1,5 +1,5 @@
-var widthp = $("#pie-chart").width();
-var heightp = $("#page-content-wrapper").height() * 0.3;
+var widthp = $("#exTab1").width();
+var heightp = $("#exTab1").height() - 10;
 var donut = donutChart()
     .width(widthp)
     .height(heightp)
