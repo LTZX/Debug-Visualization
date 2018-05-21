@@ -14,6 +14,15 @@ body {
 .tablerow{
   height: 30px;
 }
-#instinfo{
-
+/* ======== for code ======== */
+#code{
+  height: calc(calc(100vh - 100px) * 0.3);
+  overflow: auto;
+}
+.instinfo{
+  font-size: 25px;
+  vertical-align: middle;
+  text-align: center;
+  line-height: calc(calc(100vh - 100px) * 0.24);
+  opacity: 0.5;
 }

@@ -26,15 +26,22 @@ function drawforce(graph){
     .text("Color of Node: Class")
     .attr("id", "cblock")
     .attr("transform", "translate(50,50)")
-    .style("font-size", "12px")
+    .style("font-size", "15px")
     .style("text-transform", "capitalize")
 
     svgf.append("text")
     .text("Size Of Node: Number of Lines")
     .attr("id", "sblock")
-    .attr("transform", "translate(50,70)")
-    .style("font-size", "12px")
+    .attr("transform", "translate(50,75)")
+    .style("font-size", "15px")
     .style("text-transform", "capitalize")
+
+    svgf.append("text")
+    .text("Hover to see the name of methods and its class")
+    .attr("transform", "translate(50,110)")
+    .style("font-size", "18px")
+    .style("text-transform", "capitalize")
+    .style("opacity",0.5)
 
     var link = svgf.append("g")
       .attr("class", "links")
@@ -58,7 +65,7 @@ function drawforce(graph){
             .on("end", dragended));
 
     node.append("title")
-        .text(function(d) { return d.data.name + " Class: " + d.data.class; });
+        .text(function(d) { return "Method: " + d.data.name + " Class: " + d.data.class; });
 
     simulation
         .nodes(graph.nodes)
