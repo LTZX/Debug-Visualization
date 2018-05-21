@@ -3,6 +3,8 @@ var heightl = $("#exTab2").height() * 0.75;
 const marginl = { top: 20, right: 50, bottom: 30, left: 50 };
 
 const parseTime = d3.timeParse('%d-%b-%y');
+//const parseTime = d3.timeParse('%d-%b-%y %H:%M:%S');
+
 const bisectDate = d3.bisector(d => d.date).left;
 const formatValue = d3.format(',.2f');
 const formatCurrency = d => `$${formatValue(d)}`;

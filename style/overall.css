@@ -56,8 +56,8 @@ body {
 }
 #exTab1{
   width: 100%;
-  margin-top: 5%;
-  height: calc(calc(100vh - 100px) * 0.25);
+  margin-top: 10px;
+  height: calc(calc(100vh - 100px) * 0.27);
 }
 #exTab1 .tab-content {
   background-color: rgba(66,139,202,0.1);
@@ -71,8 +71,8 @@ body {
 }
 #exTab2{
   width: 100%;
-  margin-top: 10%;
-  height: calc(calc(100vh - 100px) * 0.25);
+  margin-top: 50px;
+  height: calc(calc(100vh - 100px) * 0.27);
 }
 #exTab2 .tab-content {
   background-color: rgba(66,139,202,0.1);
