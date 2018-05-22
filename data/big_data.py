@@ -130,12 +130,7 @@ relations = {'0': {'from':'2', 'to':'4'},
              '20': {'from':'22', 'to':'16'}
             }
 
-git = { '0': [
-            {'author':'ruolan', 'time':'2018-05-08 12:32:32', 'comment':'zxcas','GID':'1b'},
-            {'author':'xiaoju', 'time':'2018-05-12 12:32:32', 'comment':'dasfe','GID':'3c'},
-            {'author':'ruolan', 'time':'2018-05-13 12:32:32', 'comment':'qwreqwr','GID':'5c'}
-        ],
-        '1': [
+git = { '1': [
             {'author':'yumeng', 'time':'2018-05-10 12:32:32', 'comment':'rsddtgs','GID':'8j'}
         ],
         '2': [
@@ -318,13 +313,12 @@ for each in out_put:
     time[each] = []
     for ele in out_put[each]:
         time[each].append({'date': ele, 'close': out_put[each][ele]})
-git['total']=[]
+gittmp=[]
 for each in git:
-    if(each == 'total'):
-        break
     each = git[each]
     for ele in each:
-        git['total'].append(ele)
+        gittmp.append(ele)
+git['total'] = gittmp
 
 bardict = {}
 bardict['total']={}

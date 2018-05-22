@@ -3,6 +3,7 @@ var heightt = $("#exTab2").height();
 var titles = ['author', 'time', 'comment', 'GID'];
 
 function drawgittable(data) {
+  console.log(data)
   var sortAscending = true;
   var table = d3.select('#gittable').append('table').attr("class","gittablecontent");
   var headers = table.append('thead').append('tr')
