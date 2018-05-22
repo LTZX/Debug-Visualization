@@ -14,7 +14,7 @@ function drawforce(graph){
       .force("charge", d3.forceManyBody().strength(function(){
         if(str < 430){ return -15; }
         else { return scalestr(str); }
-      }))
+      }).distanceMax(100))
       .force("center", d3.forceCenter(widthf / 2, heightf / 2));
 
     var svgf = d3.select("#forced-directed")

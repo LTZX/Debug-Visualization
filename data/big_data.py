@@ -309,7 +309,13 @@ for method in git:
 
 out_put['total'] = out_put_total
 
-data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'time': out_put}
+time = {}
+for each in out_put:
+    time[each] = []
+    for ele in out_put[each]:
+        time[each].append({'date': ele, 'close': out_put[each][ele]})
+
+data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'time': time}
 with open('data.json', 'w') as outfile:
     json.dump(data, outfile)
 

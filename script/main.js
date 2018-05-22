@@ -15,7 +15,6 @@ function cutstr(str){
 }
 
 d3.json("data/data.json", function(error, data) {
-    console.log(data);
     // === set up the selections
     var groupby = data.groupby;
     //$('#classes').append()
@@ -105,4 +104,19 @@ d3.json("data/data.json", function(error, data) {
     //$(document).ready(function() {
     //    $('#example').DataTable();
     //} );
+    function type(d) {
+      d.date = parseTime(d.date);
+      d.close = +d.close;
+      return d;
+    }
+    //d3.tsv("data/line-chart.tsv", function(data2){
+    //  data2.forEach(function(d){
+    //    d = type(d);
+    //  })
+    //  drawlinechart(data2);
+    //})
+    data.time['total'].forEach(function(d){
+      d = type(d);
+    })
+    drawlinechart(data.time['total']);
 })

@@ -122,7 +122,7 @@ while begin_date <= end_date:
     out_put_total[date_str]=0
     begin_date += datetime.timedelta(days=1)
 
-for i in range(27):
+for i in range(7):
     out_put[str(i)]={}
     begin_date = datetime.datetime.strptime('2018-05-08', "%Y-%m-%d")
     while begin_date <= end_date:
@@ -139,7 +139,13 @@ for method in git:
 
 out_put['total'] = out_put_total
 
-data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'time': out_put}
+time = {}
+for each in out_put:
+    time[each] = []
+    for ele in out_put[each]:
+        time[each].append({'date': ele, 'close': out_put[each][ele]})
+
+data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'code':codes, 'time': time}
 with open('data.json', 'w') as outfile:
     json.dump(data, outfile)
     
