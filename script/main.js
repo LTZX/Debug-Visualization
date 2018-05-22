@@ -14,7 +14,29 @@ function cutstr(str){
   return str.substring(0,i);
 }
 
+function orgtimedata(time){
+  for(each in time){
+    for(d in time[each]){
+        time[each][d].date = parseTime(time[each][d].date);
+        time[each][d].close = +time[each][d].close;
+      }
+    }
+    return time;
+}
+
+function onenode(d,data){
+  d3.selectAll(".node").attr("fill", "grey")
+  d3.select("#node"+d.id)
+  .attr("fill", function(d) { return colorf(d.data[ncolor]); })
+  $('#code').empty();
+  $('#code').append(data.code[d.id])
+  $('#line-chart').empty();
+  drawlinechart(data.time[d.id]);
+  d3.select("#lblock").text(d.id + " - " + d.data.name)
+}
+
 d3.json("data/data.json", function(error, data) {
+    orgtimedata(data.time);
     // === set up the selections
     var groupby = data.groupby;
     //$('#classes').append()
@@ -69,6 +91,9 @@ d3.json("data/data.json", function(error, data) {
     var groupby = data.groupby;
     $(".listselect").on('changed.bs.select', function(){
       $('.methodselect').selectpicker('deselectAll');
+      $('#code').empty();
+      $('#line-chart').empty();
+      drawlinechart(data.time['total']);
       d3.selectAll(".node").attr("fill", "grey")
       var selected = [];
       for(each in groupby){
@@ -83,28 +108,14 @@ d3.json("data/data.json", function(error, data) {
 
     $(".methodselect").on('changed.bs.select', function(){
       $('.listselect').selectpicker('deselectAll');
-      d3.selectAll(".node").attr("fill", "grey")
       var val = $("#omethod").val();
-      for(ele in val){
-        var id = cutstr(val[ele])
-        d3.select("#node"+id)
-        .attr("fill", function(d) { return colorf(d.data[ncolor]); })
-      }
+      onenode(data.force.nodes[cutstr(val[0])],data);
     })
 
-    var codes = data.code;
     d3.selectAll('.node').on('click',function(d){
-      d3.selectAll(".node").attr("fill", "grey")
-      d3.select("#node"+d.id)
-      .attr("fill", function(d) { return colorf(d.data[ncolor]); })
-      $('#code').empty();
-      $('#code').append(codes[d.id])
-      $('#line-chart').empty();
-      //d3.select('#linechart').remove()
-      data.time[d.id].forEach(function(d){
-        d = type(d);
-      })
-      drawlinechart(data.time[d.id]);
+      $('.listselect').selectpicker('deselectAll');
+      $('.methodselect').selectpicker('deselectAll');
+      onenode(d,data);
     })
 
     //fancy table
@@ -113,21 +124,12 @@ d3.json("data/data.json", function(error, data) {
     //$(document).ready(function() {
     //    $('#example').DataTable();
     //} );
-    function type(d) {
-      d.date = parseTime(d.date);
-      d.close = +d.close;
-      return d;
-    }
+
     //d3.tsv("data/line-chart.tsv", function(data2){
     //  data2.forEach(function(d){
     //    d = type(d);
     //  })
     //  drawlinechart(data2);
     //})
-    data.time['total'].forEach(function(d){
-      d = type(d);
-    })
     drawlinechart(data.time['total']);
-
-
 })

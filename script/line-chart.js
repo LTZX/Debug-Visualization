@@ -29,6 +29,13 @@ function drawlinechart(data3){
       .attr('transform', `translate(${marginl.left}, ${marginl.top})`);
     data3.sort((a, b) => a.date - b.date);
 
+    svgl.append('text')
+    .text("Total")
+    .attr("id", "lblock")
+    .attr("transform", "translate(30,10)")
+    .style("font-size", "12px")
+    .style("text-transform", "capitalize")
+
     xl.domain([data3[0].date, data3[data3.length - 1].date]);
     yl.domain(d3.extent(data3, d => d.close));
 
