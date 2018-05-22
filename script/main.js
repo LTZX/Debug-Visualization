@@ -67,7 +67,7 @@ d3.json("data/data.json", function(error, data) {
     })
 
     var groupby = data.groupby;
-    d3.selectAll(".listselect").on('change', function(){
+    $(".listselect").on('changed.bs.select', function(){
       $('.methodselect').selectpicker('deselectAll');
       d3.selectAll(".node").attr("fill", "grey")
       var selected = [];
@@ -81,7 +81,7 @@ d3.json("data/data.json", function(error, data) {
           } } }
     })
 
-    d3.selectAll(".methodselect").on('change', function(){
+    $(".methodselect").on('changed.bs.select', function(){
       $('.listselect').selectpicker('deselectAll');
       d3.selectAll(".node").attr("fill", "grey")
       var val = $("#omethod").val();
