@@ -8,9 +8,9 @@ var donut = donutChart()
     .variable('Probability')
     .category('Species');
 
-d3.tsv('data/pie-chart.tsv', function(error, data) {
-    if (error) throw error;
-    d3.select('#pie-chart')
-        .datum(data) // bind data to the div
-        .call(donut); // draw chart in div
-});
+//d3.tsv('data/pie-chart.tsv', function(error, data) {
+    //if (error) throw error;
+    //d3.select('#pie-chart')
+//        .datum(data) // bind data to the div
+//        .call(donut); // draw chart in div
+//});

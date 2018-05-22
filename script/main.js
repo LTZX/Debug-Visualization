@@ -39,6 +39,17 @@ function onenode(d,data){
   d3.select("#lblock").text(d.id + " - " + d.data.name)
 }
 
+function setback(data){
+  $('#code').empty();
+  $('#line-chart').empty();
+  $('#gittable').empty();
+  $('#bar-chart').empty();
+
+  drawlinechart(data.time['total']);
+  drawgittable(data.table['total']);
+  drawbarchart(data.bar['total']);
+}
+
 d3.json("data/data.json", function(error, data) {
     orgtimedata(data.time);
     // === set up the selections
@@ -63,6 +74,7 @@ d3.json("data/data.json", function(error, data) {
 
     drawforce(data.force);
     d3.selectAll(".gbbutton").on('click',function(){
+      setback(data)
       var that = this;
       d3.selectAll(".node")
       .attr("fill", function(d) { return colorf(d.data[that.id]); })
@@ -71,6 +83,7 @@ d3.json("data/data.json", function(error, data) {
       ncolor = that.id
     })
     d3.selectAll(".bugbutton").on('click',function(){
+      setback(data)
       if(this.id === "show"){
         d3.selectAll(".node")
         .attr("r", function(d){ return scalebug(d.data.bugs.length); })
@@ -95,13 +108,7 @@ d3.json("data/data.json", function(error, data) {
     var groupby = data.groupby;
     $(".listselect").on('changed.bs.select', function(){
       $('.methodselect').selectpicker('deselectAll');
-      $('#code').empty();
-      $('#line-chart').empty();
-      $('#gittable').empty();
-
-      drawlinechart(data.time['total']);
-      drawgittable(data.table['total']);
-      drawbarchart(data.bar['total']);
+      setback(data)
 
       d3.selectAll(".node").attr("fill", "grey")
       var selected = [];

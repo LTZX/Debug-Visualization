@@ -4,8 +4,8 @@ var round = d3.format(".2f");
 function drawbarchart(data){
   var sum = d3.sum(data,function(d){ return d.value;})
 
-  var widthb = $("#exTab1").width() - 30;
-  var heightb = $("#exTab1").height() - 10;
+  var widthb = $("#exTab2").width() - 30;
+  var heightb = $("#exTab2").height() - 10;
   var axisMargin = 20,
       marginb = 30,
       valueMargin = 4,
@@ -47,7 +47,8 @@ function drawbarchart(data){
           .text(function(d){
               return d.label;
           }).each(function() {
-      labelWidth = Math.ceil(Math.max(labelWidth, this.getBBox().width));
+            var count = this.innerHTML.length;
+      labelWidth = Math.ceil(Math.max(labelWidth, count*10));
   });
 
   scaleb = d3.scaleLinear()
@@ -76,7 +77,7 @@ function drawbarchart(data){
           .attr("text-anchor", "end")
           .text(function(d){ return d.value; })
           .attr("x", function(d){
-              var width = this.getBBox().width;
+              var width = 100;
               return Math.max(width + valueMargin, scaleb(d.value));
           });
 
