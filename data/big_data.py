@@ -55,59 +55,55 @@ methods = {'0':{'name': 'main', 'class': 'Application', 'file': 'Application.jav
             'directory': '/java/API', 'lines': 5, 'bugs': [], 'MID': '13',
             'related': [12], 'relations': [9]},
 
-           '14':{'name': 'Databa', 'class': '[]', 'file': 'DataBa',
-            'directory': '/java/da', 'lines': 4, 'bugs': [], 'MID': '14',
+           '14':{'name': 'DatabaseState', 'class': '[]', 'file': 'DataBaseState.java',
+            'directory': '/java/database', 'lines': 4, 'bugs': [], 'MID': '14',
             'related': [], 'relations': []},
 
-           '15':{'name': 'seState', 'class': '', 'file': 'seState.java',
-            'directory': 'tabase', 'lines': 0, 'bugs': [], 'MID': '',
-            'related': [], 'relations': []},
-
-           '16':{'name': 'DBConnector', 'class': 'DBConnector', 'file': 'DBConnector.java',
+           '15':{'name': 'DBConnector', 'class': 'DBConnector', 'file': 'DBConnector.java',
             'directory': '/java/database', 'lines': 15, 'bugs': [9,12], 'MID': '15',
             'related': [], 'relations': []},
 
-           '17':{'name': 'insert', 'class': 'DBConnector', 'file': 'DBConnector.java',
+           '16':{'name': 'insert', 'class': 'DBConnector', 'file': 'DBConnector.java',
             'directory': '/java/database', 'lines': 7, 'bugs': [], 'MID': '16',
             'related': [23], 'relations': [15]},
 
-           '18':{'name': 'find', 'class': 'DBConnector', 'file': 'DBConnector.java',
+           '17':{'name': 'find', 'class': 'DBConnector', 'file': 'DBConnector.java',
             'directory': '/java/database', 'lines': 12, 'bugs': [10], 'MID': '17',
             'related': [21], 'relations': [19]},
 
-           '19':{'name': 'Read', 'class': 'DBConnector', 'file': 'DBConnector.java',
+           '18':{'name': 'Read', 'class': 'DBConnector', 'file': 'DBConnector.java',
             'directory': '/java/database', 'lines': 3, 'bugs': [], 'MID': '18',
             'related': [26], 'relations': [18]},
 
-           '20':{'name': 'Update', 'class': 'DBConnector', 'file': 'DBConnector.java',
+           '19':{'name': 'Update', 'class': 'DBConnector', 'file': 'DBConnector.java',
             'directory': '/java/database', 'lines': 3, 'bugs': [], 'MID': '19',
             'related': [24], 'relations': [16]},
 
-           '21':{'name': 'Delete', 'class': 'DBConnector', 'file': 'DBConnector.java',
+           '20':{'name': 'Delete', 'class': 'DBConnector', 'file': 'DBConnector.java',
             'directory': '/java/database', 'lines': 3, 'bugs': [], 'MID': '20',
             'related': [25], 'relations': [17]},
 
-           '22':{'name': 'GetSensorData', 'class': 'SensorRoute', 'file': 'SensorRoute.java',
+           '21':{'name': 'GetSensorData', 'class': 'SensorRoute', 'file': 'SensorRoute.java',
             'directory': '/java/Sonsors', 'lines': 7, 'bugs': [], 'MID': '21',
             'related': [11], 'relations': [13]},
 
-           '23':{'name': 'UpdateSensorData', 'class': 'SensorRoute', 'file': 'SensorRoute.java',
+           '22':{'name': 'UpdateSensorData', 'class': 'SensorRoute', 'file': 'SensorRoute.java',
             'directory': '/java/Sonsors', 'lines': 7, 'bugs': [], 'MID': '22',
             'related': [13], 'relations': [14]},
 
-           '24':{'name': 'AddSensor', 'class': 'SensorRoute', 'file': 'SensorRoute.java',
+           '23':{'name': 'AddSensor', 'class': 'SensorRoute', 'file': 'SensorRoute.java',
             'directory': '/java/Sonsors', 'lines': 4, 'bugs': [], 'MID': '23',
             'related': [5], 'relations': [10]},
 
-           '25':{'name': 'UpdateSensor', 'class': 'SensorRoute', 'file': 'SensorRoute.java',
+           '24':{'name': 'UpdateSensor', 'class': 'SensorRoute', 'file': 'SensorRoute.java',
             'directory': '/java/Sonsors', 'lines': 4, 'bugs': [], 'MID': '24',
             'related': [], 'relations': []},
 
-           '26':{'name': 'DeleteSensor', 'class': 'SensorRoute', 'file': 'SensorRoute.java',
+           '25':{'name': 'DeleteSensor', 'class': 'SensorRoute', 'file': 'SensorRoute.java',
             'directory': '/java/Sonsors', 'lines': 4, 'bugs': [], 'MID': '25',
             'related': [7], 'relations': [11]},
 
-           '27':{'name': 'GetAllSensors', 'class': 'SensorRoute', 'file': 'SensorRoute.java',
+           '26':{'name': 'GetAllSensors', 'class': 'SensorRoute.java', 'file': 'SensorRoute.java',
             'directory': '/java/Sonsors', 'lines': 4, 'bugs': [], 'MID': '26',
             'related': [9], 'relations': [12]}
           }
@@ -236,9 +232,6 @@ git = { '0': [
             {'author':'ruolan', 'time':'2018-06-08 03:42:31', 'comment':'xe','GID':'1j'},
             {'author':'xiaoju', 'time':'2018-06-11 08:32:12', 'comment':'cer2we','GID':'5k'},
             {'author':'zhiyi', 'time':'2018-06-15 08:32:12', 'comment':'gdfg6e','GID':'8l'},
-        ],
-        '27' :[
-            {'author':'xiaoju', 'time':'2018-06-11 03:42:31', 'comment':'asfdsge','GID':'9i'}
         ]
     }
 #==================================
