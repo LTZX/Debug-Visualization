@@ -8,14 +8,37 @@ $("#menu-toggle").click(function(e) {
 function cutstr(str){
   var i = 0;
   for(var char in str){
-    if(char == '-') break;
+    if(str[char] === '-') break;
     i += 1;
   }
   return str.substring(0,i);
 }
 
+function orgtimedata(time){
+  for(each in time){
+    for(d in time[each]){
+        time[each][d].date = parseTime(time[each][d].date);
+        time[each][d].close = +time[each][d].close;
+      }
+    }
+    return time;
+}
+
+function onenode(d,data){
+  d3.selectAll(".node").attr("fill", "grey")
+  d3.select("#node"+d.id)
+  .attr("fill", function(d) { return colorf(d.data[ncolor]); })
+  $('#code').empty();
+  $('#code').append(data.code[d.id])
+  $('#line-chart').empty();
+  $('#gittable').empty();
+  drawlinechart(data.time[d.id]);
+  drawgittable(data.table[d.id]);
+  d3.select("#lblock").text(d.id + " - " + d.data.name)
+}
+
 d3.json("data/data.json", function(error, data) {
-    console.log(data);
+    orgtimedata(data.time);
     // === set up the selections
     var groupby = data.groupby;
     //$('#classes').append()
@@ -68,8 +91,15 @@ d3.json("data/data.json", function(error, data) {
     })
 
     var groupby = data.groupby;
-    d3.selectAll(".listselect").on('change', function(){
+    $(".listselect").on('changed.bs.select', function(){
       $('.methodselect').selectpicker('deselectAll');
+      $('#code').empty();
+      $('#line-chart').empty();
+      $('#gittable').empty();
+
+      drawlinechart(data.time['total']);
+      drawgittable(data.table['total']);
+
       d3.selectAll(".node").attr("fill", "grey")
       var selected = [];
       for(each in groupby){
@@ -82,27 +112,24 @@ d3.json("data/data.json", function(error, data) {
           } } }
     })
 
-    d3.selectAll(".methodselect").on('change', function(){
+    $(".methodselect").on('changed.bs.select', function(){
       $('.listselect').selectpicker('deselectAll');
-      d3.selectAll(".node").attr("fill", "grey")
       var val = $("#omethod").val();
-      for(ele in val){
-        var id = cutstr(ele)
-        d3.select("#node"+id)
-        .attr("fill", function(d) { return colorf(d.data[ncolor]); })
-      }
+      onenode(data.force.nodes[cutstr(val[0])],data);
     })
 
-    var codes = data.code;
     d3.selectAll('.node').on('click',function(d){
-      $('#code').empty();
-      $('#code').append(codes[d.id])
+      $('.listselect').selectpicker('deselectAll');
+      $('.methodselect').selectpicker('deselectAll');
+      onenode(d,data);
     })
-
+    drawlinechart(data.time['total']);
+    drawgittable(data.table['total']);
     //fancy table
     //$('#gittable').append(data.tmp);
 
     //$(document).ready(function() {
     //    $('#example').DataTable();
     //} );
+
 })

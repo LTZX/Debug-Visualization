@@ -1,37 +1,33 @@
 var widtht = $("#exTab2").width();
 var heightt = $("#exTab2").height();
+var titles = ['author', 'time', 'comment', 'GID'];
 
-d3.csv("data/git-table.csv", function(error, data) {
-  if (error) throw error;
-
+function drawgittable(data) {
   var sortAscending = true;
   var table = d3.select('#gittable').append('table').attr("class","gittablecontent");
-  var titles = d3.keys(data[0]);
   var headers = table.append('thead').append('tr')
-                   .selectAll('th')
-                   .data(titles).enter()
-                   .append('th')
-                   .text(function (d) {
-                      return d;
-                    })
-                   .on('click', function (d) {
-                     headers.attr('class', 'header');
-
-                     if (sortAscending) {
-                       rows.sort(function(a, b) { return b[d] < a[d]; });
-                       sortAscending = false;
-                       this.className = 'aes';
-                     } else {
-                     rows.sort(function(a, b) { return b[d] > a[d]; });
-                     sortAscending = true;
-                     this.className = 'des';
-                     }
-
-                   });
+    .selectAll('th')
+    .data(titles).enter()
+    .append('th')
+    .text(function (d) { return d; })
+    .style("text-transform", "capitalize")
+    .on('click', function (d) {
+      headers.attr('class', 'header');
+      if (sortAscending) {
+        rows.sort(function(a, b) { return b[d] < a[d]; });
+        sortAscending = false;
+        this.className = 'aes';
+      } else {
+        rows.sort(function(a, b) { return b[d] > a[d]; });
+        sortAscending = true;
+        this.className = 'des';
+      }
+    });
 
   var rows = table.append('tbody').selectAll('tr')
-               .data(data).enter()
-               .append('tr');
+    .data(data).enter()
+    .append('tr');
+
   rows.selectAll('td')
     .data(function (d) {
       return titles.map(function (k) {
@@ -39,10 +35,6 @@ d3.csv("data/git-table.csv", function(error, data) {
       });
     }).enter()
     .append('td')
-    .attr('data-th', function (d) {
-      return d.name;
-    })
-    .text(function (d) {
-      return d.value;
-    });
-});
+    .attr('data-th', function (d) { return d.name; })
+    .text(function (d) { return d.value; });
+}
