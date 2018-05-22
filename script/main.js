@@ -32,8 +32,10 @@ function onenode(d,data){
   $('#code').append(data.code[d.id])
   $('#line-chart').empty();
   $('#gittable').empty();
+  $('#bar-chart').empty();
   drawlinechart(data.time[d.id]);
   drawgittable(data.table[d.id]);
+  drawbarchart(data.bar[d.id]);
   d3.select("#lblock").text(d.id + " - " + d.data.name)
 }
 
@@ -99,6 +101,7 @@ d3.json("data/data.json", function(error, data) {
 
       drawlinechart(data.time['total']);
       drawgittable(data.table['total']);
+      drawbarchart(data.bar['total']);
 
       d3.selectAll(".node").attr("fill", "grey")
       var selected = [];
@@ -125,11 +128,13 @@ d3.json("data/data.json", function(error, data) {
     })
     drawlinechart(data.time['total']);
     drawgittable(data.table['total']);
+    drawbarchart(data.bar['total']);
     //fancy table
     //$('#gittable').append(data.tmp);
 
     //$(document).ready(function() {
     //    $('#example').DataTable();
     //} );
+
 
 })

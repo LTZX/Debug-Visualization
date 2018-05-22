@@ -153,7 +153,25 @@ for each in git:
     for ele in each:
         git['total'].append(ele)
 
-data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'code':codes, 'time': time, 'table': git}
+bardict = {}
+bardict['total']={}
+for each in git:
+    bardict[each] = {}
+    for ele in git[each]:
+        if ele['author'] not in bardict[each]:
+            bardict[each][ele['author']] = 0
+        if ele['author'] not in bardict['total']:
+            bardict['total'][ele['author']] = 0
+        bardict[each][ele['author']] += 1
+        bardict['total'][ele['author']] += 1
+bar = {}
+for each in bardict:
+    bar[each] = []
+    for ele in bardict[each]:
+        bar[each].append({'label': ele, 'value': bardict[each][ele]})
+
+data = {'filedata': filedata, 'force': force, 'groupby': groupby,
+        'code':codes, 'time': time, 'table': git, 'bar': bar}
 with open('data.json', 'w') as outfile:
     json.dump(data, outfile)
     

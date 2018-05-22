@@ -1,7 +1,9 @@
 var div = d3.select("body").append("div").attr("class", "toolTip");
+var round = d3.format(".2f");
 
-d3.json("data/bar-chart.json", function(error, input) {
-  var data = input.data;
+function drawbarchart(data){
+  var sum = d3.sum(data,function(d){ return d.value;})
+
   var widthb = $("#exTab1").width() - 30;
   var heightb = $("#exTab1").height() - 10;
   var axisMargin = 20,
@@ -25,6 +27,13 @@ d3.json("data/bar-chart.json", function(error, input) {
           .enter()
           .append("g");
 
+  svgb.append('text')
+    .text("Hover to see the percentage")
+    .attr("id", "bblock")
+    .attr("transform", "translate(30,8)")
+    .style("font-size", "12px")
+    .style("opacity",0.5)
+
   bar.attr("class", "bar")
           .attr("cx",0)
           .attr("transform", function(d, i) {
@@ -46,7 +55,8 @@ d3.json("data/bar-chart.json", function(error, input) {
           .range([0, widthb - marginb*2 - labelWidth]);
 
   xAxisb = d3.axisBottom(scaleb)
-          .tickSize(-heightb + 2*marginb + axisMargin)
+           .tickSize(-heightb + 2*marginb + axisMargin)
+           .ticks(max)
 
   bar.append("rect")
           .attr("transform", "translate("+labelWidth+", 0)")
@@ -64,9 +74,7 @@ d3.json("data/bar-chart.json", function(error, input) {
           .attr("dx", -valueMargin + labelWidth) //margin right
           .attr("dy", ".35em") //vertical align middle
           .attr("text-anchor", "end")
-          .text(function(d){
-              return (d.value+"%");
-          })
+          .text(function(d){ return d.value; })
           .attr("x", function(d){
               var width = this.getBBox().width;
               return Math.max(width + valueMargin, scaleb(d.value));
@@ -77,7 +85,7 @@ d3.json("data/bar-chart.json", function(error, input) {
               div.style("left", d3.event.pageX+10+"px");
               div.style("top", d3.event.pageY-25+"px");
               div.style("display", "inline-block");
-              div.html((d.label)+"<br>"+(d.value));
+              div.html((d.label + ': ' + round(d.value/sum*100)+"%"));
           });
   bar
           .on("mouseout", function(d){
@@ -88,4 +96,4 @@ d3.json("data/bar-chart.json", function(error, input) {
           .attr("class", "axisHorizontal")
           .attr("transform", "translate(" + (marginb + labelWidth) + ","+ (heightb - axisMargin*2 - marginb)+")")
           .call(xAxisb);
-});
+}
