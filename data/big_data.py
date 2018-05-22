@@ -60,7 +60,7 @@ methods = {'0':{'name': 'main', 'class': 'Application', 'file': 'Application.jav
             'related': [], 'relations': []},
 
            '15':{'name': 'seState', 'class': '', 'file': 'seState.java',
-            'directory': 'tabase', 'lines': , 'bugs': [], 'MID': '',
+            'directory': 'tabase', 'lines': 0, 'bugs': [], 'MID': '',
             'related': [], 'relations': []},
 
            '16':{'name': 'DBConnector', 'class': 'DBConnector', 'file': 'DBConnector.java',
@@ -160,8 +160,8 @@ git = { '0': [
             {'author':'ruolan', 'time':'2018-05-08 03:42:31', 'comment':'x','GID':'1d'},
             {'author':'xiaoju', 'time':'2018-05-11 08:32:12', 'comment':'cer2w','GID':'5p'},
             {'author':'zhiyi', 'time':'2018-05-15 08:32:12', 'comment':'gdfg6','GID':'8d'},
-        ]
-        '7': [
+        ],
+        '7' :[
             {'author':'ruolan', 'time':'2018-06-08 12:32:32', 'comment':'zxcase','GID':'1a'},
             {'author':'xiaoju', 'time':'2018-06-12 12:32:32', 'comment':'dasfee','GID':'3b'},
             {'author':'ruolan', 'time':'2018-06-13 12:32:32', 'comment':'qwreqwre','GID':'5b'}
@@ -187,7 +187,7 @@ git = { '0': [
             {'author':'ruolan', 'time':'2018-06-08 03:42:31', 'comment':'xe','GID':'1j'},
             {'author':'xiaoju', 'time':'2018-06-11 08:32:12', 'comment':'cer2we','GID':'5k'},
             {'author':'zhiyi', 'time':'2018-06-15 08:32:12', 'comment':'gdfg6e','GID':'8l'},
-        ]
+        ],
         '14': [
             {'author':'yumeng', 'time':'2018-06-10 12:32:32', 'comment':'rsddtgse','GID':'8c'}
         ],
@@ -209,12 +209,12 @@ git = { '0': [
             {'author':'ruolan', 'time':'2018-06-08 03:42:31', 'comment':'xe','GID':'1j'},
             {'author':'xiaoju', 'time':'2018-06-11 08:32:12', 'comment':'cer2we','GID':'5k'},
             {'author':'zhiyi', 'time':'2018-06-15 08:32:12', 'comment':'gdfg6e','GID':'8l'},
-        ]
+        ],
         '20' :[
             {'author':'ruolan', 'time':'2018-06-08 03:42:31', 'comment':'xe','GID':'1j'},
             {'author':'xiaoju', 'time':'2018-06-11 08:32:12', 'comment':'cer2we','GID':'5k'},
             {'author':'zhiyi', 'time':'2018-06-15 08:32:12', 'comment':'gdfg6e','GID':'8l'},
-        ]
+        ],
         '21': [
             {'author':'yumeng', 'time':'2018-06-10 12:32:32', 'comment':'rsddtgse','GID':'8c'}
         ],
@@ -236,7 +236,7 @@ git = { '0': [
             {'author':'ruolan', 'time':'2018-06-08 03:42:31', 'comment':'xe','GID':'1j'},
             {'author':'xiaoju', 'time':'2018-06-11 08:32:12', 'comment':'cer2we','GID':'5k'},
             {'author':'zhiyi', 'time':'2018-06-15 08:32:12', 'comment':'gdfg6e','GID':'8l'},
-        ]
+        ],
         '27' :[
             {'author':'xiaoju', 'time':'2018-06-11 03:42:31', 'comment':'asfdsge','GID':'9i'}
         ]
