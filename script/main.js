@@ -8,7 +8,7 @@ $("#menu-toggle").click(function(e) {
 function cutstr(str){
   var i = 0;
   for(var char in str){
-    if(char == '-') break;
+    if(str[char] === '-') break;
     i += 1;
   }
   return str.substring(0,i);
@@ -86,7 +86,7 @@ d3.json("data/data.json", function(error, data) {
       d3.selectAll(".node").attr("fill", "grey")
       var val = $("#omethod").val();
       for(ele in val){
-        var id = cutstr(ele)
+        var id = cutstr(val[ele])
         d3.select("#node"+id)
         .attr("fill", function(d) { return colorf(d.data[ncolor]); })
       }
