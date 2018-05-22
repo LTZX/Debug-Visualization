@@ -31,7 +31,9 @@ function onenode(d,data){
   $('#code').empty();
   $('#code').append(data.code[d.id])
   $('#line-chart').empty();
+  $('#gittable').empty();
   drawlinechart(data.time[d.id]);
+  drawgittable(data.table[d.id]);
   d3.select("#lblock").text(d.id + " - " + d.data.name)
 }
 
@@ -93,7 +95,11 @@ d3.json("data/data.json", function(error, data) {
       $('.methodselect').selectpicker('deselectAll');
       $('#code').empty();
       $('#line-chart').empty();
+      $('#gittable').empty();
+
       drawlinechart(data.time['total']);
+      drawgittable(data.table['total']);
+
       d3.selectAll(".node").attr("fill", "grey")
       var selected = [];
       for(each in groupby){
@@ -117,7 +123,8 @@ d3.json("data/data.json", function(error, data) {
       $('.methodselect').selectpicker('deselectAll');
       onenode(d,data);
     })
-
+    drawlinechart(data.time['total']);
+    drawgittable(data.table['total']);
     //fancy table
     //$('#gittable').append(data.tmp);
 
@@ -125,11 +132,4 @@ d3.json("data/data.json", function(error, data) {
     //    $('#example').DataTable();
     //} );
 
-    //d3.tsv("data/line-chart.tsv", function(data2){
-    //  data2.forEach(function(d){
-    //    d = type(d);
-    //  })
-    //  drawlinechart(data2);
-    //})
-    drawlinechart(data.time['total']);
 })

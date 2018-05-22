@@ -145,7 +145,15 @@ for each in out_put:
     for ele in out_put[each]:
         time[each].append({'date': ele, 'close': out_put[each][ele]})
 
-data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'code':codes, 'time': time}
+git['total']=[]
+for each in git:
+    if(each == 'total'):
+        break
+    each = git[each]
+    for ele in each:
+        git['total'].append(ele)
+
+data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'code':codes, 'time': time, 'table': git}
 with open('data.json', 'w') as outfile:
     json.dump(data, outfile)
     

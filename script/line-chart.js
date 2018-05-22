@@ -37,7 +37,8 @@ function drawlinechart(data3){
     .style("text-transform", "capitalize")
 
     xl.domain([data3[0].date, data3[data3.length - 1].date]);
-    yl.domain(d3.extent(data3, d => d.close));
+    var gap = d3.extent(data3, d => d.close)
+    yl.domain(gap);
 
     svgl.append('g')
       .attr('class', 'x axis axis--x')
@@ -46,7 +47,7 @@ function drawlinechart(data3){
 
     svgl.append('g')
       .attr('class', 'y axis axis--y')
-      .call(d3.axisLeft(yl))
+      .call(d3.axisLeft(yl).ticks(gap[1]-gap[0]))
       .append('text')
         .attr('class', 'axis-title')
         .attr('transform', 'rotate(-90)')
