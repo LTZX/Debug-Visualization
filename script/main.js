@@ -1,4 +1,5 @@
 var ncolor = "class", nsize = "lines";
+var cuscolors = ["#ffcc00","#ff9933","#ff66ff","#3333cc","#cc33ff","#9966ff","#0099ff","#66ccff","#66ffff","#00ff99","#66ff33","#ccff33","#ffff00","#0099cc","#669999"]
 
 $("#menu-toggle").click(function(e) {
     e.preventDefault();

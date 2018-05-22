@@ -1,4 +1,5 @@
-var colorf = d3.scaleOrdinal(d3.schemeCategory10);
+var colorf = d3.scaleOrdinal(cuscolors);
+
 var scalesize, scalebug;
 function drawforce(graph){
   var widthf = $("#forced-directed").width();
