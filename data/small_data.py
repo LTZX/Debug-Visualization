@@ -62,6 +62,7 @@ git = { '0': [
 
 #==================================
 import json
+import datetime
 
 bugs = []
 for each in methods:
@@ -112,14 +113,33 @@ for each in methods:
 #    if each['name'] not in namelist:
 #        namelist[each['name']] = each['MID']
 
-data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'git':git, 'code': codes}
+out_put={}
+out_put_total={}
+begin_date = datetime.datetime.strptime('2018-05-08', "%Y-%m-%d")
+end_date = datetime.datetime.strptime('2018-05-15', "%Y-%m-%d")
+while begin_date <= end_date:
+    date_str = begin_date.strftime("%d-%b-%Y")
+    out_put_total[date_str]=0
+    begin_date += datetime.timedelta(days=1)
+
+for i in range(27):
+    out_put[str(i)]={}
+    begin_date = datetime.datetime.strptime('2018-05-08', "%Y-%m-%d")
+    while begin_date <= end_date:
+        date_str = begin_date.strftime("%d-%b-%Y")
+        out_put[str(i)][date_str]=0
+        begin_date += datetime.timedelta(days=1)
+
+for method in git:
+    for data in git[method]:
+        tmp=datetime.datetime.strptime(data['time'].split()[0], "%Y-%m-%d")
+        time=tmp.strftime("%d-%b-%Y")
+        out_put[method][time]+=1
+        out_put_total[time]+=1
+
+out_put['total'] = out_put_total
+
+data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'time': out_put}
 with open('data.json', 'w') as outfile:
     json.dump(data, outfile)
-
-
-
-
-
-
-
     

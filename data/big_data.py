@@ -283,10 +283,6 @@ for each in git:
 #    if each['name'] not in namelist:
 #        namelist[each['name']] = each['MID']
 
-data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'git':git}
-with open('data.json', 'w') as outfile:
-    json.dump(data, outfile)
-
 out_put={}
 out_put_total={}
 begin_date = datetime.datetime.strptime('2018-05-08', "%Y-%m-%d")
@@ -310,7 +306,10 @@ for method in git:
         time=tmp.strftime("%d-%b-%Y")
         out_put[method][time]+=1
         out_put_total[time]+=1
-with open("day_count.json","w") as f:
-    json.dump(out_put,f)
-with open("day_count_total.json","w") as f:
-    json.dump(out_put_total,f)
+
+out_put['total'] = out_put_total
+
+data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'time': out_put}
+with open('data.json', 'w') as outfile:
+    json.dump(data, outfile)
+
