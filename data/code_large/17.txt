@@ -1,0 +1,25 @@
+<!-- HTML generated using hilite.me --><div class="codediv"><table class="codetable"><tr><td><pre style="margin: 0; line-height: 125%">1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%">    <span style="color: #008800; font-weight: bold">public</span> JSONArray <span style="color: #0066BB; font-weight: bold">find</span><span style="color: #333333">(</span>String collection_name<span style="color: #333333">,</span> String key<span style="color: #333333">,</span> String value<span style="color: #333333">){</span>
+        MongoCollection<span style="color: #333333">&lt;</span>BasicDBObject<span style="color: #333333">&gt;</span> collection <span style="color: #333333">=</span> db<span style="color: #333333">.</span><span style="color: #0000CC">getCollection</span><span style="color: #333333">(</span>collection_name<span style="color: #333333">,</span> BasicDBObject<span style="color: #333333">.</span><span style="color: #0000CC">class</span><span style="color: #333333">);</span>
+        BasicDBObject whereQuery <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> BasicDBObject<span style="color: #333333">();</span>
+        whereQuery<span style="color: #333333">.</span><span style="color: #0000CC">put</span><span style="color: #333333">(</span>key<span style="color: #333333">,</span> value<span style="color: #333333">);</span>
+        System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>value<span style="color: #333333">);</span>
+        JSONArray result <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> JSONArray<span style="color: #333333">();</span>
+        <span style="color: #008800; font-weight: bold">for</span><span style="color: #333333">(</span>BasicDBObject <span style="color: #997700; font-weight: bold">document:</span> collection<span style="color: #333333">.</span><span style="color: #0000CC">find</span><span style="color: #333333">(</span>whereQuery<span style="color: #333333">)){</span>
+            result<span style="color: #333333">.</span><span style="color: #0000CC">add</span><span style="color: #333333">(</span>document<span style="color: #333333">);</span>
+        <span style="color: #333333">}</span>
+        System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>result<span style="color: #333333">.</span><span style="color: #0000CC">size</span><span style="color: #333333">()</span> <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #333333">);</span>
+        <span style="color: #008800; font-weight: bold">return</span> result<span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+

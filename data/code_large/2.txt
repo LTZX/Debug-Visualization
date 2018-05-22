@@ -1,0 +1,25 @@
+<!-- HTML generated using hilite.me --><div class="codediv"><table class="codetable"><tr><td><pre style="margin: 0; line-height: 125%">1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%">    <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">start</span><span style="color: #333333">(){</span>
+        IURL<span style="color: #333333">[]</span> addUrls <span style="color: #333333">=</span> <span style="color: #333333">{</span>
+                <span style="color: #008800; font-weight: bold">new</span> <span style="color: #0066BB; font-weight: bold">AddSensorUrl</span><span style="color: #333333">(),</span>
+                <span style="color: #008800; font-weight: bold">new</span> <span style="color: #0066BB; font-weight: bold">DeleteSensorUrl</span><span style="color: #333333">(),</span>
+                <span style="color: #008800; font-weight: bold">new</span> <span style="color: #0066BB; font-weight: bold">GetAllSensorsUrl</span><span style="color: #333333">(),</span>
+                <span style="color: #008800; font-weight: bold">new</span> <span style="color: #0066BB; font-weight: bold">GetSensorDataUrl</span><span style="color: #333333">(),</span>
+                <span style="color: #008800; font-weight: bold">new</span> <span style="color: #0066BB; font-weight: bold">PostSensorDataUrl</span><span style="color: #333333">()</span>
+        <span style="color: #333333">};</span>
+        <span style="color: #008800; font-weight: bold">for</span> <span style="color: #333333">(</span>IURL url <span style="color: #333333">:</span> addUrls<span style="color: #333333">){</span>
+            url<span style="color: #333333">.</span><span style="color: #0000CC">OpenUrl</span><span style="color: #333333">();</span>
+        <span style="color: #333333">}</span>
+    <span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+

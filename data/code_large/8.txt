@@ -1,0 +1,19 @@
+<!-- HTML generated using hilite.me --><div class="codediv"><table class="codetable"><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td><pre style="margin: 0; line-height: 125%">    <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">OpenUrl</span><span style="color: #333333">(){</span>
+        get<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;/sensors&quot;</span><span style="color: #333333">,</span> <span style="color: #333333">(</span> req<span style="color: #333333">,</span> res<span style="color: #333333">)</span> <span style="color: #333333">-&gt;</span> <span style="color: #333333">{</span>
+            <span style="color: #008800; font-weight: bold">if</span><span style="color: #333333">(</span>req<span style="color: #333333">.</span><span style="color: #0000CC">contentType</span><span style="color: #333333">().</span><span style="color: #0000CC">equals</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;application/json&quot;</span><span style="color: #333333">)){</span>
+                <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0066BB; font-weight: bold">Interact</span><span style="color: #333333">(</span>req<span style="color: #333333">,</span> res<span style="color: #333333">);</span>
+            <span style="color: #333333">}</span>
+            System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;not json&quot;</span><span style="color: #333333">);</span>
+            <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;Send Json&quot;</span><span style="color: #333333">;</span>
+        <span style="color: #333333">});</span>
+    <span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+

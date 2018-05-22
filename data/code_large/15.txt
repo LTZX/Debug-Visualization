@@ -1,0 +1,29 @@
+<!-- HTML generated using hilite.me --><div class="codediv"><table class="codetable"><tr><td><pre style="margin: 0; line-height: 125%">1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">private</span> <span style="color: #0066BB; font-weight: bold">DBConnector</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+        MongoClient client<span style="color: #333333">;</span>
+        String mongodb_host <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;localhost&quot;</span><span style="color: #333333">;</span>
+        <span style="color: #008800; font-weight: bold">if</span><span style="color: #333333">(</span>System<span style="color: #333333">.</span><span style="color: #0000CC">getenv</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;MONGODB_HOST&quot;</span><span style="color: #333333">)</span> <span style="color: #333333">!=</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">){</span>
+            mongodb_host <span style="color: #333333">=</span> System<span style="color: #333333">.</span><span style="color: #0000CC">getenv</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;MONGODB_HOST&quot;</span><span style="color: #333333">);</span>
+        <span style="color: #333333">}</span>
+        <span style="color: #008800; font-weight: bold">try</span> <span style="color: #333333">{</span>
+            client <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> MongoClient<span style="color: #333333">(</span>mongodb_host<span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">27017</span><span style="color: #333333">);</span>
+            db <span style="color: #333333">=</span> client<span style="color: #333333">.</span><span style="color: #0000CC">getDatabase</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;dev&quot;</span><span style="color: #333333">);</span>
+            System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Connected to db&quot;</span><span style="color: #333333">);</span>
+        <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">catch</span> <span style="color: #333333">(</span>Exception e<span style="color: #333333">){</span>
+            System<span style="color: #333333">.</span><span style="color: #0000CC">err</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Could not connect to MongoDB: &quot;</span> <span style="color: #333333">+</span> e<span style="color: #333333">.</span><span style="color: #0000CC">getMessage</span><span style="color: #333333">());</span>
+        <span style="color: #333333">}</span>
+    <span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+

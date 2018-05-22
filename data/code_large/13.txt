@@ -1,0 +1,11 @@
+<!-- HTML generated using hilite.me --><div class="codediv"><table class="codetable"><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5</pre></td><td><pre style="margin: 0; line-height: 125%">    <span style="color: #008800; font-weight: bold">public</span> JSONObject <span style="color: #0066BB; font-weight: bold">Interact</span><span style="color: #333333">(</span>Request req<span style="color: #333333">,</span> Response res<span style="color: #333333">){</span>
+        SensorDataRoute sensorRoute <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> SensorDataRoute<span style="color: #333333">();</span>
+        BasicDBObject requestBody <span style="color: #333333">=</span> <span style="color: #333333">(</span>BasicDBObject<span style="color: #333333">)</span> JSON<span style="color: #333333">.</span><span style="color: #0000CC">parse</span><span style="color: #333333">(</span>req<span style="color: #333333">.</span><span style="color: #0000CC">body</span><span style="color: #333333">());</span>
+        <span style="color: #008800; font-weight: bold">return</span> sensorRoute<span style="color: #333333">.</span><span style="color: #0000CC">UpdateSensorData</span><span style="color: #333333">(</span>requestBody<span style="color: #333333">);</span>
+    <span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+

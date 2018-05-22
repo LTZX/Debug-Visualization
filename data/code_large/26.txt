@@ -1,0 +1,7 @@
+<!-- HTML generated using hilite.me --><div class="codediv"><table class="codetable"><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%">    <span style="color: #008800; font-weight: bold">public</span> JSONObject <span style="color: #0066BB; font-weight: bold">GetAllSensors</span><span style="color: #333333">(</span>JSONObject reqBody<span style="color: #333333">){</span>
+        <span style="color: #008800; font-weight: bold">return</span> connector<span style="color: #333333">.</span><span style="color: #0000CC">Read</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #333333">);</span>
+    <span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+

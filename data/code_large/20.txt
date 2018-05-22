@@ -1,0 +1,7 @@
+<!-- HTML generated using hilite.me --><div class="codediv"><table class="codetable"><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%">    <span style="color: #008800; font-weight: bold">public</span> JSONObject <span style="color: #0066BB; font-weight: bold">Delete</span> <span style="color: #333333">(</span>String key<span style="color: #333333">){</span>
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">new</span> <span style="color: #0066BB; font-weight: bold">JSONObject</span><span style="color: #333333">();</span>
+    <span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+

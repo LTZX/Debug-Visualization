@@ -1,0 +1,9 @@
+<!-- HTML generated using hilite.me --><div class="codediv"><table class="codetable"><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">enum</span> DatabaseState <span style="color: #333333">{</span>
+    STATE_RUNNING<span style="color: #333333">,</span>
+    STATE_DOWN
+<span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+

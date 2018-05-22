@@ -1,0 +1,9 @@
+<!-- HTML generated using hilite.me --><div class="codediv"><table class="codetable"><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4</pre></td><td><pre style="margin: 0; line-height: 125%">    <span style="color: #008800; font-weight: bold">public</span> JSONObject <span style="color: #0066BB; font-weight: bold">AddSensor</span> <span style="color: #333333">(</span>BasicDBObject reqBody<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+        JSONObject result <span style="color: #333333">=</span> connector<span style="color: #333333">.</span><span style="color: #0000CC">insert</span><span style="color: #333333">(</span>reqBody<span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;dev_table&quot;</span><span style="color: #333333">);</span>
+        <span style="color: #008800; font-weight: bold">return</span> result<span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+
