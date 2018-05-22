@@ -314,8 +314,55 @@ for each in out_put:
     time[each] = []
     for ele in out_put[each]:
         time[each].append({'date': ele, 'close': out_put[each][ele]})
+git['total']=[]
+for each in git:
+    if(each == 'total'):
+        break
+    each = git[each]
+    for ele in each:
+        git['total'].append(ele)
 
-data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'time': time}
+bardict = {}
+bardict['total']={}
+for each in git:
+    bardict[each] = {}
+    for ele in git[each]:
+        if ele['author'] not in bardict[each]:
+            bardict[each][ele['author']] = 0
+        if ele['author'] not in bardict['total']:
+            bardict['total'][ele['author']] = 0
+        bardict[each][ele['author']] += 1
+        bardict['total'][ele['author']] += 1
+bar = {}
+for each in bardict:
+    bar[each] = []
+    for ele in bardict[each]:
+        bar[each].append({'label': ele, 'value': bardict[each][ele]})
+
+piedict = {'class':{}, 'file': {}, 'directory':{}}
+for each in methods:
+    each = methods[each]
+    if each['class'] not in piedict['class']:
+        piedict['class'][each['class']] = 0
+    if each['file'] not in piedict['file']:
+        piedict['file'][each['file']] = 0
+    if each['directory'] not in piedict['directory']:
+        piedict['directory'][each['directory']] = 0
+    piedict['class'][each['class']] += each['lines']
+    piedict['file'][each['file']] += each['lines']
+    piedict['directory'][each['directory']] += each['lines']
+
+pie = {}
+total = filedata['lines']
+for each in piedict:
+    pie[each] = []
+    for ele in piedict[each]:
+        pie[each].append({'Name': ele, 'Percentage': float(piedict[each][ele])/total})
+    
+
+data = {'filedata': filedata, 'force': force, 'groupby': groupby,
+        'time': time, 'table': git, 'bar': bar, 'pie':pie}
 with open('data.json', 'w') as outfile:
     json.dump(data, outfile)
+    
 

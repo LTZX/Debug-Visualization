@@ -81,9 +81,11 @@ d3.json("data/data.json", function(error, data) {
       d3.select("#cblock")
       .text("Color of Node: " + that.id);
       ncolor = that.id
+
+      $('#pie-chart').empty();
+      drawpiechart(data.pie[that.id]);
     })
     d3.selectAll(".bugbutton").on('click',function(){
-      setback(data)
       if(this.id === "show"){
         d3.selectAll(".node")
         .attr("r", function(d){ return scalebug(d.data.bugs.length); })
@@ -136,6 +138,7 @@ d3.json("data/data.json", function(error, data) {
     drawlinechart(data.time['total']);
     drawgittable(data.table['total']);
     drawbarchart(data.bar['total']);
+    drawpiechart(data.pie['class']);
     //fancy table
     //$('#gittable').append(data.tmp);
 

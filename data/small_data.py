@@ -170,8 +170,29 @@ for each in bardict:
     for ele in bardict[each]:
         bar[each].append({'label': ele, 'value': bardict[each][ele]})
 
+piedict = {'class':{}, 'file': {}, 'directory':{}}
+for each in methods:
+    each = methods[each]
+    if each['class'] not in piedict['class']:
+        piedict['class'][each['class']] = 0
+    if each['file'] not in piedict['file']:
+        piedict['file'][each['file']] = 0
+    if each['directory'] not in piedict['directory']:
+        piedict['directory'][each['directory']] = 0
+    piedict['class'][each['class']] += each['lines']
+    piedict['file'][each['file']] += each['lines']
+    piedict['directory'][each['directory']] += each['lines']
+
+pie = {}
+total = filedata['lines']
+for each in piedict:
+    pie[each] = []
+    for ele in piedict[each]:
+        pie[each].append({'Name': ele, 'Percentage': float(piedict[each][ele])/total})
+    
+
 data = {'filedata': filedata, 'force': force, 'groupby': groupby,
-        'code':codes, 'time': time, 'table': git, 'bar': bar}
+        'code':codes, 'time': time, 'table': git, 'bar': bar, 'pie':pie}
 with open('data.json', 'w') as outfile:
     json.dump(data, outfile)
     
