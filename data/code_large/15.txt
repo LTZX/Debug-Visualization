@@ -19,11 +19,10 @@
         <span style="color: #333333">}</span>
         <span style="color: #008800; font-weight: bold">try</span> <span style="color: #333333">{</span>
             client <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> MongoClient<span style="color: #333333">(</span>mongodb_host<span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">27017</span><span style="color: #333333">);</span>
-            <span class="hasbug">db <span style="color: #333333">=</span> client<span style="color: #333333">.</span><span style="color: #0000CC">getDatabase</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;dev&quot;</span><span style="color: #333333">);</span></span>
+            <span class="hasbug">db <span style="color: #333333">=</span> client<span style="color: #333333">.</span><span style="color: #0000CC">getDatabase</span><span style="color: #333333">(</span><span>&quot;dev&quot;</span><span style="color: #333333">);</span></span>
             System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Connected to db&quot;</span><span style="color: #333333">);</span>
         <span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">catch</span> <span style="color: #333333">(</span>Exception e<span style="color: #333333">){</span>
-            <span class="hasbug">System<span style="color: #333333">.</span><span style="color: #0000CC">err</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Could not connect to MongoDB: &quot;</span> <span style="color: #333333">+</span> e<span style="color: #333333">.</span><span style="color: #0000CC">getMessage</span><span style="color: #333333">());</span></span>
+            <span class="hasbug">System<span style="color: #333333">.</span><span style="color: #0000CC">err</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span>&quot;Could not connect to MongoDB: &quot;</span> <span style="color: #333333">+</span> e<span style="color: #333333">.</span><span style="color: #0000CC">getMessage</span><span style="color: #333333">());</span></span>
         <span style="color: #333333">}</span>
     <span style="color: #333333">}</span>
 </pre></td></tr></table></div>
-

@@ -18,8 +18,7 @@
         <span style="color: #008800; font-weight: bold">for</span><span style="color: #333333">(</span>BasicDBObject <span style="color: #997700; font-weight: bold">document:</span> collection<span style="color: #333333">.</span><span style="color: #0000CC">find</span><span style="color: #333333">(</span>whereQuery<span style="color: #333333">)){</span>
             result<span style="color: #333333">.</span><span style="color: #0000CC">add</span><span style="color: #333333">(</span>document<span style="color: #333333">);</span>
         <span style="color: #333333">}</span>
-        <span class="hasbug">System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>result<span style="color: #333333">.</span><span style="color: #0000CC">size</span><span style="color: #333333">()</span> <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #333333">);</span></span>
+        <span class="hasbug">System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>result<span style="color: #333333">.</span><span style="color: #0000CC">size</span><span style="color: #333333">()</span> <span style="color: #333333">+</span> <span>&quot;&quot;</span><span style="color: #333333">);</span></span>
         <span style="color: #008800; font-weight: bold">return</span> result<span style="color: #333333">;</span>
     <span style="color: #333333">}</span>
 </pre></td></tr></table></div>
-

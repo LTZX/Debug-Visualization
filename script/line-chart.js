@@ -7,7 +7,6 @@ const parseTime = d3.timeParse('%d-%b-%Y');
 
 const bisectDate = d3.bisector(d => d.date).left;
 const formatValue = d3.format(',.2f');
-const formatCurrency = d => `$${formatValue(d)}`;
 
 const xl = d3.scaleTime()
   .range([0, widthl]);
@@ -150,6 +149,6 @@ function drawlinechart(data3){
         .attr('y1', 0)
         .attr('y2', heightl - yl(d.close));
 
-      focus.select('text').text(formatCurrency(d.close));
+      focus.select('text').text(d.odate + " : " + d.close);
     }
 }

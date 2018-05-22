@@ -3,11 +3,11 @@ filedata = {'lines-of-code':288, 'lines':376, 'method':28,
             'comments': '5.0%', 'time-range': ['2018-05-08', '2018-06-15'],
             'author': ['zhiyi', 'xiaojie', 'yumeng','ruolan'], 'bug':8}
 
-methods = {'0':{'name': 'main', 'class': 'Application', 'file': 'Application.java',
+methods = {'1':{'name': 'main', 'class': 'Application', 'file': 'Application.java',
             'directory': '/java', 'lines': 3, 'bugs': [], 'MID': '1',
             'related': [], 'relations': []},
 
-           '1':{'name': 'start', 'class': 'Application', 'file': 'Application.java',
+           '2':{'name': 'start', 'class': 'Application', 'file': 'Application.java',
             'directory': '/java', 'lines': 12, 'bugs': [], 'MID': '2',
             'related': [], 'relations': []},
 

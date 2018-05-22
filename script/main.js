@@ -17,6 +17,7 @@ function cutstr(str){
 function orgtimedata(time){
   for(each in time){
     for(d in time[each]){
+        time[each][d].odate = time[each][d].date;
         time[each][d].date = parseTime(time[each][d].date);
         time[each][d].close = +time[each][d].close;
       }
