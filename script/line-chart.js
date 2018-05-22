@@ -22,11 +22,11 @@ const line = d3.line()
 function drawlinechart(data3){
 
   const svgl = d3.select('#line-chart').append('svg')
+    .attr('id','linechart')
     .attr('width', widthl + marginl.left + marginl.right)
     .attr('height', heightl + marginl.top + marginl.bottom)
     .append('g')
       .attr('transform', `translate(${marginl.left}, ${marginl.top})`);
-      console.log(data3)
     data3.sort((a, b) => a.date - b.date);
 
     xl.domain([data3[0].date, data3[data3.length - 1].date]);

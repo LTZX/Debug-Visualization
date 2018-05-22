@@ -94,8 +94,17 @@ d3.json("data/data.json", function(error, data) {
 
     var codes = data.code;
     d3.selectAll('.node').on('click',function(d){
+      d3.selectAll(".node").attr("fill", "grey")
+      d3.select("#node"+d.id)
+      .attr("fill", function(d) { return colorf(d.data[ncolor]); })
       $('#code').empty();
       $('#code').append(codes[d.id])
+      $('#line-chart').empty();
+      //d3.select('#linechart').remove()
+      data.time[d.id].forEach(function(d){
+        d = type(d);
+      })
+      drawlinechart(data.time[d.id]);
     })
 
     //fancy table
@@ -119,4 +128,6 @@ d3.json("data/data.json", function(error, data) {
       d = type(d);
     })
     drawlinechart(data.time['total']);
+
+
 })
