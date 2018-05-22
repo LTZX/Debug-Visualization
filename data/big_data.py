@@ -234,9 +234,10 @@ git = { '0': [
             {'author':'zhiyi', 'time':'2018-06-15 08:32:12', 'comment':'gdfg6e','GID':'8l'},
         ]
     }
+
 #==================================
 import json
-
+import datetime
 bugs = []
 for each in methods:
     each = methods[each]
@@ -286,10 +287,30 @@ data = {'filedata': filedata, 'force': force, 'groupby': groupby, 'git':git}
 with open('data.json', 'w') as outfile:
     json.dump(data, outfile)
 
+out_put={}
+out_put_total={}
+begin_date = datetime.datetime.strptime('2018-05-08', "%Y-%m-%d")
+end_date = datetime.datetime.strptime('2018-06-15', "%Y-%m-%d")
+while begin_date <= end_date:
+    date_str = begin_date.strftime("%d-%b-%Y")
+    out_put_total[date_str]=0
+    begin_date += datetime.timedelta(days=1)
 
+for i in range(27):
+    out_put[str(i)]={}
+    begin_date = datetime.datetime.strptime('2018-05-08', "%Y-%m-%d")
+    while begin_date <= end_date:
+        date_str = begin_date.strftime("%d-%b-%Y")
+        out_put[str(i)][date_str]=0
+        begin_date += datetime.timedelta(days=1)
 
-
-
-
-
-    
+for method in git:
+    for data in git[method]:
+        tmp=datetime.datetime.strptime(data['time'].split()[0], "%Y-%m-%d")
+        time=tmp.strftime("%d-%b-%Y")
+        out_put[method][time]+=1
+        out_put_total[time]+=1
+with open("day_count.json","w") as f:
+    json.dump(out_put,f)
+with open("day_count_total.json","w") as f:
+    json.dump(out_put_total,f)
