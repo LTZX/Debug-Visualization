@@ -276,7 +276,11 @@ for each in git:
                 groupby['author'][commit['author']] = []
             if each not in groupby['author'][commit['author']]:
                 groupby['author'][commit['author']].append(each)
-
+                
+codes = {}
+for each in methods:
+    with open('code_large/'+ each +'.txt', 'r') as myfile:
+      codes[each] = myfile.read()
 #namelist = {}
 #for each in methods:
 #    each = methods[each]
@@ -361,7 +365,7 @@ for each in piedict:
     
 
 data = {'filedata': filedata, 'force': force, 'groupby': groupby,
-        'time': time, 'table': git, 'bar': bar, 'pie':pie}
+        'code':codes, 'time': time, 'table': git, 'bar': bar, 'pie':pie}
 with open('data.json', 'w') as outfile:
     json.dump(data, outfile)
     
