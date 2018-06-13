@@ -1,0 +1,216 @@
+travis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: python
+Build id: ''
+Job id: ''
+[34m[1mBuild image provisioning date and time[0m
+Thu Feb  5 15:09:33 UTC 2015
+[34m[1mOperating System Details[0m
+Distributor ID:	Ubuntu
+Description:	Ubuntu 12.04.5 LTS
+Release:	12.04
+Codename:	precise
+[34m[1mLinux Version[0m
+3.13.0-29-generic
+[34m[1mCookbooks Version[0m
+a68419e https://github.com/travis-ci/travis-cookbooks/tree/a68419e
+[34m[1mGCC version[0m
+gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
+Copyright (C) 2011 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[34m[1mLLVM version[0m
+clang version 3.4 (tags/RELEASE_34/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+[34m[1mPre-installed Ruby versions[0m
+ruby-1.9.3-p551
+[34m[1mPre-installed Node.js versions[0m
+v0.10.36
+[34m[1mPre-installed Go versions[0m
+1.4.1
+[34m[1mRedis version[0m
+redis-server 2.8.19
+[34m[1mriak version[0m
+2.0.2
+[34m[1mMongoDB version[0m
+MongoDB 2.4.12
+[34m[1mCouchDB version[0m
+couchdb 1.6.1
+[34m[1mNeo4j version[0m
+1.9.4
+[34m[1mRabbitMQ Version[0m
+3.4.3
+[34m[1mElasticSearch version[0m
+1.4.0
+[34m[1mInstalled Sphinx versions[0m
+2.0.10
+2.1.9
+2.2.6
+[34m[1mDefault Sphinx version[0m
+2.2.6
+[34m[1mInstalled Firefox version[0m
+firefox 31.0esr
+[34m[1mPhantomJS version[0m
+1.9.8
+[34m[1mant -version[0m
+Apache Ant(TM) version 1.8.2 compiled on December 3 2011
+[34m[1mmvn -version[0m
+Apache Maven 3.2.5 (12a6b3acb947671f09b81f49094c53f426d8cea1; 2014-12-14T17:29:23+00:00)
+Maven home: /usr/local/maven
+Java version: 1.7.0_76, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-7-oracle/jre
+Default locale: en_US, platform encoding: ANSI_X3.4-1968
+OS name: "linux", version: "3.13.0-29-generic", arch: "amd64", family: "unix"
+travis_fold:end:system_info[0K
+$ cd failed/Cal-CS-61A-Staff/ok
+
+[33;1mSetting environment variables from .travis.yml[0m
+$ export CMD=server/apptest.py
+$ export GAE_VERSION=1.9.23
+
+travis_time:start:09ba39a8[0K$ source ~/virtualenv/python2.7/bin/activate
+
+travis_time:end:09ba39a8:start=1528881314986517409,finish=1528881314994165992,duration=7648583[0Ktravis_fold:start:cache.1[0KSetting up build cache
+$ export CASHER_DIR=$HOME/.casher
+travis_time:start:1e8a629c[0K$ Installing caching utilities
+
+travis_time:end:1e8a629c:start=1528881315284281848,finish=1528881315476328786,duration=192046938[0Ktravis_time:start:0839c7f0[0K
+travis_time:end:0839c7f0:start=1528881315488268390,finish=1528881315497259129,duration=8990739[0Ktravis_time:start:02e92d20[0K[32;1mattempting to download cache archive[0m
+
+travis_time:end:02e92d20:start=1528881315507336512,finish=1528881316197573572,duration=690237060[0Ktravis_time:start:2684173c[0K
+travis_time:end:2684173c:start=1528881316204294003,finish=1528881316210958469,duration=6664466[0Ktravis_time:start:029e77a4[0K[32;1madding /home/travis/virtualenv/python2.7.9 to cache[0m
+
+travis_time:end:029e77a4:start=1528881316219496407,finish=1528881316888487698,duration=668991291[0Ktravis_fold:end:cache.1[0K$ python --version
+$ pip --version
+pip 10.0.1 from /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages/pip (python 2.7)
+travis_fold:start:install.1[0Ktravis_time:start:0009fa35[0K$ pip install pip --upgrade
+Requirement already up-to-date: pip in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (10.0.1)
+
+travis_time:end:0009fa35:start=1528881317174818769,finish=1528881317728191766,duration=553372997[0Ktravis_fold:end:install.1[0Ktravis_fold:start:install.2[0Ktravis_time:start:0225b946[0K$ pip install -r server_requirements.txt
+Requirement already satisfied: Flask==0.10.1 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 1)) (0.10.1)
+Requirement already satisfied: Flask-Cache==0.13.1 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 2)) (0.13.1)
+Requirement already satisfied: Jinja2==2.7.3 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 3)) (2.7.3)
+Requirement already satisfied: MarkupSafe==0.23 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 4)) (0.23)
+Requirement already satisfied: PyYAML==3.11 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 5)) (3.11)
+Requirement already satisfied: Pygments==1.6 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 6)) (1.6)
+Requirement already satisfied: Sphinx==1.2.2 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 7)) (1.2.2)
+Requirement already satisfied: Werkzeug==0.9.6 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 8)) (0.9.6)
+Requirement already satisfied: argparse==1.2.1 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 9)) (1.2.1)
+Requirement already satisfied: astroid==1.1.1 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 10)) (1.1.1)
+Requirement already satisfied: docutils==0.11 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 11)) (0.11)
+Requirement already satisfied: git-pylint-commit-hook==2.0.5 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 12)) (2.0.5)
+Requirement already satisfied: itsdangerous==0.24 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 13)) (0.24)
+Obtaining linkenv-master from git+git://github.com/ze-phyr-us/linkenv.git@ae463b3211cb8dcc8868e88176a1101733c83b6d#egg=linkenv-master (from -r server_requirements.txt (line 14))
+  Skipping because already up-to-date.
+Requirement already satisfied: logilab-common==0.61.0 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 15)) (0.61.0)
+Requirement already satisfied: mimerender==0.5.4 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 16)) (0.5.4)
+Requirement already satisfied: nose==1.3.4 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 17)) (1.3.4)
+Requirement already satisfied: pylint==1.2.1 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 18)) (1.2.1)
+Requirement already satisfied: python-dateutil==2.2 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 19)) (2.2)
+Requirement already satisfied: python-mimeparse==0.1.4 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 20)) (0.1.4)
+Requirement already satisfied: requests==2.3.0 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 21)) (2.3.0)
+Requirement already satisfied: six==1.6.1 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 22)) (1.6.1)
+Requirement already satisfied: sphinxcontrib-httpdomain==1.2.1 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 23)) (1.2.1)
+Requirement already satisfied: unittest2==0.5.1 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 24)) (0.5.1)
+Requirement already satisfied: wsgiref==0.1.2 in /opt/python/2.7.9/lib/python2.7 (from -r server_requirements.txt (line 25)) (0.1.2)
+Requirement already satisfied: ddt==0.8.0 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 26)) (0.8.0)
+Requirement already satisfied: webargs==0.5.0 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 27)) (0.5.0)
+Requirement already satisfied: webob==1.1.1 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 28)) (1.1.1)
+Requirement already satisfied: pytz==2014.10 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 29)) (2014.10)
+Requirement already satisfied: coverage==3.7.1 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 30)) (3.7.1)
+Requirement already satisfied: coveralls==0.5 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from -r server_requirements.txt (line 31)) (0.5)
+Requirement already satisfied: docopt>=0.6.1 in /home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages (from coveralls==0.5->-r server_requirements.txt (line 31)) (0.6.2)
+Installing collected packages: linkenv
+  Found existing installation: linkenv 0.1.0
+    Uninstalling linkenv-0.1.0:
+      Successfully uninstalled linkenv-0.1.0
+  Running setup.py develop for linkenv
+Successfully installed linkenv
+
+travis_time:end:0225b946:start=1528881317734576814,finish=1528881318614252098,duration=879675284[0Ktravis_fold:end:install.2[0Ktravis_fold:start:before_script.1[0Ktravis_time:start:076eb054[0K$ wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_$GAE_VERSION.zip -o gae_sdk.zip
+
+travis_time:end:076eb054:start=1528881318620472190,finish=1528881322447244333,duration=3826772143[0Ktravis_fold:end:before_script.1[0Ktravis_fold:start:before_script.2[0Ktravis_time:start:04308a4b[0K$ unzip -q google_appengine_$GAE_VERSION.zip
+
+travis_time:end:04308a4b:start=1528881322456853548,finish=1528881325087880564,duration=2631027016[0Ktravis_fold:end:before_script.2[0Ktravis_fold:start:before_script.3[0Ktravis_time:start:199f16b0[0K$ mv google_appengine gae_sdk
+
+travis_time:end:199f16b0:start=1528881325095104227,finish=1528881325108987011,duration=13882784[0Ktravis_fold:end:before_script.3[0Ktravis_fold:start:before_script.4[0Ktravis_time:start:006c076e[0K$ export GAE_SDK=$PWD/gae_sdk
+
+travis_time:end:006c076e:start=1528881325114260701,finish=1528881325117525476,duration=3264775[0Ktravis_fold:end:before_script.4[0Ktravis_fold:start:before_script.5[0Ktravis_time:start:01b82650[0K$ export PATH=$PATH:$GAE_SDK
+
+travis_time:end:01b82650:start=1528881325121795652,finish=1528881325125299805,duration=3504153[0Ktravis_fold:end:before_script.5[0Ktravis_fold:start:before_script.6[0Ktravis_time:start:17582994[0K$ export PYTHONPATH=$PYTHONPATH:$GAE_SDK
+
+travis_time:end:17582994:start=1528881325129368968,finish=1528881325134199551,duration=4830583[0Ktravis_fold:end:before_script.6[0Ktravis_fold:start:before_script.7[0Ktravis_time:start:0047af80[0K$ python server/app/generate_keys.py
+Warning: secret_keys.py file exists.  Use 'generate_keys.py --force' to force overwrite.
+
+travis_time:end:0047af80:start=1528881325141253279,finish=1528881325176548533,duration=35295254[0Ktravis_fold:end:before_script.7[0Ktravis_time:start:0281b4dc[0K$ FLASK_CONF=TEST coverage run $CMD --sdk_location $GAE_SDK --quiet
+============================================================
+Doing regression testing
+============================================================
+============================================================
+Doing permissions testing
+============================================================
+============================================================
+Doing integration testing
+============================================================
+SOME TESTS FAILED
+
+travis_time:end:0281b4dc:start=1528881325181662838,finish=1528881360899364822,duration=35717701984[0K
+[31;1mThe command "FLASK_CONF=TEST coverage run $CMD --sdk_location $GAE_SDK --quiet" exited with 1.[0m
+travis_fold:start:cache.2[0Kstore build cache
+travis_time:start:0c173b68[0K
+travis_time:end:0c173b68:start=1528881360906086002,finish=1528881360912679823,duration=6593821[0Ktravis_time:start:006caf7a[0K[32;1mchanges detected, packing new archive[0m
+[32;1muploading archive[0m
+[31;1mfailed to upload cache[0m
+* About to connect() to s3.amazonaws.com port 443 (#0)
+*   Trying 52.216.230.29...   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0connected
+* successfully set certificate verify locations:
+*   CAfile: none
+  CApath: /etc/ssl/certs
+* SSLv3, TLS handshake, Client hello (1):
+} [data not shown]
+* SSLv3, TLS handshake, Server hello (2):
+{ [data not shown]
+* SSLv3, TLS handshake, CERT (11):
+{ [data not shown]
+* SSLv3, TLS handshake, Server key exchange (12):
+{ [data not shown]
+* SSLv3, TLS handshake, Server finished (14):
+{ [data not shown]
+* SSLv3, TLS handshake, Client key exchange (16):
+} [data not shown]
+* SSLv3, TLS change cipher, Client hello (1):
+} [data not shown]
+* SSLv3, TLS handshake, Finished (20):
+} [data not shown]
+* SSLv3, TLS change cipher, Client hello (1):
+{ [data not shown]
+* SSLv3, TLS handshake, Finished (20):
+{ [data not shown]
+* SSL connection using ECDHE-RSA-AES128-SHA
+* Server certificate:
+* 	 subject: C=US; ST=Washington; L=Seattle; O=Amazon.com Inc.; CN=s3.amazonaws.com
+* 	 start date: 2017-09-26 00:00:00 GMT
+* 	 expire date: 2018-09-20 12:00:00 GMT
+* 	 subjectAltName: s3.amazonaws.com matched
+* 	 issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert Baltimore CA-2 G2
+* 	 SSL certificate verify ok.
+> PUT /cache_bucket/1234567890//cache-linux-8adf0bce0cdfd1373fc95e22a0a38c754725dd775a4de759eaea9c998a7e74cd--python-2.7.tgz?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=abcdef0123456789%2F20180309%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20180309T020941Z&X-Amz-Expires=60&X-Amz-Signature=c2d3f7cab1c39f7e0eadeeefbfad86642d974ffd7f1639d9fe61caf9132665a9&X-Amz-SignedHeaders=host HTTP/1.1
+> User-Agent: curl/7.22.0 (x86_64-pc-linux-gnu) libcurl/7.22.0 OpenSSL/1.0.1 zlib/1.2.3.4 libidn/1.23 librtmp/2.3
+> Host: s3.amazonaws.com
+> Accept: */*
+> Content-Length: 21295045
+> Expect: 100-continue
+> 
+* The requested URL returned error: 403
+  0 20.3M    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+* Closing connection #0
+* SSLv3, TLS alert, Client hello (1):
+} [data not shown]
+curl: (22) The requested URL returned error: 403
+
+
+travis_time:end:006caf7a:start=1528881360921348600,finish=1528881365136925849,duration=4215577249[0Ktravis_fold:end:cache.2[0K
+Done. Your build exited with 1.
