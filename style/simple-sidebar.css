@@ -5,6 +5,7 @@
  */
 
 #wrapper {
+  min-width: 200px;
   padding-top: 50px;
   padding-bottom: 50px;
   padding-left: 0;
@@ -36,6 +37,7 @@
 }
 
 #wrapper.toggled #sidebar-wrapper {
+  min-width: 200px;
   width: calc(100vw * 0.167);
 }
 
@@ -45,10 +47,13 @@
   position: absolute;
   padding: 15px;
 }
+@function property-value($property, $selector: null) {
+    @return $magic;
+}
 
 #wrapper.toggled #page-content-wrapper {
   position: absolute;
-  margin-right: calc(100vw * -0.167);
+  margin-right: property-value(width, #sidebar-wrapper);
 }
 
 
@@ -60,6 +65,7 @@
 }
 
 .sidebar-nav {
+  min-width: 200px;
   position: absolute;
   top: 0;
   width: calc(100vw * 0.167);
@@ -115,6 +121,7 @@
     width: 0;
   }
   #wrapper.toggled #sidebar-wrapper {
+    min-width: 200px;
     width: calc(100vw * 0.167);
   }
   #page-content-wrapper {

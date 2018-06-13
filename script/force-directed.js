@@ -15,7 +15,7 @@ function drawforce(graph){
       .force("charge", d3.forceManyBody().strength(function(){
         if(str < 430){ return -15; }
         else { return scalestr(str); }
-      }).distanceMax(widthf/7))
+      }).distanceMax(heightf/5))
       .force("center", d3.forceCenter(widthf / 2, heightf / 2));
 
     var svgf = d3.select("#forced-directed")
@@ -37,12 +37,16 @@ function drawforce(graph){
     .style("font-size", "15px")
     .style("text-transform", "capitalize")
 
-    svgf.append("text")
+
+    var hoverins = svgf.append("text")
     .text("Hover to see the name of methods and its class")
-    .attr("transform", "translate(50,110)")
     .style("font-size", "18px")
     .style("text-transform", "capitalize")
     .style("opacity",0.5)
+
+    var hiw = hoverins.node().getBBox();
+    hoverins
+    .attr("transform", "translate("+ (widthf - hiw.width - 50) +", 50)")
 
     var link = svgf.append("g")
       .attr("class", "links")
