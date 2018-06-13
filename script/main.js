@@ -1,25 +1,69 @@
 var ncolor = "class", nsize = "lines";
 var cuscolors = ["#ffcc00","#ff9933","#ff66ff","#3333cc","#cc33ff","#9966ff","#0099ff","#66ccff","#66ffff","#00ff99","#66ff33","#ccff33","#ffff00","#0099cc","#669999"]
 
+var condition = {active:3, length:{1:0,2:0,3:0}, code:{on:"true", data:{'code':" "}}, otherdata:{on:"true", data:{'pie-chart':[]} }, gitdata:{on:"true", data:{'line-chart':[], gittable:[], 'bar-chart':[]} }};
+condition['length'][3] = ($(window).height() - 100) * 0.28;
+condition['length'][2] = ($(window).height() - 100) * 0.40;
+condition['length'][1] = ($(window).height() - 100) * 0.8;
+
 var acc = document.getElementsByClassName("accordion");
 var i;
-
 for (i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function() {
         /* Toggle between adding and removing the "active" class,
         to highlight the button that controls the panel */
         this.classList.toggle("active");
-
-        /* Toggle between hiding and showing the active panel */
+        var contain = this.classList.contains('active');
         var panel = this.nextElementSibling;
+        if(contain){
+          condition['active'] += 1
+          condition[panel.id].on = true;
+        } else {
+          condition['active'] -= 1
+          condition[panel.id].on = false;
+        }
+        /* Toggle between hiding and showing the active panel */
+        //console.log(panel.id)
         if (panel.style.display === "none") {
             panel.style.display = "block";
         } else {
             panel.style.display = "none";
         }
+        changelayout();
     });
 }
-
+function changelayout(){
+  var exc = {'gitdata':'exTab2', 'otherdata':'exTab1', 'code':'code'};
+  if (condition['active'] == 0){ return; }
+  for (i = 0; i < acc.length; i++) {
+    var panel = acc[i].nextElementSibling;
+    if(condition[panel.id].on == false){ continue; }
+    d3.select('#'+exc[panel.id])
+    .style('height', condition['length'][condition['active']] + 'px');
+    for(var each in condition[panel.id]['data']){
+      if(each == "code"){
+        $('#code').empty();
+        $('#code').append(condition['code']['data']['code'])
+      } else {
+        $('#' + each).empty();
+        switch (each) {
+          case 'line-chart':
+            drawlinechart(condition[panel.id]['data'][each]);
+            break;
+          case 'gittable':
+            drawgittable(condition[panel.id]['data'][each]);
+            break;
+          case 'bar-chart':
+            drawbarchart(condition[panel.id]['data'][each]);
+            break;
+          case 'pie-chart':
+            drawpiechart(condition[panel.id]['data'][each]);
+            break;
+        }
+      }
+    }
+  }
+}
 $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
@@ -51,6 +95,7 @@ function onenode(d,data){
   .attr("fill", function(d) { return colorf(d.data[ncolor]); })
   $('#code').empty();
   $('#code').append(data.code[d.id])
+  condition['code']['data']['code'] = data.code[d.id];
   $('#line-chart').empty();
   $('#gittable').empty();
   $('#bar-chart').empty();

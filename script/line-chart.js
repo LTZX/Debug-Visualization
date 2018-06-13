@@ -1,5 +1,4 @@
-var widthl = $("#exTab2").width() * 0.8;
-var heightl = $("#exTab2").height() * 0.75;
+
 const marginl = { top: 20, right: 50, bottom: 30, left: 50 };
 
 const parseTime = d3.timeParse('%d-%b-%Y');
@@ -8,18 +7,22 @@ const parseTime = d3.timeParse('%d-%b-%Y');
 const bisectDate = d3.bisector(d => d.date).left;
 const formatValue = d3.format(',.2f');
 
-const xl = d3.scaleTime()
-  .range([0, widthl]);
 
-const yl = d3.scaleLinear()
-  .range([heightl, 0]);
-
-const line = d3.line()
-  .x(d => xl(d.date))
-  .y(d => yl(d.close));
 
 function drawlinechart(data3){
+  condition['gitdata']['data']['line-chart'] = data3;
+  var widthl = $("#exTab2").width() * 0.8;
+  var heightl = $("#exTab2").height() * 0.7 ;
+  const xl = d3.scaleTime()
+    .range([0, widthl]);
 
+  const yl = d3.scaleLinear()
+    .range([heightl, 0]);
+
+  const line = d3.line()
+    .x(d => xl(d.date))
+    .y(d => yl(d.close));
+    
   const svgl = d3.select('#line-chart').append('svg')
     .attr('id','linechart')
     .attr('width', widthl + marginl.left + marginl.right)

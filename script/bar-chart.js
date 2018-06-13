@@ -2,6 +2,8 @@ var div = d3.select("body").append("div").attr("class", "toolTip");
 var round = d3.format(".2f");
 
 function drawbarchart(data){
+  condition['gitdata']['data']['bar-chart'] = data;
+
   var sum = d3.sum(data,function(d){ return d.value;})
 
   var widthb = $("#exTab2").width() - 30;

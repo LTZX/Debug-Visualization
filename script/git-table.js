@@ -1,9 +1,10 @@
-var widtht = $("#exTab2").width();
-var heightt = $("#exTab2").height();
+
 var titles = ['author', 'time', 'comment', 'GID'];
 
 function drawgittable(data) {
-  console.log(data)
+  var widtht = $("#exTab2").width();
+  var heightt = $("#exTab2").height();
+  condition['gitdata']['data']['gittable'] = data;
   var sortAscending = true;
   var table = d3.select('#gittable').append('table').attr("class","gittablecontent");
   var headers = table.append('thead').append('tr')
