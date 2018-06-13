@@ -1,0 +1,4 @@
+project=
+{'number-of-tests': 4010, 'number-of-bugs': 2}
+bug=
+{'0': {'file-name': 'MethodUtils', 'method-name': 'GetMethodsWithAnnotation', 'line-number': '693', 'bug-detail': 'MethodUtilsTest.testGetMethodsWithAnnotationSearchSupersAndIgnoreAccess:693 expected:<[PublicChild]> but was:<[Foo]>'}, '1': {'file-name': 'MethodUtils', 'method-name': 'GetMethodsWithAnnotation', 'line-number': '727', 'bug-detail': 'MethodUtilsTest.testGetMethodsWithAnnotationSearchSupersButNotIgnoreAccess:727 expected:<[PublicChild.publicAnnotatedMethod]> but was:<[Foo.doIt]>'}}
