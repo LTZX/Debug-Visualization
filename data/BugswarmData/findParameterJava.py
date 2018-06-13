@@ -34,7 +34,7 @@ if(bugnum>0):
       j=j+1
 
    for i in range(index,index+bugnum):
-      failurecontent[k]=" ".join(word[i]) #get failure content
+      failurecontent[k]=" ".join(word[i]) #get failure content 
       k=k+1
 #print(testnum)
 #print(bugnum)
