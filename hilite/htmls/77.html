@@ -1,0 +1,35 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">AssignmentForm</span>(BaseForm):
+    display_name <span style="color: #666666">=</span> StringField(<span style="color: #BA2121">u&#39;Display Name&#39;</span>,
+                               validators<span style="color: #666666">=</span>[validators<span style="color: #666666">.</span>required()]),
+    name <span style="color: #666666">=</span> StringField(<span style="color: #BA2121">u&#39;Offering&#39;</span>, validators<span style="color: #666666">=</span>[validators<span style="color: #666666">.</span>required()])
+    due_date <span style="color: #666666">=</span> DateTimeField(<span style="color: #BA2121">u&#39;Due Date (Pacific Time)&#39;</span>,
+                             default<span style="color: #666666">=</span>dt<span style="color: #666666">.</span>datetime<span style="color: #666666">.</span>now,
+                             validators<span style="color: #666666">=</span>[validators<span style="color: #666666">.</span>required()])
+    lock_date <span style="color: #666666">=</span> DateTimeField(<span style="color: #BA2121">u&#39;Lock Date (UTC)&#39;</span>,
+                              default<span style="color: #666666">=</span>dt<span style="color: #666666">.</span>datetime<span style="color: #666666">.</span>now,
+                              validators<span style="color: #666666">=</span>[validators<span style="color: #666666">.</span>required()])
+    max_group_size <span style="color: #666666">=</span> IntegerField(<span style="color: #BA2121">u&#39;Max Group Size&#39;</span>, default<span style="color: #666666">=1</span>,
+                                  validators<span style="color: #666666">=</span>[validators<span style="color: #666666">.</span>required()])
+    url <span style="color: #666666">=</span> StringField(<span style="color: #BA2121">u&#39;URL&#39;</span>,
+                      validators<span style="color: #666666">=</span>[validators<span style="color: #666666">.</span>optional(), validators<span style="color: #666666">.</span>url()])
+    revisions <span style="color: #666666">=</span> BooleanField(<span style="color: #BA2121">u&#39;Enable Revisions&#39;</span>, default<span style="color: #666666">=</span><span style="color: #008000">False</span>,
+                             validators<span style="color: #666666">=</span>[validators<span style="color: #666666">.</span>optional()])
+    autograding_key <span style="color: #666666">=</span> StringField(<span style="color: #BA2121">u&#39;Autograder Key&#39;</span>, [validators<span style="color: #666666">.</span>optional()])
+</pre></div>
+</td></tr></table>

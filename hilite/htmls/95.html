@@ -1,0 +1,51 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">GroupMember</span>(db<span style="color: #666666">.</span>Model, TimestampMixin):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;A member of a group must accept the invite to join the group.</span>
+<span style="color: #BA2121; font-style: italic">    Only members of a group can view each other&#39;s submissions.</span>
+<span style="color: #BA2121; font-style: italic">    A user may only be invited or participate in a single group per assignment.</span>
+<span style="color: #BA2121; font-style: italic">    The status value can be one of:</span>
+<span style="color: #BA2121; font-style: italic">        pending - The user has been invited to the group.</span>
+<span style="color: #BA2121; font-style: italic">        active  - The user accepted the invite and is part of the group.</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    __tablename__ <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;GroupMember&#39;</span>
+    __table_args__ <span style="color: #666666">=</span> (
+        PrimaryKeyConstraint(<span style="color: #BA2121">&#39;user_id&#39;</span>, <span style="color: #BA2121">&#39;assignment_id&#39;</span>, name<span style="color: #666666">=</span><span style="color: #BA2121">&#39;pk_GroupMember&#39;</span>),
+    )
+    status_values <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;pending&#39;</span>, <span style="color: #BA2121">&#39;active&#39;</span>]
+
+    user_id <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;user.id&quot;</span>), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>, index<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+    assignment_id <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;assignment.id&quot;</span>), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    group_id <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;group.id&quot;</span>), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>, index<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+
+    status <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Enum(<span style="color: #666666">*</span>status_values, name<span style="color: #666666">=</span><span style="color: #BA2121">&quot;status&quot;</span>), index<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+    updated <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>DateTime, onupdate<span style="color: #666666">=</span>db<span style="color: #666666">.</span>func<span style="color: #666666">.</span>now())
+
+    user <span style="color: #666666">=</span> db<span style="color: #666666">.</span>relationship(<span style="color: #BA2121">&quot;User&quot;</span>)
+    assignment <span style="color: #666666">=</span> db<span style="color: #666666">.</span>relationship(<span style="color: #BA2121">&quot;Assignment&quot;</span>)
+    group <span style="color: #666666">=</span> db<span style="color: #666666">.</span>relationship(<span style="color: #BA2121">&quot;Group&quot;</span>,
+        backref<span style="color: #666666">=</span>backref(<span style="color: #BA2121">&#39;members&#39;</span>, cascade<span style="color: #666666">=</span><span style="color: #BA2121">&quot;all, delete-orphan&quot;</span>))
+</pre></div>
+</td></tr></table>

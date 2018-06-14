@@ -1,0 +1,61 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">make_backup</span>(user, assignment, messages, submit, submitter):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">    Create backup with message objects.</span>
+
+<span style="color: #BA2121; font-style: italic">    :param user: (object) caller</span>
+<span style="color: #BA2121; font-style: italic">    :param assignment: (Assignment)</span>
+<span style="color: #BA2121; font-style: italic">    :param messages: Data content of backup/submission</span>
+<span style="color: #BA2121; font-style: italic">    :param submit: Whether this backup is a submission to be graded</span>
+<span style="color: #BA2121; font-style: italic">    :param submitter: (object) caller or submitter</span>
+<span style="color: #BA2121; font-style: italic">    :return: (Backup) backup</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+
+    analytics <span style="color: #666666">=</span> messages<span style="color: #666666">.</span>get(<span style="color: #BA2121">&#39;analytics&#39;</span>)
+
+    <span style="color: #008000; font-weight: bold">if</span> analytics:
+        <span style="color: #408080; font-style: italic"># message_date = analytics.get(&#39;time&#39;, None)</span>
+        client_time <span style="color: #666666">=</span> datetime<span style="color: #666666">.</span>datetime<span style="color: #666666">.</span>now()
+        <span style="color: #408080; font-style: italic"># TODO client_time = parse_date(message_date)</span>
+    <span style="color: #008000; font-weight: bold">else</span>:
+        client_time <span style="color: #666666">=</span> datetime<span style="color: #666666">.</span>datetime<span style="color: #666666">.</span>now()
+
+    backup <span style="color: #666666">=</span> models<span style="color: #666666">.</span>Backup(client_time<span style="color: #666666">=</span>client_time, submitter<span style="color: #666666">=</span>user<span style="color: #666666">.</span>id,
+                           assignment<span style="color: #666666">=</span>assignment<span style="color: #666666">.</span>id, submit<span style="color: #666666">=</span>submit)
+    messages <span style="color: #666666">=</span> [models<span style="color: #666666">.</span>Message(kind<span style="color: #666666">=</span>k, backup<span style="color: #666666">=</span>backup,
+                contents<span style="color: #666666">=</span>m) <span style="color: #008000; font-weight: bold">for</span> k, m <span style="color: #AA22FF; font-weight: bold">in</span> messages<span style="color: #666666">.</span>iteritems()]
+    backup<span style="color: #666666">.</span>messages <span style="color: #666666">=</span> messages
+    models<span style="color: #666666">.</span>db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add_all(messages)
+    models<span style="color: #666666">.</span>db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add(backup)
+    models<span style="color: #666666">.</span>db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>commit()
+    <span style="color: #008000; font-weight: bold">return</span> backup
+</pre></div>
+</td></tr></table>

@@ -1,0 +1,17 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_restricted</span>(<span style="color: #008000">self</span>):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;User should see /restricted if logged in, but not if logged out.&quot;&quot;&quot;</span>
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>login(<span style="color: #008000">self</span><span style="color: #666666">.</span>email)
+        response <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>client<span style="color: #666666">.</span>get(<span style="color: #BA2121">&#39;/restricted&#39;</span>)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>assert_200(response)
+
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>client<span style="color: #666666">.</span>get(<span style="color: #BA2121">&#39;/logout&#39;</span>)
+        response <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>client<span style="color: #666666">.</span>get(<span style="color: #BA2121">&#39;/restricted&#39;</span>)
+</pre></div>
+</td></tr></table>

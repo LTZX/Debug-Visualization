@@ -1,0 +1,57 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">@manager.command</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">seed</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot; Create default records for development.</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    staff_member <span style="color: #666666">=</span> User(email<span style="color: #666666">=</span><span style="color: #BA2121">&#39;okstaff@okpy.org&#39;</span>)
+    db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add(staff_member)
+    courses <span style="color: #666666">=</span> [Course(offering<span style="color: #666666">=</span><span style="color: #BA2121">&quot;cs61a/test16&quot;</span>, display_name<span style="color: #666666">=</span><span style="color: #BA2121">&quot;CS61A (Test)&quot;</span>),
+               Course(offering<span style="color: #666666">=</span><span style="color: #BA2121">&quot;ds8/test16&quot;</span>, display_name<span style="color: #666666">=</span><span style="color: #BA2121">&quot;DS8 (Test)&quot;</span>)]
+    db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add_all(courses)
+    future <span style="color: #666666">=</span> datetime<span style="color: #666666">.</span>now() <span style="color: #666666">+</span> timedelta(days<span style="color: #666666">=1</span>)
+    db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>commit()
+
+    students <span style="color: #666666">=</span> [User(email<span style="color: #666666">=</span><span style="color: #BA2121">&#39;student{}@okpy.org&#39;</span><span style="color: #666666">.</span>format(i)) <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">60</span>)]
+    db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add_all(students)
+
+    assign <span style="color: #666666">=</span> Assignment(name<span style="color: #666666">=</span><span style="color: #BA2121">&quot;cs61a/sp16/test&quot;</span>, creator<span style="color: #666666">=</span>staff_member<span style="color: #666666">.</span>id,
+                        course_id<span style="color: #666666">=</span>courses[<span style="color: #666666">0</span>]<span style="color: #666666">.</span>id, display_name<span style="color: #666666">=</span><span style="color: #BA2121">&quot;test&quot;</span>,
+                        due_date<span style="color: #666666">=</span>future, lock_date<span style="color: #666666">=</span>future)
+    db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add(assign)
+    db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>commit()
+    staff <span style="color: #666666">=</span> Participant(user_id<span style="color: #666666">=</span>staff_member<span style="color: #666666">.</span>id, course_id<span style="color: #666666">=</span>courses[<span style="color: #666666">0</span>]<span style="color: #666666">.</span>id,
+                        role<span style="color: #666666">=</span><span style="color: #BA2121">&quot;staff&quot;</span>)
+    db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add(staff)
+    student_enrollment <span style="color: #666666">=</span> [Participant(user_id<span style="color: #666666">=</span>student<span style="color: #666666">.</span>id, role<span style="color: #666666">=</span><span style="color: #BA2121">&quot;student&quot;</span>,
+                          course_id<span style="color: #666666">=</span>courses[<span style="color: #666666">0</span>]<span style="color: #666666">.</span>id) <span style="color: #008000; font-weight: bold">for</span> student <span style="color: #AA22FF; font-weight: bold">in</span> students]
+    db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add_all(student_enrollment)
+
+    db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>commit()
+</pre></div>
+</td></tr></table>

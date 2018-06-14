@@ -1,0 +1,31 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">@admin.route</span>(<span style="color: #BA2121">&quot;/course/&lt;int:cid&gt;/enrollment/batch&quot;</span>,
+             methods<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;GET&#39;</span>, <span style="color: #BA2121">&#39;POST&#39;</span>])
+<span style="color: #AA22FF">@is_staff</span>(course_arg<span style="color: #666666">=</span><span style="color: #BA2121">&#39;cid&#39;</span>)
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">batch_enroll</span>(cid):
+    courses, current_course <span style="color: #666666">=</span> get_courses(cid)
+    batch_form <span style="color: #666666">=</span> forms<span style="color: #666666">.</span>BatchEnrollmentForm()
+    <span style="color: #008000; font-weight: bold">if</span> batch_form<span style="color: #666666">.</span>validate_on_submit():
+        new, updated <span style="color: #666666">=</span> Participant<span style="color: #666666">.</span>enroll_from_csv(cid, batch_form)
+        msg <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;Added {new}, Updated {old} students&quot;</span><span style="color: #666666">.</span>format(new<span style="color: #666666">=</span>new, old<span style="color: #666666">=</span>updated)
+        flash(msg, <span style="color: #BA2121">&quot;success&quot;</span>)
+        <span style="color: #008000; font-weight: bold">return</span> redirect(url_for(<span style="color: #BA2121">&quot;.enrollment&quot;</span>, cid<span style="color: #666666">=</span>cid))
+
+    <span style="color: #008000; font-weight: bold">return</span> render_template(<span style="color: #BA2121">&#39;staff/course/enrollment.batch.html&#39;</span>,
+                           batch_form<span style="color: #666666">=</span>batch_form,
+                           courses<span style="color: #666666">=</span>courses,
+</pre></div>
+</td></tr></table>

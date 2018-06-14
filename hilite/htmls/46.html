@@ -1,0 +1,27 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #AA22FF">@marshal_with</span>(schema<span style="color: #666666">.</span>get_fields)
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">get</span>(<span style="color: #008000">self</span>, email):
+        course <span style="color: #666666">=</span> request<span style="color: #666666">.</span>args<span style="color: #666666">.</span>get(<span style="color: #BA2121">&#39;course&#39;</span>, <span style="color: #BA2121">&#39;&#39;</span>)  <span style="color: #408080; font-style: italic"># TODO use reqparse</span>
+        user <span style="color: #666666">=</span> models<span style="color: #666666">.</span>User<span style="color: #666666">.</span>lookup(email)
+        <span style="color: #008000; font-weight: bold">if</span> course <span style="color: #AA22FF; font-weight: bold">and</span> user:
+            <span style="color: #008000; font-weight: bold">return</span> {<span style="color: #BA2121">&#39;courses&#39;</span>: user<span style="color: #666666">.</span>participations}
+        <span style="color: #008000; font-weight: bold">return</span> {<span style="color: #BA2121">&#39;courses&#39;</span>: []}
+
+api<span style="color: #666666">.</span>add_resource(v3Info, <span style="color: #BA2121">&#39;/v3&#39;</span>)
+
+api<span style="color: #666666">.</span>add_resource(Submission, <span style="color: #BA2121">&#39;/v3/submission&#39;</span>, <span style="color: #BA2121">&#39;/v3/submission/&lt;int:key&gt;&#39;</span>)
+api<span style="color: #666666">.</span>add_resource(Backup, <span style="color: #BA2121">&#39;/v3/backup&#39;</span>, <span style="color: #BA2121">&#39;/v3/backup/&lt;int:key&gt;&#39;</span>)
+api<span style="color: #666666">.</span>add_resource(Score, <span style="color: #BA2121">&#39;/v3/score&#39;</span>)
+</pre></div>
+</td></tr></table>

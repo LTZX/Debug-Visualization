@@ -1,0 +1,19 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">APISchema</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot; APISchema describes the input and output formats for</span>
+<span style="color: #BA2121; font-style: italic">    resources. The parser deals with arguments to the API.</span>
+<span style="color: #BA2121; font-style: italic">    The API responses are marshalled to json through get_fields</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    get_fields <span style="color: #666666">=</span> {
+        <span style="color: #BA2121">&#39;id&#39;</span>: fields<span style="color: #666666">.</span>Integer,
+        <span style="color: #BA2121">&#39;created&#39;</span>: fields<span style="color: #666666">.</span>DateTime(dt_format<span style="color: #666666">=</span><span style="color: #BA2121">&#39;rfc822&#39;</span>)
+    }
+</pre></div>
+</td></tr></table>

@@ -1,0 +1,29 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">json_field</span>(field):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">    Parses field or list, or returns appropriate boolean value.</span>
+
+<span style="color: #BA2121; font-style: italic">    :param field: (string)</span>
+<span style="color: #BA2121; font-style: italic">    :return: (string) parsed JSON</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> field[<span style="color: #666666">0</span>] <span style="color: #AA22FF; font-weight: bold">in</span> [<span style="color: #BA2121">&#39;{&#39;</span>, <span style="color: #BA2121">&#39;[&#39;</span>]:
+        <span style="color: #008000; font-weight: bold">if</span> field <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;false&#39;</span>:
+            <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">False</span>
+        <span style="color: #008000; font-weight: bold">elif</span> field <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;true&#39;</span>:
+            <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">True</span>
+        <span style="color: #008000; font-weight: bold">return</span> field
+    <span style="color: #008000; font-weight: bold">return</span> json<span style="color: #666666">.</span>loads(field)
+</pre></div>
+</td></tr></table>

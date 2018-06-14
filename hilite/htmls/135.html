@@ -1,0 +1,11 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">login</span>(<span style="color: #008000">self</span>, email):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot; Log in as an email address &quot;&quot;&quot;</span>
+        response <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>client<span style="color: #666666">.</span>post(<span style="color: #BA2121">&#39;/testing-login/authorized&#39;</span>, data<span style="color: #666666">=</span>{
+            <span style="color: #BA2121">&#39;email&#39;</span>: email
+        }, follow_redirects<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+</pre></div>
+</td></tr></table>

@@ -1,0 +1,29 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Comment</span>(db<span style="color: #666666">.</span>Model, TimestampMixin):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;A comment is part of a diff. The key has the diff as its parent.</span>
+<span style="color: #BA2121; font-style: italic">    The diff a reference to the backup it was originated from.</span>
+<span style="color: #BA2121; font-style: italic">    Line is the line # on the Diff Object.</span>
+<span style="color: #BA2121; font-style: italic">    Submission_line is the closest line on the submitted file.</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    <span style="color: #008000">id</span> <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Integer(), primary_key<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+    diff <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;diff.id&quot;</span>), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    backup <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;backup.id&quot;</span>), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    author <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;user.id&quot;</span>), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    filename <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>String(), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    line <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Integer(), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    submission_line <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Integer())
+    message <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Text())  <span style="color: #408080; font-style: italic"># Markdown</span>
+</pre></div>
+</td></tr></table>

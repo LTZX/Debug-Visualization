@@ -1,0 +1,17 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">post</span>(<span style="color: #008000">self</span>, user):
+        <span style="color: #408080; font-style: italic"># TODO : Actual arg parse here (for autograder)</span>
+        score <span style="color: #666666">=</span> models<span style="color: #666666">.</span>Score(backup<span style="color: #666666">=1</span>, score<span style="color: #666666">=1</span>,
+                             tag<span style="color: #666666">=</span><span style="color: #BA2121">&quot;test&quot;</span>, grader<span style="color: #666666">=</span>user<span style="color: #666666">.</span>id)
+        models<span style="color: #666666">.</span>db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add(score)
+        models<span style="color: #666666">.</span>db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>commit()
+
+        <span style="color: #008000; font-weight: bold">return</span> {<span style="color: #BA2121">&#39;id&#39;</span>: score<span style="color: #666666">.</span>id, <span style="color: #BA2121">&#39;backup&#39;</span>: <span style="color: #666666">1</span>}
+</pre></div>
+</td></tr></table>

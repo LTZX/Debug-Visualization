@@ -1,0 +1,19 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">EnrollmentForm</span>(BaseForm):
+    name <span style="color: #666666">=</span> StringField(<span style="color: #BA2121">u&#39;Name&#39;</span>, validators<span style="color: #666666">=</span>[validators<span style="color: #666666">.</span>optional()])
+    email <span style="color: #666666">=</span> EmailField(<span style="color: #BA2121">u&#39;Email&#39;</span>,
+                       validators<span style="color: #666666">=</span>[validators<span style="color: #666666">.</span>required(), validators<span style="color: #666666">.</span>email()])
+    sid <span style="color: #666666">=</span> StringField(<span style="color: #BA2121">u&#39;SID&#39;</span>, validators<span style="color: #666666">=</span>[validators<span style="color: #666666">.</span>optional()])
+    secondary <span style="color: #666666">=</span> StringField(<span style="color: #BA2121">u&#39;Secondary Auth (e.g Username)&#39;</span>,
+                            validators<span style="color: #666666">=</span>[validators<span style="color: #666666">.</span>optional()])
+    role <span style="color: #666666">=</span> SelectField(<span style="color: #BA2121">u&#39;Role&#39;</span>,
+                       choices<span style="color: #666666">=</span>[(r, r<span style="color: #666666">.</span>capitalize()) <span style="color: #008000; font-weight: bold">for</span> r <span style="color: #AA22FF; font-weight: bold">in</span> VALID_ROLES])
+</pre></div>
+</td></tr></table>

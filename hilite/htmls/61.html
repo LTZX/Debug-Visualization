@@ -1,0 +1,13 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">@auth.route</span>(<span style="color: #BA2121">&quot;/logout&quot;</span>)
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">logout</span>():
+    logout_user()
+    session<span style="color: #666666">.</span>pop(<span style="color: #BA2121">&#39;google_token&#39;</span>, <span style="color: #008000">None</span>)
+    flash(<span style="color: #BA2121">&quot;You have been logged out.&quot;</span>, <span style="color: #BA2121">&quot;success&quot;</span>)
+    <span style="color: #008000; font-weight: bold">return</span> redirect(url_for(<span style="color: #BA2121">&quot;main.home&quot;</span>))
+</pre></div>
+</td></tr></table>

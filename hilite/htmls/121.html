@@ -1,0 +1,47 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #AA22FF">@staticmethod</span>
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">enroll_from_csv</span>(cid, form):
+        new_users, existing_uids <span style="color: #666666">=</span> [], []
+        rows <span style="color: #666666">=</span> form<span style="color: #666666">.</span>csv<span style="color: #666666">.</span>data<span style="color: #666666">.</span>splitlines()
+        entries <span style="color: #666666">=</span> <span style="color: #008000">list</span>(csv<span style="color: #666666">.</span>reader(rows))
+        <span style="color: #008000; font-weight: bold">for</span> usr <span style="color: #AA22FF; font-weight: bold">in</span> entries:
+            email, name, sid, login, notes <span style="color: #666666">=</span> usr
+            usr_obj <span style="color: #666666">=</span> User<span style="color: #666666">.</span>lookup(email)
+            <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> usr_obj:
+                usr_obj <span style="color: #666666">=</span> User(email<span style="color: #666666">=</span>email, name<span style="color: #666666">=</span>name, sid<span style="color: #666666">=</span>sid, secondary<span style="color: #666666">=</span>login)
+                new_users<span style="color: #666666">.</span>append(usr_obj)
+            <span style="color: #008000; font-weight: bold">else</span>:
+                usr_obj<span style="color: #666666">.</span>name <span style="color: #666666">=</span> name
+                usr_obj<span style="color: #666666">.</span>sid <span style="color: #666666">=</span> sid
+                usr_obj<span style="color: #666666">.</span>secondary <span style="color: #666666">=</span> login
+                usr_obj<span style="color: #666666">.</span>notes <span style="color: #666666">=</span> notes
+                existing_uids<span style="color: #666666">.</span>append(usr_obj<span style="color: #666666">.</span>id)
+
+        db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add_all(new_users)
+        db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>commit()
+        user_ids <span style="color: #666666">=</span> [u<span style="color: #666666">.</span>id <span style="color: #008000; font-weight: bold">for</span> u <span style="color: #AA22FF; font-weight: bold">in</span> new_users] <span style="color: #666666">+</span> existing_uids
+        Participant<span style="color: #666666">.</span>create(cid, user_ids, STUDENT_ROLE)
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">len</span>(new_users), <span style="color: #008000">len</span>(existing_uids)
+</pre></div>
+</td></tr></table>

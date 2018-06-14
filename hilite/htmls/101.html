@@ -1,0 +1,19 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">User</span>(db<span style="color: #666666">.</span>Model, UserMixin, TimestampMixin):
+    <span style="color: #008000">id</span> <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Integer(), primary_key<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+    name <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>String())
+    email <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>String(), unique<span style="color: #666666">=</span><span style="color: #008000">True</span>, nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>, index<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+    is_admin <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Boolean(), default<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    sid <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>String())  <span style="color: #408080; font-style: italic"># SID or Login</span>
+    secondary <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>String())  <span style="color: #408080; font-style: italic"># Other usernames</span>
+    alt_email <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>String())
+    active <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Boolean(), default<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+</pre></div>
+</td></tr></table>

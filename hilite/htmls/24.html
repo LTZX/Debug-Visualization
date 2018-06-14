@@ -1,0 +1,15 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Enrollment</span>(PublicResource):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot; View what courses students are enrolled in.</span>
+<span style="color: #BA2121; font-style: italic">        Authenticated. Permissions: &gt;= User</span>
+<span style="color: #BA2121; font-style: italic">        Used by: Ok Client Auth</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    model <span style="color: #666666">=</span> models<span style="color: #666666">.</span>Participant
+    schema <span style="color: #666666">=</span> EnrollmentSchema()
+</pre></div>
+</td></tr></table>

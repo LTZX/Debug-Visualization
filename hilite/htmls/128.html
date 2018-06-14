@@ -1,0 +1,21 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #AA22FF">@functools.wraps</span>(f)
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">wrapper</span>(<span style="color: #666666">*</span>args, <span style="color: #666666">**</span>kwds):
+        <span style="color: #008000; font-weight: bold">try</span>:
+            value <span style="color: #666666">=</span> f(<span style="color: #666666">*</span>args, <span style="color: #666666">**</span>kwds)
+            db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>commit()
+            <span style="color: #008000; font-weight: bold">return</span> value
+        <span style="color: #008000; font-weight: bold">except</span>:
+            db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>rollback()
+            <span style="color: #008000; font-weight: bold">raise</span>
+    <span style="color: #008000; font-weight: bold">return</span> wrapper
+</pre></div>
+</td></tr></table>

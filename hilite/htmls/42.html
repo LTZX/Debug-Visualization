@@ -1,0 +1,21 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #AA22FF">@marshal_with</span>(schema<span style="color: #666666">.</span>get_fields)
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">get</span>(<span style="color: #008000">self</span>, user, key<span style="color: #666666">=</span><span style="color: #008000">None</span>):
+        <span style="color: #008000; font-weight: bold">if</span> key <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">None</span>:
+            restful<span style="color: #666666">.</span>abort(<span style="color: #666666">405</span>)
+        backup <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>model<span style="color: #666666">.</span>query<span style="color: #666666">.</span>filter_by(<span style="color: #008000">id</span><span style="color: #666666">=</span>key)<span style="color: #666666">.</span>first()
+        <span style="color: #408080; font-style: italic"># TODO CHECK</span>
+        <span style="color: #008000; font-weight: bold">if</span> backup<span style="color: #666666">.</span>user <span style="color: #666666">!=</span> user <span style="color: #AA22FF; font-weight: bold">or</span> <span style="color: #AA22FF; font-weight: bold">not</span> user<span style="color: #666666">.</span>is_admin:
+            restful<span style="color: #666666">.</span>abort(<span style="color: #666666">403</span>)
+
+        <span style="color: #008000; font-weight: bold">return</span> backup
+</pre></div>
+</td></tr></table>

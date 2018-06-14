@@ -1,0 +1,23 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">CommentBank</span>(db<span style="color: #666666">.</span>Model, TimestampMixin):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot; CommentBank is a set of common comments for assignments.</span>
+<span style="color: #BA2121; font-style: italic">    An assignment value of null applies to all assignments.</span>
+<span style="color: #BA2121; font-style: italic">    The statistics column will be used by the frontend.</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    <span style="color: #008000">id</span> <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Integer(), primary_key<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+    assignment <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;assignment.id&quot;</span>), index<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+    author <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;user.id&quot;</span>), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    message <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Text())  <span style="color: #408080; font-style: italic"># Markdown</span>
+    frequency <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Integer())
+    statistics <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(pg<span style="color: #666666">.</span>JSONB())  <span style="color: #408080; font-style: italic"># closest function, line number etc</span>
+</pre></div>
+</td></tr></table>

@@ -1,0 +1,19 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_dev_config</span>(<span style="color: #008000">self</span>):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot; Tests if the development config loads correctly &quot;&quot;&quot;</span>
+
+        app <span style="color: #666666">=</span> create_app(<span style="color: #BA2121">&#39;server.settings.dev.DevConfig&#39;</span>)
+        dev_db <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;postgresql://postgres:@localhost:5432/okdev&#39;</span>
+
+        <span style="color: #008000; font-weight: bold">assert</span> app<span style="color: #666666">.</span>config[<span style="color: #BA2121">&#39;DEBUG&#39;</span>] <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">True</span>
+        <span style="color: #008000; font-weight: bold">assert</span> app<span style="color: #666666">.</span>config[<span style="color: #BA2121">&#39;SQLALCHEMY_DATABASE_URI&#39;</span>] <span style="color: #666666">==</span> dev_db
+        <span style="color: #008000; font-weight: bold">assert</span> app<span style="color: #666666">.</span>config[<span style="color: #BA2121">&#39;CACHE_TYPE&#39;</span>] <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;simple&#39;</span>
+</pre></div>
+</td></tr></table>

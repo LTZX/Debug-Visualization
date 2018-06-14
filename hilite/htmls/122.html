@@ -1,0 +1,25 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #AA22FF">@staticmethod</span>
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">enroll_from_form</span>(cid, form):
+        usr <span style="color: #666666">=</span> User<span style="color: #666666">.</span>lookup(form<span style="color: #666666">.</span>email<span style="color: #666666">.</span>data)
+        <span style="color: #008000; font-weight: bold">if</span> usr:
+            form<span style="color: #666666">.</span>populate_obj(usr)
+        <span style="color: #008000; font-weight: bold">else</span>:
+            usr <span style="color: #666666">=</span> User()
+            form<span style="color: #666666">.</span>populate_obj(usr)
+            db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add(usr)
+        db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>commit()
+        role <span style="color: #666666">=</span> form<span style="color: #666666">.</span>role<span style="color: #666666">.</span>data
+        Participant<span style="color: #666666">.</span>create(cid, [usr<span style="color: #666666">.</span>id], role)
+</pre></div>
+</td></tr></table>

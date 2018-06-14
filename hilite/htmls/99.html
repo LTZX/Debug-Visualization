@@ -1,0 +1,27 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Submission</span>(db<span style="color: #666666">.</span>Model, TimestampMixin):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot; A submission is created from --submit or when a backup is flagged for</span>
+<span style="color: #BA2121; font-style: italic">    grading.</span>
+
+<span style="color: #BA2121; font-style: italic">    **This model may be removed. Do not depend on it for features.**</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    <span style="color: #008000">id</span> <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Integer(), primary_key<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+    backup <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;backup.id&quot;</span>), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    assignment <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;assignment.id&quot;</span>), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    submitter <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;user.id&quot;</span>), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    flagged <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Boolean(), default<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+
+    db<span style="color: #666666">.</span>Index(<span style="color: #BA2121">&#39;idx_flaggedSubms&#39;</span>, <span style="color: #BA2121">&#39;assignment&#39;</span>, <span style="color: #BA2121">&#39;submitter&#39;</span>, <span style="color: #BA2121">&#39;flagged&#39;</span>),
+</pre></div>
+</td></tr></table>

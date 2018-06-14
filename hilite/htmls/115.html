@@ -1,0 +1,29 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #AA22FF">@staticmethod</span>
+    <span style="color: #AA22FF">@transaction</span>
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">invite</span>(sender, recipient, assignment):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Invite a user to a group, creating a group if necessary.&quot;&quot;&quot;</span>
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> assignment<span style="color: #666666">.</span>active:
+            <span style="color: #008000; font-weight: bold">raise</span> BadRequest(<span style="color: #BA2121">&#39;The assignment is past due&#39;</span>)
+        group <span style="color: #666666">=</span> Group<span style="color: #666666">.</span>lookup(sender, assignment)
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> group:
+            group <span style="color: #666666">=</span> Group(assignment<span style="color: #666666">=</span>assignment)
+            db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add(group)
+            group<span style="color: #666666">.</span>_add_member(sender, <span style="color: #BA2121">&#39;active&#39;</span>)
+        <span style="color: #008000; font-weight: bold">elif</span> <span style="color: #AA22FF; font-weight: bold">not</span> group<span style="color: #666666">.</span>has_status(sender, <span style="color: #BA2121">&#39;active&#39;</span>):
+            <span style="color: #008000; font-weight: bold">raise</span> BadRequest(<span style="color: #BA2121">&#39;You are not in the group&#39;</span>)
+        group<span style="color: #666666">.</span>_add_member(recipient, <span style="color: #BA2121">&#39;pending&#39;</span>)
+</pre></div>
+</td></tr></table>

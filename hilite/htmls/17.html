@@ -1,0 +1,39 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">@admin.route</span>(<span style="color: #BA2121">&quot;/course/&lt;int:cid&gt;/assignments/new&quot;</span>, methods<span style="color: #666666">=</span>[<span style="color: #BA2121">&quot;GET&quot;</span>, <span style="color: #BA2121">&quot;POST&quot;</span>])
+<span style="color: #AA22FF">@is_staff</span>(course_arg<span style="color: #666666">=</span><span style="color: #BA2121">&#39;cid&#39;</span>)
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">new_assignment</span>(cid):
+    courses, current_course <span style="color: #666666">=</span> get_courses(cid)
+    <span style="color: #408080; font-style: italic"># TODO  Form Creation</span>
+    form <span style="color: #666666">=</span> forms<span style="color: #666666">.</span>AssignmentForm()
+
+    <span style="color: #008000; font-weight: bold">if</span> form<span style="color: #666666">.</span>validate_on_submit():
+        model <span style="color: #666666">=</span> Assignment(course_id<span style="color: #666666">=</span>cid, creator<span style="color: #666666">=</span>current_user<span style="color: #666666">.</span>id)
+        form<span style="color: #666666">.</span>populate_obj(model)
+        <span style="color: #408080; font-style: italic"># TODO CONVERT TO UTC from PST.</span>
+        db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add(model)
+        db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>commit()
+
+        flash(<span style="color: #BA2121">&quot;Assignment created successfully.&quot;</span>, <span style="color: #BA2121">&quot;success&quot;</span>)
+        <span style="color: #008000; font-weight: bold">return</span> redirect(url_for(<span style="color: #BA2121">&quot;.course_assignments&quot;</span>, cid<span style="color: #666666">=</span>cid))
+
+    <span style="color: #008000; font-weight: bold">return</span> render_template(<span style="color: #BA2121">&#39;staff/course/assignment.new.html&#39;</span>, form<span style="color: #666666">=</span>form,
+                           courses<span style="color: #666666">=</span>courses, current_course<span style="color: #666666">=</span>current_course)
+</pre></div>
+</td></tr></table>

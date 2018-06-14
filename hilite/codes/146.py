@@ -1,0 +1,1 @@
+class TestGroup(OkTestCase):

@@ -1,0 +1,23 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">get_courses</span>(cid<span style="color: #666666">=</span><span style="color: #008000">None</span>):
+    <span style="color: #408080; font-style: italic">#  TODO : The decorator could add these to the routes</span>
+    enrollments <span style="color: #666666">=</span> current_user<span style="color: #666666">.</span>enrollments(roles<span style="color: #666666">=</span>STAFF_ROLES)
+    courses <span style="color: #666666">=</span> [e<span style="color: #666666">.</span>course <span style="color: #008000; font-weight: bold">for</span> e <span style="color: #AA22FF; font-weight: bold">in</span> enrollments]
+    matching_courses <span style="color: #666666">=</span> [c <span style="color: #008000; font-weight: bold">for</span> c <span style="color: #AA22FF; font-weight: bold">in</span> courses <span style="color: #008000; font-weight: bold">if</span> c<span style="color: #666666">.</span>id <span style="color: #666666">==</span> cid]
+    <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> cid:
+        <span style="color: #008000; font-weight: bold">return</span> courses, []
+    <span style="color: #008000; font-weight: bold">elif</span> <span style="color: #008000">len</span>(matching_courses) <span style="color: #666666">==</span> <span style="color: #666666">0</span>:
+        abort(<span style="color: #666666">401</span>)  <span style="color: #408080; font-style: italic"># TODO to actual error page</span>
+    current_course <span style="color: #666666">=</span> matching_courses[<span style="color: #666666">0</span>]
+    <span style="color: #008000; font-weight: bold">return</span> courses, current_course
+</pre></div>
+</td></tr></table>

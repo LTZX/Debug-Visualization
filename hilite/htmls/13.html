@@ -1,0 +1,67 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">@admin.route</span>(<span style="color: #BA2121">&quot;/course/&lt;int:cid&gt;/enrollment&quot;</span>,
+             methods<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;GET&#39;</span>, <span style="color: #BA2121">&#39;POST&#39;</span>], defaults<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;page&#39;</span>: <span style="color: #666666">1</span>})
+<span style="color: #AA22FF">@admin.route</span>(<span style="color: #BA2121">&quot;/course/&lt;int:cid&gt;/enrollment/page/&lt;int:page&gt;&quot;</span>,)
+<span style="color: #AA22FF">@is_staff</span>(course_arg<span style="color: #666666">=</span><span style="color: #BA2121">&#39;cid&#39;</span>)
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">enrollment</span>(cid, page):
+    courses, current_course <span style="color: #666666">=</span> get_courses(cid)
+    single_form <span style="color: #666666">=</span> forms<span style="color: #666666">.</span>EnrollmentForm(prefix<span style="color: #666666">=</span><span style="color: #BA2121">&quot;single&quot;</span>)
+    <span style="color: #008000; font-weight: bold">if</span> single_form<span style="color: #666666">.</span>validate_on_submit():
+        email, role <span style="color: #666666">=</span> single_form<span style="color: #666666">.</span>email<span style="color: #666666">.</span>data, single_form<span style="color: #666666">.</span>role<span style="color: #666666">.</span>data
+        Participant<span style="color: #666666">.</span>enroll_from_form(cid, single_form)
+        flash(<span style="color: #BA2121">&quot;Added {email} as {role}&quot;</span><span style="color: #666666">.</span>format(email<span style="color: #666666">=</span>email, role<span style="color: #666666">=</span>role), <span style="color: #BA2121">&quot;success&quot;</span>)
+
+    query <span style="color: #666666">=</span> request<span style="color: #666666">.</span>args<span style="color: #666666">.</span>get(<span style="color: #BA2121">&#39;query&#39;</span>, <span style="color: #BA2121">&#39;&#39;</span>)<span style="color: #666666">.</span>strip()
+    students <span style="color: #666666">=</span> <span style="color: #008000">None</span>
+    <span style="color: #008000; font-weight: bold">if</span> query:
+        find_student <span style="color: #666666">=</span> User<span style="color: #666666">.</span>query<span style="color: #666666">.</span>filter_by(email<span style="color: #666666">=</span>query)
+        student <span style="color: #666666">=</span> find_student<span style="color: #666666">.</span>first()
+        <span style="color: #008000; font-weight: bold">if</span> student:
+            students <span style="color: #666666">=</span> Participant<span style="color: #666666">.</span>query<span style="color: #666666">.</span>filter_by(course_id<span style="color: #666666">=</span>cid, role<span style="color: #666666">=</span>STUDENT_ROLE,
+                user_id<span style="color: #666666">=</span>student<span style="color: #666666">.</span>id)<span style="color: #666666">.</span>paginate(page<span style="color: #666666">=</span>page, per_page<span style="color: #666666">=1</span>)
+        <span style="color: #008000; font-weight: bold">else</span>:
+            flash(<span style="color: #BA2121">&quot;No student found with email {}&quot;</span><span style="color: #666666">.</span>format(query), <span style="color: #BA2121">&quot;warning&quot;</span>)
+    <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> students:
+        students <span style="color: #666666">=</span> Participant<span style="color: #666666">.</span>query<span style="color: #666666">.</span>filter_by(course_id<span style="color: #666666">=</span>cid,
+                role<span style="color: #666666">=</span>STUDENT_ROLE)<span style="color: #666666">.</span>paginate(page<span style="color: #666666">=</span>page, per_page<span style="color: #666666">=5</span>)
+    staff <span style="color: #666666">=</span> Participant<span style="color: #666666">.</span>query<span style="color: #666666">.</span>filter(Participant<span style="color: #666666">.</span>course_id <span style="color: #666666">==</span> cid,
+            Participant<span style="color: #666666">.</span>role<span style="color: #666666">.</span>in_(STAFF_ROLES))<span style="color: #666666">.</span>all()
+
+    <span style="color: #008000; font-weight: bold">return</span> render_template(<span style="color: #BA2121">&#39;staff/course/enrollment.html&#39;</span>,
+                           enrollments<span style="color: #666666">=</span>students, staff<span style="color: #666666">=</span>staff, query<span style="color: #666666">=</span>query,
+                           single_form<span style="color: #666666">=</span>single_form,
+                           courses<span style="color: #666666">=</span>courses,
+                           current_course<span style="color: #666666">=</span>current_course)
+</pre></div>
+</td></tr></table>

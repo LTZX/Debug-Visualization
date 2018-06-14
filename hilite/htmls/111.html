@@ -1,0 +1,19 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">_remove_member</span>(<span style="color: #008000">self</span>, user):
+        member <span style="color: #666666">=</span> GroupMember<span style="color: #666666">.</span>query<span style="color: #666666">.</span>filter_by(
+            user<span style="color: #666666">=</span>user,
+            group<span style="color: #666666">=</span><span style="color: #008000">self</span>
+        )<span style="color: #666666">.</span>one_or_none()
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> member:
+            <span style="color: #008000; font-weight: bold">raise</span> BadRequest(<span style="color: #BA2121">&#39;{0} is not in this group&#39;</span><span style="color: #666666">.</span>format(user<span style="color: #666666">.</span>email))
+        db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>delete(member)
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>size() <span style="color: #666666">&lt;=</span> <span style="color: #666666">1</span>:
+</pre></div>
+</td></tr></table>

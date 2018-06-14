@@ -1,0 +1,29 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">@manager.command</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">resetdb</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot; Drop &amp; create a database with all of the tables defined in</span>
+<span style="color: #BA2121; font-style: italic">        your SQLAlchemy models.</span>
+<span style="color: #BA2121; font-style: italic">        DO NOT USE IN PRODUCTION.</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    <span style="color: #008000; font-weight: bold">if</span> env <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;dev&quot;</span>:
+        db<span style="color: #666666">.</span>drop_all()
+        db<span style="color: #666666">.</span>create_all()
+        seed()
+        <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Dropped&quot;</span>)
+
+
+<span style="color: #008000; font-weight: bold">if</span> <span style="color: #19177C">__name__</span> <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;__main__&quot;</span>:
+</pre></div>
+</td></tr></table>

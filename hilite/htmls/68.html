@@ -1,0 +1,23 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">user_from_access_token</span>(token):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">    Get a User with the given Google access token, or create one if no User with</span>
+<span style="color: #BA2121; font-style: italic">    this email is found. If the token is invalid, return None.</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    resp <span style="color: #666666">=</span> google_auth<span style="color: #666666">.</span>get(<span style="color: #BA2121">&#39;userinfo&#39;</span>, token<span style="color: #666666">=</span>(token, <span style="color: #BA2121">&#39;&#39;</span>))
+    <span style="color: #008000; font-weight: bold">if</span> resp<span style="color: #666666">.</span>status <span style="color: #666666">!=</span> <span style="color: #666666">200</span>:
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">None</span>
+    <span style="color: #008000; font-weight: bold">return</span> user_from_email(resp<span style="color: #666666">.</span>data[<span style="color: #BA2121">&#39;email&#39;</span>])
+
+login_manager <span style="color: #666666">=</span> LoginManager()
+</pre></div>
+</td></tr></table>
