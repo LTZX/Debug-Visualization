@@ -1,12 +1,11 @@
 
-var titles = ['author', 'time', 'comment', 'GID'];
 
-function drawgittable(data) {
-  var widtht = $("#exTab2").width();
-  var heightt = $("#exTab2").height();
+function drawgittable(data, area, board, titles) {
+  var widtht = $("#" + board).width();
+  var heightt = $("#" + board).height();
   condition['gitdata']['data']['gittable'] = data;
   var sortAscending = true;
-  var table = d3.select('#gittable').append('table').attr("class","gittablecontent");
+  var table = d3.select('#' + area).append('table').attr("class","gittablecontent");
   var headers = table.append('thead').append('tr')
     .selectAll('th')
     .data(titles).enter()

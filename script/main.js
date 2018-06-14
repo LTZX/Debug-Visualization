@@ -6,6 +6,22 @@ condition['length'][3] = ($(window).height() - 100) * 0.27;
 condition['length'][2] = ($(window).height() - 100) * 0.40;
 condition['length'][1] = ($(window).height() - 100) * 0.8;
 
+var title1 = ['author', 'time', 'comment', 'GID'];
+var title2 = ['file-name', 'method-name', 'line-number', 'bug-detail'];
+
+var project=
+{'number-of-tests': 281, 'number-of-bugs': 7};
+var bug=[{'file-name': 'test_api_search.py',
+        'method-name': 'test_download_dont_get_all',
+        'line-number': '290',
+        'bug-detail': 'AssertionError: TestingError not raised'},
+        {'file-name': 'test_api_search.py',
+        'method-name': 'test_download_error_propogation',
+        'line-number': '303',
+        'bug-detail': 'AssertionError: BadValueError not raised'}]
+var piedata = [{'name':'Passed','value': (281-7),'percentage':(project['number-of-tests']-project['number-of-bugs'])/project['number-of-tests']},
+ {'name':'Failed','value': 7, 'percentage':project['number-of-bugs']/project['number-of-tests']}]
+
 var forcedata;
 d3.select('#detail').on('click',function(){
   this.classList.toggle("clicked");
@@ -68,13 +84,16 @@ function changelayout(){
             drawlinechart(condition[panel.id]['data'][each]);
             break;
           case 'gittable':
-            drawgittable(condition[panel.id]['data'][each]);
+            drawgittable(condition[panel.id]['data'][each], 'gittable', 'exTab2', title1);
             break;
           case 'bar-chart':
             drawbarchart(condition[panel.id]['data'][each]);
             break;
           case 'pie-chart':
             drawpiechart(condition[panel.id]['data'][each]);
+            break;
+          case 'other':
+            drawgittable(bug, 'other', 'exTab1', title2);
             break;
         }
       }
@@ -117,7 +136,7 @@ function onenode(d,data){
   $('#gittable').empty();
   $('#bar-chart').empty();
   drawlinechart(data.time[d.id]);
-  drawgittable(data.table[d.id]);
+  drawgittable(data.table[d.id], 'gittable', 'exTab2', title1);
   drawbarchart(data.bar[d.id]);
   d3.select("#lblock").text(d.id + " - " + d.data.name)
 }
@@ -129,7 +148,7 @@ function setback(data){
   $('#bar-chart').empty();
 
   drawlinechart(data.time['total']);
-  drawgittable(data.table['total']);
+  drawgittable(data.table['total'], 'gittable', 'exTab2', title1);
   drawbarchart(data.bar['total']);
 }
 
@@ -220,22 +239,9 @@ d3.json("data/data.json", function(error, data) {
       onenode(d,data);
     })
     drawlinechart(data.time['total']);
-    drawgittable(data.table['total']);
+    drawgittable(data.table['total'], 'gittable', 'exTab2', title1);
     drawbarchart(data.bar['total']);
-    console.log(data.table['total'])
-    var project=
-    {'number-of-tests': 281, 'number-of-bugs': 2};
-    var bug=
-    {'0': { 'file-name': 'test_api_search.py',
-            'method-name': 'test_download_dont_get_all',
-            'line-number': '290',
-            'bug-detail': 'AssertionError: TestingError not raised'},
-     '1': { 'file-name': 'test_api_search.py',
-            'method-name': 'test_download_error_propogation',
-            'line-number': '303',
-            'bug-detail': 'AssertionError: BadValueError not raised'}}
-    var piedata = [{'name':'Passed','percentage':(project['number-of-tests']-project['number-of-bugs'])/project['number-of-tests']},
-     {'name':'Failed','percentage':project['number-of-bugs']/project['number-of-tests']}]
+    drawgittable(bug, 'other', 'exTab1', title2);
     drawpiechart(piedata);
 
 })

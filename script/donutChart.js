@@ -71,7 +71,8 @@ function donutChart() {
                 .attr('dy', '.35em')
                 .html(function(d) {
                     // add "key: value" for given category. Number inside tspan is bolded in stylesheet.
-                    return d.data[category] + ': <tspan>' + percentFormat(d.data[variable]) + '</tspan>';
+                    //return d.data[category] + ': <tspan>' + percentFormat(d.data[variable]) + '</tspan>';
+                    return d.data[category] + ': <tspan>' + d.data.value + '</tspan>';
                 })
                 .attr('transform', function(d) {
 
