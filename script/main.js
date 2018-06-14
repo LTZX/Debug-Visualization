@@ -2,7 +2,7 @@ var ncolor = "class", nsize = "lines";
 var cuscolors = ["#ffcc00","#ff9933","#ff66ff","#3333cc","#cc33ff","#9966ff","#0099ff","#66ccff","#66ffff","#00ff99","#66ff33","#ccff33","#ffff00","#0099cc","#669999"]
 
 var condition = {active:3, length:{1:0,2:0,3:0}, code:{on:"true", data:{'code':" "}}, otherdata:{on:"true", data:{'pie-chart':[]} }, gitdata:{on:"true", data:{'line-chart':[], gittable:[], 'bar-chart':[]} }};
-condition['length'][3] = ($(window).height() - 100) * 0.28;
+condition['length'][3] = ($(window).height() - 100) * 0.27;
 condition['length'][2] = ($(window).height() - 100) * 0.40;
 condition['length'][1] = ($(window).height() - 100) * 0.8;
 

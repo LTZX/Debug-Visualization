@@ -12,7 +12,7 @@ const formatValue = d3.format(',.2f');
 function drawlinechart(data3){
   condition['gitdata']['data']['line-chart'] = data3;
   var widthl = $("#exTab2").width() * 0.8;
-  var heightl = $("#exTab2").height() * 0.7 ;
+  var heightl = $("#exTab2").height() * 0.65 ;
   const xl = d3.scaleTime()
     .range([0, widthl]);
 
@@ -22,7 +22,7 @@ function drawlinechart(data3){
   const line = d3.line()
     .x(d => xl(d.date))
     .y(d => yl(d.close));
-    
+
   const svgl = d3.select('#line-chart').append('svg')
     .attr('id','linechart')
     .attr('width', widthl + marginl.left + marginl.right)
