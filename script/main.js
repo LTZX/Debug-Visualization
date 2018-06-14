@@ -166,8 +166,8 @@ d3.json("data/data.json", function(error, data) {
       .text("Color of Node: " + that.id);
       ncolor = that.id
 
-      $('#pie-chart').empty();
-      drawpiechart(data.pie[that.id]);
+      //$('#pie-chart').empty();
+      //drawpiechart(data.pie[that.id]);
     })
     d3.selectAll(".bugbutton").on('click',function(){
       if(this.id === "show"){
@@ -222,13 +222,20 @@ d3.json("data/data.json", function(error, data) {
     drawlinechart(data.time['total']);
     drawgittable(data.table['total']);
     drawbarchart(data.bar['total']);
-    drawpiechart(data.pie['class']);
-    //fancy table
-    //$('#gittable').append(data.tmp);
-
-    //$(document).ready(function() {
-    //    $('#example').DataTable();
-    //} );
-
+    console.log(data.table['total'])
+    var project=
+    {'number-of-tests': 281, 'number-of-bugs': 2};
+    var bug=
+    {'0': { 'file-name': 'test_api_search.py',
+            'method-name': 'test_download_dont_get_all',
+            'line-number': '290',
+            'bug-detail': 'AssertionError: TestingError not raised'},
+     '1': { 'file-name': 'test_api_search.py',
+            'method-name': 'test_download_error_propogation',
+            'line-number': '303',
+            'bug-detail': 'AssertionError: BadValueError not raised'}}
+    var piedata = [{'name':'Passed','percentage':(project['number-of-tests']-project['number-of-bugs'])/project['number-of-tests']},
+     {'name':'Failed','percentage':project['number-of-bugs']/project['number-of-tests']}]
+    drawpiechart(piedata);
 
 })
