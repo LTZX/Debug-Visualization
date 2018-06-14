@@ -3,7 +3,7 @@ var colorf = d3.scaleOrdinal(cuscolors);
 var scalesize, scalebug;
 function drawforce(graph){
   var widthf = $("#forced-directed").width();
-  var heightf = $("#page-content-wrapper").height() - 120;
+  var heightf = $("#page-content-wrapper").height() * 0.8;
   var str = d3.max([widthf,heightf]);
 
   var scalestr = d3.scaleLinear().domain([430,830]).range([-15, -80]);
@@ -15,7 +15,7 @@ function drawforce(graph){
       .force("charge", d3.forceManyBody().strength(function(){
         if(str < 430){ return -15; }
         else { return scalestr(str); }
-      }).distanceMax(heightf/6))
+      }).distanceMax(heightf/Math.sqrt(graph.nodes.length)))
       .force("center", d3.forceCenter(widthf / 2, heightf / 2));
 
     var svgf = d3.select("#forced-directed")
@@ -24,7 +24,7 @@ function drawforce(graph){
       .attr("height", heightf)
 
     svgf.append("text")
-    .text("Color of Node: Class")
+    .text("Color of Node: File")
     .attr("id", "cblock")
     .attr("transform", "translate(50,50)")
     .style("font-size", "15px")
@@ -63,7 +63,7 @@ function drawforce(graph){
         .attr("class", function(d){ return "node " + d.bug; })
         .attr("id", function(d){ return "node" + d.id; })
         .attr("r", function(d){ return scalesize(d.data.lines); })
-        .attr("fill", function(d) { return colorf(d.data.class); })
+        .attr("fill", function(d) { return colorf(d.data.file); })
         .call(d3.drag()
             .on("start", dragstarted)
             .on("drag", dragged)

@@ -151,6 +151,7 @@ function donutChart() {
                     i   = 0;
 
                 for (var key in data.data) {
+                    if(key == 'value'){ continue; }
 
                     // if value is a number, format it as a percentage
                     var value = (!isNaN(parseFloat(data.data[key]))) ? percentFormat(data.data[key]) : data.data[key];

@@ -90,13 +90,17 @@ body {
 #exTab1{
   width: 100%;
   height: calc(calc(100vh - 100px) * 0.27);
-  max-height: calc(calc(100vh - 100px) * 0.45);
+  max-height: calc(calc(100vh - 100px) * 0.5);
 }
 #exTab1 .tab-content {
   background-color: rgba(66,139,202,0.1);
   height: 100%;
 }
 
+#other{
+  overflow-y: auto;
+  height: 100%;
+}
 
 #exTab2 .nav-pills > li > a {
   border-radius: 4px 4px 0 0 ;
@@ -106,7 +110,7 @@ body {
 #exTab2{
   width: 100%;
   height: calc(calc(100vh - 100px) * 0.27);
-  max-height: calc(calc(100vh - 100px) * 0.45);
+  max-height: calc(calc(100vh - 100px) * 0.5);
 }
 #exTab2 .tab-content {
   background-color: rgba(66,139,202,0.1);
@@ -118,7 +122,7 @@ body {
   height: 100%;
 }
 #gittablecontent{
-  overflow-y: auto;
+  overflow: auto;
 }
 
 .nav-pills{

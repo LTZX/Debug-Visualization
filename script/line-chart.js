@@ -49,7 +49,7 @@ function drawlinechart(data3){
 
     svgl.append('g')
       .attr('class', 'y axis axis--y')
-      .call(d3.axisLeft(yl).ticks(gap[1]-gap[0]))
+      .call(d3.axisLeft(yl))//.ticks(gap[1]-gap[0]))
       .append('text')
         .attr('class', 'axis-title')
         .attr('transform', 'rotate(-90)')

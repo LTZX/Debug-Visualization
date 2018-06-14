@@ -1,4 +1,4 @@
-var ncolor = "class", nsize = "lines";
+var ncolor = "file", nsize = "lines";
 var cuscolors = ["#ffcc00","#ff9933","#ff66ff","#3333cc","#cc33ff","#9966ff","#0099ff","#66ccff","#66ffff","#00ff99","#66ff33","#ccff33","#ffff00","#0099cc","#669999"]
 
 var condition = {active:3, length:{1:0,2:0,3:0}, code:{on:"true", data:{'code':" "}}, otherdata:{on:"true", data:{'pie-chart':[]} }, gitdata:{on:"true", data:{'line-chart':[], gittable:[], 'bar-chart':[]} }};
@@ -10,15 +10,23 @@ var title1 = ['author', 'time', 'comment', 'GID'];
 var title2 = ['file-name', 'method-name', 'line-number', 'bug-detail'];
 
 var project=
-{'number-of-tests': 281, 'number-of-bugs': 7};
-var bug=[{'file-name': 'test_api_search.py',
-        'method-name': 'test_download_dont_get_all',
-        'line-number': '290',
-        'bug-detail': 'AssertionError: TestingError not raised'},
-        {'file-name': 'test_api_search.py',
-        'method-name': 'test_download_error_propogation',
-        'line-number': '303',
-        'bug-detail': 'AssertionError: BadValueError not raised'}]
+{'number-of-tests': 23, 'number-of-bugs': 15};
+var bug=[{'file-name': 'test_group.py', 'method-name': 'test_accept', 'line-number': '26', 'bug-detail': 'AttributeError: \'Course\' object has no attribute \'enroll\''},
+        {'file-name': 'test_group.py', 'method-name': 'test_accept_not_pending', 'line-number': '26', 'bug-detail': 'AttributeError: \'Course\' object has no attribute \'enroll\''},
+        {'file-name': 'test_group.py', 'method-name': 'test_decline', 'line-number': '26', 'bug-detail': 'AttributeError: \'Course\' object has no attribute \'enroll\''},
+        {'file-name': 'test_group.py', 'method-name': 'test_decline_degenerate', 'line-number': '26', 'bug-detail': 'AttributeError: \'Course\' object has no attribute \'enroll\''},
+        {'file-name': 'test_group.py', 'method-name': 'test_decline_not_pending', 'line-number': '26', 'bug-detail': 'AttributeError: \'Course\' object has no attribute \'enroll\''},
+        {'file-name': 'test_group.py', 'method-name': 'test_invite', 'line-number': '26', 'bug-detail': 'AttributeError: \'Course\' object has no attribute \'enroll\''},
+        {'file-name': 'test_group.py', 'method-name': 'test_invite_full', 'line-number': '26', 'bug-detail': 'AttributeError: \'Course\' object has no attribute \'enroll\''},
+        {'file-name': 'test_group.py', 'method-name': 'test_invite_in_group', 'line-number': '26', 'bug-detail': 'AttributeError: \'Course\' object has no attribute \'enroll\''},
+        {'file-name': 'test_group.py', 'method-name': 'test_invite_individual', 'line-number': '26', 'bug-detail': 'AttributeError: \'Course\' object has no attribute \'enroll\''},
+        {'file-name': 'test_group.py', 'method-name': 'test_invite_not_enrolled', 'line-number': '26', 'bug-detail': 'AttributeError: \'Course\' object has no attribute \'enroll\''},
+        {'file-name': 'test_group.py', 'method-name': 'test_invite_wrong_assignment', 'line-number': '26', 'bug-detail': 'AttributeError: \'Course\' object has no attribute \'enroll\''},
+        {'file-name': 'test_group.py', 'method-name': 'test_remove', 'line-number': '26', 'bug-detail': 'AttributeError: \'Course\' object has no attribute \'enroll\''},
+        {'file-name': 'test_group.py', 'method-name': 'test_remove_degenerate', 'line-number': '26', 'bug-detail': 'AttributeError: \'Course\' object has no attribute \'enroll\''},
+        {'file-name': 'test_group.py', 'method-name': 'test_remove_not_in_group', 'line-number': '26', 'bug-detail': 'AttributeError: \'Course\' object has no attribute \'enroll\''},
+        {'file-name': 'test_group.py', 'method-name': 'test_remove_self', 'line-number': '26', 'bug-detail': 'AttributeError: \'Course\' object has no attribute \'enroll\''}]
+
 var piedata = [{'name':'Passed','value': (281-7),'percentage':(project['number-of-tests']-project['number-of-bugs'])/project['number-of-tests']},
  {'name':'Failed','value': 7, 'percentage':project['number-of-bugs']/project['number-of-tests']}]
 
@@ -129,9 +137,9 @@ function onenode(d,data){
   d3.selectAll(".node").attr("fill", "grey")
   d3.select("#node"+d.id)
   .attr("fill", function(d) { return colorf(d.data[ncolor]); })
-  $('#code').empty();
-  $('#code').append(data.code[d.id])
-  condition['code']['data']['code'] = data.code[d.id];
+  //$('#code').empty();
+  //$('#code').append(data.code[d.id])
+  //condition['code']['data']['code'] = data.code[d.id];
   $('#line-chart').empty();
   $('#gittable').empty();
   $('#bar-chart').empty();
@@ -152,7 +160,7 @@ function setback(data){
   drawbarchart(data.bar['total']);
 }
 
-d3.json("data/data.json", function(error, data) {
+d3.json("data/final/data.json", function(error, data) {
     forcedata = data.force;
     orgtimedata(data.time);
     // === set up the selections

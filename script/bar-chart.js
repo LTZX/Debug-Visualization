@@ -28,13 +28,14 @@ function drawbarchart(data){
           .data(data)
           .enter()
           .append("g");
-
+  /*
   svgb.append('text')
     .text("Hover to see the percentage")
     .attr("id", "bblock")
     .attr("transform", "translate(30,8)")
     .style("font-size", "12px")
     .style("opacity",0.5)
+    */
 
   bar.attr("class", "bar")
           .attr("cx",0)
@@ -48,7 +49,8 @@ function drawbarchart(data){
           .attr("dy", ".35em") //vertical align middle
           .text(function(d){
               return d.label;
-          }).each(function() {
+          })
+          .each(function() {
             var count = this.innerHTML.length;
       labelWidth = Math.ceil(Math.max(labelWidth, count*10));
   });
@@ -58,8 +60,8 @@ function drawbarchart(data){
           .range([0, widthb - marginb*2 - labelWidth]);
 
   xAxisb = d3.axisBottom(scaleb)
-           .tickSize(-heightb + 2*marginb + axisMargin)
-           .ticks(max)
+           //.tickSize(-heightb + 2*marginb + axisMargin)
+           //.ticks(max)
 
   bar.append("rect")
           .attr("transform", "translate("+labelWidth+", 0)")
@@ -78,6 +80,8 @@ function drawbarchart(data){
           .attr("dy", ".35em") //vertical align middle
           .attr("text-anchor", "end")
           .text(function(d){ return d.value; })
+          .style('font-size','10px')
+          .style('fill','black')
           .attr("x", function(d){
               var width = 100;
               return Math.max(width + valueMargin, scaleb(d.value));

@@ -29,15 +29,35 @@ gitt = { '0': [
         ]
     }
 
+def sp(string):
+    tmp = string.split('/')
+    l = len(tmp)
+    return tmp[l-1]
 
+methodtofile = {}
+with open('method.json') as f1:
+    method = json.load(f1)
 
 with open('gitdata.json') as f2:
     git = json.load(f2)
 
-print(git['1'])
-print(gitt['1'])
-print("==============")
-
+gitmap = {}
+for each in method:
+    methodtofile[method[each]['name']] = method[each]['file']
+    gitmap[method[each]['file']] = []
+#print methodtofile
+for commit in git:
+    cdata = {'author': commit['committer'], 'time':commit['date'][:19], 'comment':commit['comment'],'GID':commit['GID']}
+    #print cdata
+    for fl in commit['files']:
+        fl = sp(fl)
+        if fl not in gitmap:
+            continue
+        gitmap[fl].append(cdata)
+results = {}
+for each in method:
+    m = method[each]
+    results[each] = gitmap[m['file']]
 with open('git.json', 'w') as outfile:
     json.dump(results, outfile)
     

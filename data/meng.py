@@ -59,9 +59,8 @@ git = { '0': [
             {'author':'BBB', 'time':'2018-05-15 08:32:12', 'comment':'gdfg6','GID':'8d'},
         ]
     }
-
 #==================================
 import json
 with open('tmp.json', 'w') as outfile:
-    json.dump(filedata, outfile)
+    json.dump(git, outfile)
     
