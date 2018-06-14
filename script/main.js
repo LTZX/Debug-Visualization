@@ -6,6 +6,23 @@ condition['length'][3] = ($(window).height() - 100) * 0.27;
 condition['length'][2] = ($(window).height() - 100) * 0.40;
 condition['length'][1] = ($(window).height() - 100) * 0.8;
 
+var forcedata;
+d3.select('#detail').on('click',function(){
+  this.classList.toggle("clicked");
+  var contain = this.classList.contains('clicked');
+  if(contain){
+    d3.select("#rightpanel").style('display','block')
+    d3.select("#leftpanel").attr('class','col-md-7')
+    $('#forced-directed').empty();
+    drawforce(forcedata)
+  } else {
+    d3.select("#rightpanel").style('display','none')
+    d3.select("#leftpanel").attr('class','col-md-12')
+    $('#forced-directed').empty();
+    drawforce(forcedata)
+  }
+})
+
 var acc = document.getElementsByClassName("accordion");
 var i;
 for (i = 0; i < acc.length; i++) {
@@ -117,6 +134,7 @@ function setback(data){
 }
 
 d3.json("data/data.json", function(error, data) {
+    forcedata = data.force;
     orgtimedata(data.time);
     // === set up the selections
     var groupby = data.groupby;

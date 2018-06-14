@@ -37,6 +37,9 @@
           <li><a href="#">Page 3</a></li>
           -->
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a class="btn btn-secondary clicked" id='detail'>Detail</a></li>
+        </ul>
       </div>
     </nav>
   </header>
@@ -92,7 +95,7 @@
     <!-- /#sidebar-wrapper -->
     <div id="page-content-wrapper" class="container-fluid">
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-7" id='leftpanel'>
           <div class="row">
             <table class="table table-bordered" id="pinfo">
               <thead class="thead-light">
@@ -124,7 +127,7 @@
           <div class="row" id="forced-directed">
           </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5" id='rightpanel'>
           <button class="accordion active">Codes</button>
           <div id="code" class="row panel">
             <p class="instinfo">Click the nodes to see the codes</p>
