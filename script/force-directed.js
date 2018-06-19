@@ -7,8 +7,8 @@ function drawforce(graph){
   var str = d3.max([widthf,heightf]);
 
   var scalestr = d3.scaleLinear().domain([430,830]).range([-15, -80]);
-  scalesize = d3.scaleLinear().domain([0,d3.max(graph.nodes, function(d){ return d.data.lines; })]).range([5,20]);
-  scalebug = d3.scaleLinear().domain([0,d3.max(graph.nodes, function(d){ return d.data.bugs.length; })]).range([5,20]);
+  scalesize = d3.scaleLinear().domain([0,d3.max(graph.nodes, function(d){ return d.data.lines; })]).range([5,10]);
+  scalebug = d3.scaleLinear().domain([0,d3.max(graph.nodes, function(d){ return d.data.bugs.length; })]).range([5,10]);
 
   var simulation = d3.forceSimulation()
       .force("link", d3.forceLink().id(function(d) { return d.id; }))

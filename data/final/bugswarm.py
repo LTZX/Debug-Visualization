@@ -2,7 +2,7 @@ import json
 filedata = {'lines-of-code':37, 'lines':50, 'method':7,
             'class':3, 'file':3, 'directory':2, 'comment-lines': 13,
             'comments': '26%', 'time-range': ['2018-05-08', '2018-05-15'],
-            'author': ['AAA', 'BBB', 'CCC'], 'bug':3}
+            'author': 52, 'bug':14}
 
 with open('method.json') as f1:
     methods = json.load(f1)
@@ -12,6 +12,14 @@ with open('git.json') as f2:
 
 with open('relation.json') as f3:
     relations = json.load(f3)
+
+with open('filedata.json') as f4:
+    fdata = json.load(f4)
+filedata['lines-of-code'] = fdata['lines']
+filedata['time-range'] = fdata['timeRange']
+filedata['class'] = 0
+filedata['comments'] = '0%'
+
 #==================================
 import datetime
 bugs = []
@@ -19,14 +27,11 @@ for each in methods:
     each = methods[each]
     if len(each['bugs']) != 0:
         bugs.append(each['MID'])
-        print 'here'
 
 force = {'nodes':[], 'links':[]}
 for each in methods:
     bug = each in bugs
     each = methods[each]
-    #if(each):
-        #print each
     node = {'id': each['MID'], 'bug': bug, 'data': each}
     force['nodes'].append(node)
 
