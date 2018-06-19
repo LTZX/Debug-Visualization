@@ -1,0 +1,25 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #AA22FF">@transaction</span>
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">remove</span>(<span style="color: #008000">self</span>, user, target_user):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Remove a user from the group.</span>
+<span style="color: #BA2121; font-style: italic">        The user must be an active member in the group, and the target user</span>
+<span style="color: #BA2121; font-style: italic">        must be an active or pending member. You may remove yourself to leave</span>
+<span style="color: #BA2121; font-style: italic">        the group. The assignment must also be active.</span>
+<span style="color: #BA2121; font-style: italic">        &quot;&quot;&quot;</span>
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>assignment<span style="color: #666666">.</span>active:
+            <span style="color: #008000; font-weight: bold">raise</span> BadRequest(<span style="color: #BA2121">&#39;The assignment is past due&#39;</span>)
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>has_status(user, <span style="color: #BA2121">&#39;active&#39;</span>):
+            <span style="color: #008000; font-weight: bold">raise</span> BadRequest(<span style="color: #BA2121">&#39;You are not in the group&#39;</span>)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>_remove_member(target_user)
+</pre></div>
+</td></tr></table>

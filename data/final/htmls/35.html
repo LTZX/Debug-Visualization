@@ -1,0 +1,33 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">@api.representation</span>(<span style="color: #BA2121">&#39;application/json&#39;</span>)
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">envelope_api</span>(data, code, headers<span style="color: #666666">=</span><span style="color: #008000">None</span>):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot; API response envelope (for metadata/pagination).</span>
+<span style="color: #BA2121; font-style: italic">    Wraps JSON response in envelope to match v1 API output format.</span>
+<span style="color: #BA2121; font-style: italic">    This is for successful requests only. Exceptions are handled elsewhere.</span>
+
+<span style="color: #BA2121; font-style: italic">        data is the object returned by the API.</span>
+<span style="color: #BA2121; font-style: italic">        code is the HTTP status code as an int</span>
+<span style="color: #BA2121; font-style: italic">        message will always be sucess since the request did not fail.</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    data <span style="color: #666666">=</span> {
+        <span style="color: #BA2121">&#39;data&#39;</span>: data,
+        <span style="color: #BA2121">&#39;code&#39;</span>: code,
+        <span style="color: #BA2121">&#39;message&#39;</span>: <span style="color: #BA2121">&#39;success&#39;</span>
+    }
+    <span style="color: #008000; font-weight: bold">return</span> output_json(data, code, headers)
+</pre></div>
+</td></tr></table>

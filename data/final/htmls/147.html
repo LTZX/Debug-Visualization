@@ -1,0 +1,25 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">setUp</span>(<span style="color: #008000">self</span>):
+        <span style="color: #008000">super</span>(TestGroup, <span style="color: #008000">self</span>)<span style="color: #666666">.</span>setUp()
+
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>course <span style="color: #666666">=</span> Course(offering<span style="color: #666666">=</span><span style="color: #BA2121">&#39;cal/cs61a/sp16&#39;</span>)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>assignment <span style="color: #666666">=</span> Assignment(
+            name<span style="color: #666666">=</span><span style="color: #BA2121">&#39;cal/cs61a/sp16/proj1&#39;</span>,
+            course<span style="color: #666666">=</span><span style="color: #008000">self</span><span style="color: #666666">.</span>course,
+            display_name<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Hog&#39;</span>,
+            due_date<span style="color: #666666">=</span>datetime<span style="color: #666666">.</span>datetime<span style="color: #666666">.</span>now(),
+            lock_date<span style="color: #666666">=</span>datetime<span style="color: #666666">.</span>datetime<span style="color: #666666">.</span>now() <span style="color: #666666">+</span> datetime<span style="color: #666666">.</span>timedelta(days<span style="color: #666666">=1</span>),
+            max_group_size<span style="color: #666666">=4</span>)
+        db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add(<span style="color: #008000">self</span><span style="color: #666666">.</span>assignment)
+</pre></div>
+</td></tr></table>

@@ -1,0 +1,15 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">@admin.route</span>(<span style="color: #BA2121">&quot;/course/&lt;int:cid&gt;&quot;</span>)
+<span style="color: #AA22FF">@is_staff</span>(course_arg<span style="color: #666666">=</span><span style="color: #BA2121">&#39;cid&#39;</span>)
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">course</span>(cid):
+    <span style="color: #008000; font-weight: bold">return</span> redirect(url_for(<span style="color: #BA2121">&quot;.course_assignments&quot;</span>, cid<span style="color: #666666">=</span>cid))
+    <span style="color: #408080; font-style: italic">#courses, current_course = get_courses(cid)</span>
+    <span style="color: #408080; font-style: italic">#return render_template(&#39;staff/course/index.html&#39;,</span>
+    <span style="color: #408080; font-style: italic">#                       courses=courses, current_course=current_course)</span>
+</pre></div>
+</td></tr></table>

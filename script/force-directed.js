@@ -1,7 +1,7 @@
 var colorf = d3.scaleOrdinal(cuscolors);
 
 var scalesize, scalebug;
-function drawforce(graph){
+function drawforce(graph, data){
   var widthf = $("#forced-directed").width();
   var heightf = $("#page-content-wrapper").height() * 0.8;
   var str = d3.max([widthf,heightf]);
@@ -67,7 +67,12 @@ function drawforce(graph){
         .call(d3.drag()
             .on("start", dragstarted)
             .on("drag", dragged)
-            .on("end", dragended));
+            .on("end", dragended))
+        .on('click',function(d){
+              $('.listselect').selectpicker('deselectAll');
+              $('.methodselect').selectpicker('deselectAll');
+              onenode(d,data);
+        })
 
     node.append("title")
         .text(function(d) { return d.data['MID'] + " - " + d.data.name; });
@@ -107,4 +112,5 @@ function drawforce(graph){
     d.fx = null;
     d.fy = null;
   }
+
 }

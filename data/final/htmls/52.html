@@ -1,0 +1,17 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #AA22FF">@wraps</span>(func)
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">wrapper</span>(<span style="color: #666666">*</span>args, <span style="color: #666666">**</span>kwargs):
+        <span style="color: #408080; font-style: italic"># Public methods do not need authentication</span>
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">getattr</span>(func, <span style="color: #BA2121">&#39;public&#39;</span>, <span style="color: #008000">False</span>) <span style="color: #AA22FF; font-weight: bold">and</span> <span style="color: #AA22FF; font-weight: bold">not</span> current_user<span style="color: #666666">.</span>is_authenticated:
+            restful<span style="color: #666666">.</span>abort(<span style="color: #666666">401</span>)
+        kwargs[<span style="color: #BA2121">&#39;user&#39;</span>] <span style="color: #666666">=</span> current_user
+        <span style="color: #008000; font-weight: bold">return</span> func(<span style="color: #666666">*</span>args, <span style="color: #666666">**</span>kwargs)
+    <span style="color: #008000; font-weight: bold">return</span> wrapper
+</pre></div>
+</td></tr></table>

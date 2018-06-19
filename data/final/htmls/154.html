@@ -1,0 +1,19 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_invite_full</span>(<span style="color: #008000">self</span>):
+        Group<span style="color: #666666">.</span>invite(<span style="color: #008000">self</span><span style="color: #666666">.</span>user1, <span style="color: #008000">self</span><span style="color: #666666">.</span>user2, <span style="color: #008000">self</span><span style="color: #666666">.</span>assignment)
+        Group<span style="color: #666666">.</span>invite(<span style="color: #008000">self</span><span style="color: #666666">.</span>user1, <span style="color: #008000">self</span><span style="color: #666666">.</span>user3, <span style="color: #008000">self</span><span style="color: #666666">.</span>assignment)
+        Group<span style="color: #666666">.</span>invite(<span style="color: #008000">self</span><span style="color: #666666">.</span>user1, <span style="color: #008000">self</span><span style="color: #666666">.</span>user4, <span style="color: #008000">self</span><span style="color: #666666">.</span>assignment)
+        group <span style="color: #666666">=</span> Group<span style="color: #666666">.</span>lookup(<span style="color: #008000">self</span><span style="color: #666666">.</span>user1, <span style="color: #008000">self</span><span style="color: #666666">.</span>assignment)
+        group<span style="color: #666666">.</span>accept(<span style="color: #008000">self</span><span style="color: #666666">.</span>user2)
+
+        <span style="color: #008000; font-weight: bold">assert</span> group<span style="color: #666666">.</span>size() <span style="color: #666666">==</span> <span style="color: #666666">4</span>
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>assertRaises(BadRequest, Group<span style="color: #666666">.</span>invite, <span style="color: #008000">self</span><span style="color: #666666">.</span>user1, <span style="color: #008000">self</span><span style="color: #666666">.</span>user5, <span style="color: #008000">self</span><span style="color: #666666">.</span>assignment)
+</pre></div>
+</td></tr></table>

@@ -1,0 +1,13 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">has_status</span>(<span style="color: #008000">self</span>, user, status):
+        <span style="color: #008000; font-weight: bold">return</span> GroupMember<span style="color: #666666">.</span>query<span style="color: #666666">.</span>filter_by(
+            user<span style="color: #666666">=</span>user,
+            group<span style="color: #666666">=</span><span style="color: #008000">self</span>,
+            status<span style="color: #666666">=</span>status
+        )<span style="color: #666666">.</span>count() <span style="color: #666666">&gt;</span> <span style="color: #666666">0</span>
+</pre></div>
+</td></tr></table>

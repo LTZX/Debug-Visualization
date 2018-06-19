@@ -1,0 +1,21 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Participant</span>(db<span style="color: #666666">.</span>Model, TimestampMixin):
+    <span style="color: #008000">id</span> <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Integer(), primary_key<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+    user_id <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;user.id&quot;</span>), index<span style="color: #666666">=</span><span style="color: #008000">True</span>, nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    course_id <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;course.id&quot;</span>), index<span style="color: #666666">=</span><span style="color: #008000">True</span>,
+                          nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    role <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Enum(<span style="color: #666666">*</span>VALID_ROLES, name<span style="color: #666666">=</span><span style="color: #BA2121">&#39;role&#39;</span>), default<span style="color: #666666">=</span>STUDENT_ROLE, nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+
+    user <span style="color: #666666">=</span> db<span style="color: #666666">.</span>relationship(<span style="color: #BA2121">&quot;User&quot;</span>, backref<span style="color: #666666">=</span><span style="color: #BA2121">&quot;participations&quot;</span>)
+    course <span style="color: #666666">=</span> db<span style="color: #666666">.</span>relationship(<span style="color: #BA2121">&quot;Course&quot;</span>, backref<span style="color: #666666">=</span><span style="color: #BA2121">&quot;participants&quot;</span>)
+    notes <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>String()) <span style="color: #408080; font-style: italic"># For Section Info etc.</span>
+</pre></div>
+</td></tr></table>

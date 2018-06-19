@@ -1,0 +1,15 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Score</span>(db<span style="color: #666666">.</span>Model, TimestampMixin):
+    <span style="color: #008000">id</span> <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Integer(), primary_key<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+    backup <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;backup.id&quot;</span>), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    grader <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;user.id&quot;</span>), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    tag <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>String(), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    score <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Float())
+    message <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Text())
+</pre></div>
+</td></tr></table>

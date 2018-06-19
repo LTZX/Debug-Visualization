@@ -1,0 +1,31 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>        <span style="color: #AA22FF">@wraps</span>(func)
+        <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">wrapper</span>(<span style="color: #666666">*</span>args, <span style="color: #666666">**</span>kwargs):
+            <span style="color: #008000; font-weight: bold">if</span> current_user<span style="color: #666666">.</span>is_authenticated:
+                roles <span style="color: #666666">=</span> current_user<span style="color: #666666">.</span>enrollments(roles<span style="color: #666666">=</span>STAFF_ROLES)
+                <span style="color: #008000; font-weight: bold">if</span> <span style="color: #008000">len</span>(roles) <span style="color: #666666">&gt;</span> <span style="color: #666666">0</span> <span style="color: #AA22FF; font-weight: bold">or</span> current_user<span style="color: #666666">.</span>is_admin:
+                    <span style="color: #008000; font-weight: bold">if</span> course_arg:
+                        course <span style="color: #666666">=</span> kwargs[course_arg]
+                        <span style="color: #008000; font-weight: bold">if</span> course <span style="color: #AA22FF; font-weight: bold">in</span> [r<span style="color: #666666">.</span>course<span style="color: #666666">.</span>id <span style="color: #008000; font-weight: bold">for</span> r <span style="color: #AA22FF; font-weight: bold">in</span> roles]:
+                            <span style="color: #008000; font-weight: bold">return</span> func(<span style="color: #666666">*</span>args, <span style="color: #666666">**</span>kwargs)
+                    <span style="color: #008000; font-weight: bold">else</span>:
+                        <span style="color: #008000; font-weight: bold">return</span> func(<span style="color: #666666">*</span>args, <span style="color: #666666">**</span>kwargs)
+            flash(<span style="color: #BA2121">&quot;You are not on the course staff&quot;</span>, <span style="color: #BA2121">&quot;error&quot;</span>)
+            <span style="color: #008000; font-weight: bold">return</span> redirect(url_for(<span style="color: #BA2121">&quot;student.index&quot;</span>))
+        <span style="color: #008000; font-weight: bold">return</span> wrapper
+    <span style="color: #008000; font-weight: bold">return</span> decorator
+</pre></div>
+</td></tr></table>

@@ -1,0 +1,15 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_decline_degenerate</span>(<span style="color: #008000">self</span>):
+        Group<span style="color: #666666">.</span>invite(<span style="color: #008000">self</span><span style="color: #666666">.</span>user1, <span style="color: #008000">self</span><span style="color: #666666">.</span>user2, <span style="color: #008000">self</span><span style="color: #666666">.</span>assignment)
+        group <span style="color: #666666">=</span> Group<span style="color: #666666">.</span>lookup(<span style="color: #008000">self</span><span style="color: #666666">.</span>user1, <span style="color: #008000">self</span><span style="color: #666666">.</span>assignment)
+        group<span style="color: #666666">.</span>decline(<span style="color: #008000">self</span><span style="color: #666666">.</span>user2)
+
+        <span style="color: #008000; font-weight: bold">assert</span> Group<span style="color: #666666">.</span>lookup(<span style="color: #008000">self</span><span style="color: #666666">.</span>user1, <span style="color: #008000">self</span><span style="color: #666666">.</span>assignment) <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">None</span>
+        <span style="color: #008000; font-weight: bold">assert</span> Group<span style="color: #666666">.</span>lookup(<span style="color: #008000">self</span><span style="color: #666666">.</span>user2, <span style="color: #008000">self</span><span style="color: #666666">.</span>assignment) <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">None</span>
+</pre></div>
+</td></tr></table>

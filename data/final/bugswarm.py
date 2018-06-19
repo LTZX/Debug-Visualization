@@ -125,9 +125,14 @@ for each in bardict:
     bar[each] = []
     for ele in bardict[each]:
         bar[each].append({'label': ele, 'value': bardict[each][ele]})
-
+        
+codes = {}
+for each in methods:
+    with open('htmls/'+ each +'.html', 'r') as myfile:
+      codes[each] = myfile.read()
+      
 data = {'filedata': filedata, 'force': force, 'groupby': groupby,
-         'time': time, 'table': git, 'bar': bar}
+         'time': time, 'table': git, 'bar': bar, 'code':codes}
 with open('data.json', 'w') as outfile:
     json.dump(data, outfile)
     

@@ -1,0 +1,9 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #AA22FF">@staticmethod</span>
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">lookup</span>(email):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Get a User with the given email address, or None.&quot;&quot;&quot;</span>
+        <span style="color: #008000; font-weight: bold">return</span> User<span style="color: #666666">.</span>query<span style="color: #666666">.</span>filter_by(email<span style="color: #666666">=</span>email)<span style="color: #666666">.</span>one_or_none()
+</pre></div>
+</td></tr></table>

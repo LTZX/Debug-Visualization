@@ -31,6 +31,7 @@ var piedata = [{'name':'Passed','value': (281-7),'percentage':(project['number-o
  {'name':'Failed','value': 7, 'percentage':project['number-of-bugs']/project['number-of-tests']}]
 
 var forcedata;
+var bigdata;
 d3.select('#detail').on('click',function(){
   this.classList.toggle("clicked");
   var contain = this.classList.contains('clicked');
@@ -38,12 +39,12 @@ d3.select('#detail').on('click',function(){
     d3.select("#rightpanel").style('display','block')
     d3.select("#leftpanel").attr('class','col-md-7')
     $('#forced-directed').empty();
-    drawforce(forcedata)
+    drawforce(forcedata,bigdata)
   } else {
     d3.select("#rightpanel").style('display','none')
     d3.select("#leftpanel").attr('class','col-md-12')
     $('#forced-directed').empty();
-    drawforce(forcedata)
+    drawforce(forcedata,bigdata)
   }
 })
 
@@ -137,9 +138,9 @@ function onenode(d,data){
   d3.selectAll(".node").attr("fill", "grey")
   d3.select("#node"+d.id)
   .attr("fill", function(d) { return colorf(d.data[ncolor]); })
-  //$('#code').empty();
-  //$('#code').append(data.code[d.id])
-  //condition['code']['data']['code'] = data.code[d.id];
+  $('#code').empty();
+  $('#code').append(data.code[d.id])
+  condition['code']['data']['code'] = data.code[d.id];
   $('#line-chart').empty();
   $('#gittable').empty();
   $('#bar-chart').empty();
@@ -161,6 +162,7 @@ function setback(data){
 }
 
 d3.json("data/final/data.json", function(error, data) {
+    bigdata = data;
     forcedata = data.force;
     orgtimedata(data.time);
     // === set up the selections
@@ -183,7 +185,7 @@ d3.json("data/final/data.json", function(error, data) {
     '</td><td>'+f["time-range"][0]+' ~ '+f["time-range"][1]+'</td><td>'+f.author+
     '</td>');
 
-    drawforce(data.force);
+    drawforce(data.force, data);
     d3.selectAll(".gbbutton").on('click',function(){
       setback(data)
       var that = this;
@@ -241,11 +243,7 @@ d3.json("data/final/data.json", function(error, data) {
       onenode(data.force.nodes[cutstr(val[0])],data);
     })
 
-    d3.selectAll('.node').on('click',function(d){
-      $('.listselect').selectpicker('deselectAll');
-      $('.methodselect').selectpicker('deselectAll');
-      onenode(d,data);
-    })
+
     drawlinechart(data.time['total']);
     drawgittable(data.table['total'], 'gittable', 'exTab2', title1);
     drawbarchart(data.bar['total']);

@@ -1,0 +1,13 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_invite_not_enrolled</span>(<span style="color: #008000">self</span>):
+        not_enrolled <span style="color: #666666">=</span> User(email<span style="color: #666666">=</span><span style="color: #BA2121">&#39;not_enrolled@aol.com&#39;</span>)
+        db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add(not_enrolled)
+
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>assertRaises(BadRequest, Group<span style="color: #666666">.</span>invite, <span style="color: #008000">self</span><span style="color: #666666">.</span>user1, not_enrolled, <span style="color: #008000">self</span><span style="color: #666666">.</span>assignment)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>assertRaises(BadRequest, Group<span style="color: #666666">.</span>invite, not_enrolled, <span style="color: #008000">self</span><span style="color: #666666">.</span>user1, <span style="color: #008000">self</span><span style="color: #666666">.</span>assignment)
+</pre></div>
+</td></tr></table>

@@ -1,0 +1,25 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">@admin.route</span>(<span style="color: #BA2121">&quot;/course/&lt;int:cid&gt;/assignments&quot;</span>)
+<span style="color: #AA22FF">@is_staff</span>(course_arg<span style="color: #666666">=</span><span style="color: #BA2121">&#39;cid&#39;</span>)
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">course_assignments</span>(cid):
+    courses, current_course <span style="color: #666666">=</span> get_courses(cid)
+    assgns <span style="color: #666666">=</span> current_course<span style="color: #666666">.</span>assignments
+    active_asgns <span style="color: #666666">=</span> [a <span style="color: #008000; font-weight: bold">for</span> a <span style="color: #AA22FF; font-weight: bold">in</span> assgns <span style="color: #008000; font-weight: bold">if</span> a<span style="color: #666666">.</span>active]
+    due_asgns <span style="color: #666666">=</span> [a <span style="color: #008000; font-weight: bold">for</span> a <span style="color: #AA22FF; font-weight: bold">in</span> assgns <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> a<span style="color: #666666">.</span>active]
+    <span style="color: #408080; font-style: italic"># TODO CLEANUP : Better way to send this data to the template.</span>
+
+    <span style="color: #008000; font-weight: bold">return</span> render_template(<span style="color: #BA2121">&#39;staff/course/assignments.html&#39;</span>,
+                           courses<span style="color: #666666">=</span>courses, current_course<span style="color: #666666">=</span>current_course,
+                           active_asgns<span style="color: #666666">=</span>active_asgns, due_assgns<span style="color: #666666">=</span>due_asgns)
+</pre></div>
+</td></tr></table>

@@ -1,0 +1,25 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #AA22FF">@marshal_with</span>(schema<span style="color: #666666">.</span>post_fields)
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">post</span>(<span style="color: #008000">self</span>, user, key<span style="color: #666666">=</span><span style="color: #008000">None</span>):
+        <span style="color: #008000; font-weight: bold">if</span> key <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">None</span>:
+            restful<span style="color: #666666">.</span>abort(<span style="color: #666666">405</span>)
+        back <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>schema<span style="color: #666666">.</span>store_backup(user)
+        subm <span style="color: #666666">=</span> models<span style="color: #666666">.</span>Submission(backup<span style="color: #666666">=</span>back<span style="color: #666666">.</span>id, assignment<span style="color: #666666">=</span>back<span style="color: #666666">.</span>assignment,
+                                 submitter<span style="color: #666666">=</span>user<span style="color: #666666">.</span>id)
+        models<span style="color: #666666">.</span>db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add(subm)
+        models<span style="color: #666666">.</span>db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>commit()
+        <span style="color: #008000; font-weight: bold">return</span> {<span style="color: #BA2121">&#39;id&#39;</span>: subm<span style="color: #666666">.</span>id,
+                <span style="color: #BA2121">&#39;message&#39;</span>: <span style="color: #BA2121">&quot;Submission Succesful&quot;</span>,
+                <span style="color: #BA2121">&#39;url&#39;</span>: <span style="color: #BA2121">&#39;tbd&#39;</span>}
+</pre></div>
+</td></tr></table>

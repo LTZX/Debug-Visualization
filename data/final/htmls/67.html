@@ -1,0 +1,15 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">use_testing_login</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">    Return True if we use the unsecure testing login instead of Google OAuth.</span>
+<span style="color: #BA2121; font-style: italic">    Requires TESTING_LOGIN = True in the config and the environment is not prod.</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    <span style="color: #008000; font-weight: bold">return</span> current_app<span style="color: #666666">.</span>config<span style="color: #666666">.</span>get(<span style="color: #BA2121">&#39;TESTING_LOGIN&#39;</span>, <span style="color: #008000">False</span>) <span style="color: #AA22FF; font-weight: bold">and</span> \
+        current_app<span style="color: #666666">.</span>config<span style="color: #666666">.</span>get(<span style="color: #BA2121">&#39;ENV&#39;</span>) <span style="color: #666666">!=</span> <span style="color: #BA2121">&#39;prod&#39;</span>
+</pre></div>
+</td></tr></table>

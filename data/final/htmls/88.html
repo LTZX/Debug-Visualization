@@ -1,0 +1,29 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Backup</span>(db<span style="color: #666666">.</span>Model, TimestampMixin):
+    <span style="color: #008000">id</span> <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Integer(), primary_key<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+    messages <span style="color: #666666">=</span> db<span style="color: #666666">.</span>relationship(<span style="color: #BA2121">&quot;Message&quot;</span>)
+    scores <span style="color: #666666">=</span> db<span style="color: #666666">.</span>relationship(<span style="color: #BA2121">&quot;Score&quot;</span>)
+    client_time <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>DateTime())
+    submitter <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;user.id&quot;</span>), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    assignment <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;assignment.id&quot;</span>), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    submit <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Boolean(), default<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    flagged <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Boolean(), default<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+
+    db<span style="color: #666666">.</span>Index(<span style="color: #BA2121">&#39;idx_usrBackups&#39;</span>, <span style="color: #BA2121">&#39;assignment&#39;</span>, <span style="color: #BA2121">&#39;submitter&#39;</span>, <span style="color: #BA2121">&#39;submit&#39;</span>, <span style="color: #BA2121">&#39;flagged&#39;</span>)
+    db<span style="color: #666666">.</span>Index(<span style="color: #BA2121">&#39;idx_usrFlagged&#39;</span>, <span style="color: #BA2121">&#39;assignment&#39;</span>, <span style="color: #BA2121">&#39;submitter&#39;</span>, <span style="color: #BA2121">&#39;flagged&#39;</span>)
+    db<span style="color: #666666">.</span>Index(<span style="color: #BA2121">&#39;idx_submittedBacks&#39;</span>, <span style="color: #BA2121">&#39;assignment&#39;</span>, <span style="color: #BA2121">&#39;submit&#39;</span>)
+    db<span style="color: #666666">.</span>Index(<span style="color: #BA2121">&#39;idx_flaggedBacks&#39;</span>, <span style="color: #BA2121">&#39;assignment&#39;</span>, <span style="color: #BA2121">&#39;flagged&#39;</span>)
+</pre></div>
+</td></tr></table>

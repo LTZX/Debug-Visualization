@@ -1,0 +1,13 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_testing_login_fail</span>(<span style="color: #008000">self</span>):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;GET /testing-login should 404 if TESTING_LOGIN config is not set.&quot;&quot;&quot;</span>
+        app <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>create_app()
+        app<span style="color: #666666">.</span>config[<span style="color: #BA2121">&#39;TESTING_LOGIN&#39;</span>] <span style="color: #666666">=</span> <span style="color: #008000">False</span>
+        response <span style="color: #666666">=</span> app<span style="color: #666666">.</span>test_client()<span style="color: #666666">.</span>get(<span style="color: #BA2121">&#39;/testing-login&#39;</span>)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>assert_404(response)
+</pre></div>
+</td></tr></table>

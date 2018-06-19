@@ -1,0 +1,13 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">@login_manager.request_loader</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">load_user_from_request</span>(request):
+    token <span style="color: #666666">=</span> request<span style="color: #666666">.</span>args<span style="color: #666666">.</span>get(<span style="color: #BA2121">&#39;access_token&#39;</span>, <span style="color: #008000">None</span>)
+    <span style="color: #008000; font-weight: bold">if</span> token <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">None</span>:
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">None</span>
+    <span style="color: #008000; font-weight: bold">return</span> user_from_access_token(token)
+</pre></div>
+</td></tr></table>

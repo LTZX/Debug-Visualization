@@ -1,0 +1,41 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">@admin.route</span>(<span style="color: #BA2121">&quot;/course/&lt;int:cid&gt;/assignments/&lt;int:aid&gt;&quot;</span>,
+             methods<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;GET&#39;</span>, <span style="color: #BA2121">&#39;POST&#39;</span>])
+<span style="color: #AA22FF">@is_staff</span>(course_arg<span style="color: #666666">=</span><span style="color: #BA2121">&#39;cid&#39;</span>)
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">assignment</span>(cid, aid):
+    courses, current_course <span style="color: #666666">=</span> get_courses(cid)
+    assgn <span style="color: #666666">=</span> Assignment<span style="color: #666666">.</span>query<span style="color: #666666">.</span>filter_by(<span style="color: #008000">id</span><span style="color: #666666">=</span>aid, course_id<span style="color: #666666">=</span>cid)<span style="color: #666666">.</span>one()
+    <span style="color: #408080; font-style: italic"># Convert TZ to Pacific</span>
+    assgn<span style="color: #666666">.</span>due_date <span style="color: #666666">=</span> convert_to_pacific(assgn<span style="color: #666666">.</span>due_date)
+    assgn<span style="color: #666666">.</span>lock_date <span style="color: #666666">=</span> convert_to_pacific(assgn<span style="color: #666666">.</span>lock_date)
+
+    form <span style="color: #666666">=</span> forms<span style="color: #666666">.</span>AssignmentForm(obj<span style="color: #666666">=</span>assgn)
+
+    <span style="color: #408080; font-style: italic"># TODO : Actually save updates.</span>
+
+    <span style="color: #008000; font-weight: bold">if</span> assgn<span style="color: #666666">.</span>course <span style="color: #666666">!=</span> current_course:
+        <span style="color: #008000; font-weight: bold">return</span> abort(<span style="color: #666666">401</span>)
+
+    <span style="color: #008000; font-weight: bold">return</span> render_template(<span style="color: #BA2121">&#39;staff/course/assignment.html&#39;</span>, assignment<span style="color: #666666">=</span>assgn,
+                           form<span style="color: #666666">=</span>form, courses<span style="color: #666666">=</span>courses,
+                           current_course<span style="color: #666666">=</span>current_course)
+</pre></div>
+</td></tr></table>

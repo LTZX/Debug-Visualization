@@ -1,0 +1,29 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>        <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">make_student</span>(n):
+            user <span style="color: #666666">=</span> User(email<span style="color: #666666">=</span><span style="color: #BA2121">&#39;student{0}@aol.com&#39;</span><span style="color: #666666">.</span>format(n))
+            participant <span style="color: #666666">=</span> Participant(
+                user<span style="color: #666666">=</span>user,
+                course<span style="color: #666666">=</span><span style="color: #008000">self</span><span style="color: #666666">.</span>course)
+            db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add(participant)
+            <span style="color: #008000; font-weight: bold">return</span> user
+
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>user1 <span style="color: #666666">=</span> make_student(<span style="color: #666666">1</span>)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>user2 <span style="color: #666666">=</span> make_student(<span style="color: #666666">2</span>)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>user3 <span style="color: #666666">=</span> make_student(<span style="color: #666666">3</span>)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>user4 <span style="color: #666666">=</span> make_student(<span style="color: #666666">4</span>)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>user5 <span style="color: #666666">=</span> make_student(<span style="color: #666666">5</span>)
+        db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>commit()
+</pre></div>
+</td></tr></table>

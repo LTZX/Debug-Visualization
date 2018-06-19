@@ -1,0 +1,45 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Assignment</span>(db<span style="color: #666666">.</span>Model, TimestampMixin):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Assignments are particular to courses and have unique names.</span>
+<span style="color: #BA2121; font-style: italic">        name - cal/cs61a/fa14/proj1</span>
+<span style="color: #BA2121; font-style: italic">        display_name - Hog</span>
+<span style="color: #BA2121; font-style: italic">        due_date - DEADLINE (Publically displayed)</span>
+<span style="color: #BA2121; font-style: italic">        lock_date - DEADLINE+1 (Hard Deadline for submissions)</span>
+<span style="color: #BA2121; font-style: italic">        url - cs61a.org/proj/hog/hog.zip</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+
+    <span style="color: #008000">id</span> <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Integer(), primary_key<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+    name <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>String(), index<span style="color: #666666">=</span><span style="color: #008000">True</span>, unique<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+    course_id <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;course.id&quot;</span>), index<span style="color: #666666">=</span><span style="color: #008000">True</span>,
+                          nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    display_name <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>String(), nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    due_date <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>DateTime, nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    lock_date <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>DateTime, nullable<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    creator <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>ForeignKey(<span style="color: #BA2121">&quot;user.id&quot;</span>))
+    url <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>String())
+    max_group_size <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Integer(), default<span style="color: #666666">=1</span>)
+    revisions <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>Boolean(), default<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+    autograding_key <span style="color: #666666">=</span> db<span style="color: #666666">.</span>Column(db<span style="color: #666666">.</span>String())
+    course <span style="color: #666666">=</span> db<span style="color: #666666">.</span>relationship(<span style="color: #BA2121">&quot;Course&quot;</span>, backref<span style="color: #666666">=</span><span style="color: #BA2121">&quot;assignments&quot;</span>)
+</pre></div>
+</td></tr></table>

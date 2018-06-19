@@ -1,0 +1,9 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_login</span>(<span style="color: #008000">self</span>):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;GET /login should redirect to Google OAuth.&quot;&quot;&quot;</span>
+        response <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>client<span style="color: #666666">.</span>get(<span style="color: #BA2121">&#39;/login&#39;</span>)
+        <span style="color: #008000; font-weight: bold">assert</span> response<span style="color: #666666">.</span>location<span style="color: #666666">.</span>startswith(<span style="color: #BA2121">&#39;https://accounts.google.com/o/oauth2/auth&#39;</span>)
+</pre></div>
+</td></tr></table>

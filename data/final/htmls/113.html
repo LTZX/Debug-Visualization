@@ -1,0 +1,13 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #AA22FF">@transaction</span>
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">decline</span>(<span style="color: #008000">self</span>, user):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Decline an invitation.&quot;&quot;&quot;</span>
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>assignment<span style="color: #666666">.</span>active:
+            <span style="color: #008000; font-weight: bold">raise</span> BadRequest(<span style="color: #BA2121">&#39;The assignment is past due&#39;</span>)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>_remove_member(user)
+</pre></div>
+</td></tr></table>

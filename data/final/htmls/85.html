@@ -1,0 +1,17 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>        <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">bind_field</span>(<span style="color: #008000">self</span>, form, unbound_field, options):
+            filters <span style="color: #666666">=</span> unbound_field<span style="color: #666666">.</span>kwargs<span style="color: #666666">.</span>get(<span style="color: #BA2121">&#39;filters&#39;</span>, [])
+            field_type <span style="color: #666666">=</span> <span style="color: #008000">type</span>(unbound_field)
+            <span style="color: #008000; font-weight: bold">if</span> field_type <span style="color: #666666">==</span> StringField:
+                filters<span style="color: #666666">.</span>append(strip_whitespace)
+            <span style="color: #008000; font-weight: bold">elif</span> field_type <span style="color: #666666">==</span> DateTimeField:
+                filters<span style="color: #666666">.</span>append(convert_to_utc)
+            <span style="color: #008000; font-weight: bold">return</span> unbound_field<span style="color: #666666">.</span>bind(form<span style="color: #666666">=</span>form, filters<span style="color: #666666">=</span>filters, <span style="color: #666666">**</span>options)
+</pre></div>
+</td></tr></table>

@@ -1,0 +1,11 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">authorize_user</span>(user):
+    login_user(user)
+    flash(<span style="color: #BA2121">&quot;Logged in successfully.&quot;</span>, <span style="color: #BA2121">&quot;success&quot;</span>)
+    after_login <span style="color: #666666">=</span> session<span style="color: #666666">.</span>pop(<span style="color: #BA2121">&#39;after_login&#39;</span>, <span style="color: #008000">None</span>)
+    <span style="color: #008000; font-weight: bold">return</span> redirect(after_login <span style="color: #AA22FF; font-weight: bold">or</span> url_for(<span style="color: #BA2121">&quot;main.home&quot;</span>))
+</pre></div>
+</td></tr></table>

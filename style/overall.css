@@ -53,8 +53,13 @@ body {
 /* ======== for code ======== */
 #code{
   height: calc(calc(100vh - 100px) * 0.27);
+  overflow-y: auto;
 }
 
+.sourcetable{
+  width: 90%;
+  margin-left: 2.5%;
+}
 .hasbug{
   background-color: rgba(255, 0, 0, 0.4);
 }

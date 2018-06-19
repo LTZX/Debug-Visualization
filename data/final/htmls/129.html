@@ -1,0 +1,13 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Config</span>:
+    SECRET_KEY <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;samplekey&#39;</span>
+    GOOGLE <span style="color: #666666">=</span> {
+        <span style="color: #BA2121">&#39;consumer_key&#39;</span>: os<span style="color: #666666">.</span>getenv(<span style="color: #BA2121">&#39;GOOGLE_ID&#39;</span>, <span style="color: #BA2121">&#39;fake&#39;</span>),
+        <span style="color: #BA2121">&#39;secret&#39;</span>: os<span style="color: #666666">.</span>getenv(<span style="color: #BA2121">&#39;GOOGLE_SECRET&#39;</span>, <span style="color: #BA2121">&#39;fake&#39;</span>)
+    }
+</pre></div>
+</td></tr></table>

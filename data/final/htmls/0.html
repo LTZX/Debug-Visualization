@@ -1,0 +1,35 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">run_migrations_offline</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Run migrations in &#39;offline&#39; mode.</span>
+
+<span style="color: #BA2121; font-style: italic">    This configures the context with just a URL</span>
+<span style="color: #BA2121; font-style: italic">    and not an Engine, though an Engine is acceptable</span>
+<span style="color: #BA2121; font-style: italic">    here as well.  By skipping the Engine creation</span>
+<span style="color: #BA2121; font-style: italic">    we don&#39;t even need a DBAPI to be available.</span>
+
+<span style="color: #BA2121; font-style: italic">    Calls to context.execute() here emit the given string to the</span>
+<span style="color: #BA2121; font-style: italic">    script output.</span>
+
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    url <span style="color: #666666">=</span> config<span style="color: #666666">.</span>get_main_option(<span style="color: #BA2121">&quot;sqlalchemy.url&quot;</span>)
+    context<span style="color: #666666">.</span>configure(url<span style="color: #666666">=</span>url)
+
+    <span style="color: #008000; font-weight: bold">with</span> context<span style="color: #666666">.</span>begin_transaction():
+        context<span style="color: #666666">.</span>run_migrations()
+</pre></div>
+</td></tr></table>

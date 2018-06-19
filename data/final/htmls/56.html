@@ -1,0 +1,39 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">@auth.route</span>(<span style="color: #BA2121">&#39;/login/authorized&#39;</span>)
+<span style="color: #AA22FF">@google_auth.authorized_handler</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">authorized</span>(resp):
+    <span style="color: #008000; font-weight: bold">if</span> resp <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">None</span> <span style="color: #AA22FF; font-weight: bold">or</span> <span style="color: #BA2121">&#39;access_token&#39;</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #AA22FF; font-weight: bold">in</span> resp:
+        error <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Access denied: reason=</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"> error=</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (
+            request<span style="color: #666666">.</span>args[<span style="color: #BA2121">&#39;error_reason&#39;</span>],
+            request<span style="color: #666666">.</span>args[<span style="color: #BA2121">&#39;error_description&#39;</span>]
+        )
+        flash(error, <span style="color: #BA2121">&quot;error&quot;</span>)
+        <span style="color: #408080; font-style: italic"># TODO Error Page</span>
+        <span style="color: #008000; font-weight: bold">return</span> redirect(url_for(<span style="color: #BA2121">&quot;main.home&quot;</span>))
+    access_token <span style="color: #666666">=</span> resp[<span style="color: #BA2121">&#39;access_token&#39;</span>]
+    user <span style="color: #666666">=</span> user_from_access_token(access_token)
+    session[<span style="color: #BA2121">&#39;google_token&#39;</span>] <span style="color: #666666">=</span> (access_token, <span style="color: #BA2121">&#39;&#39;</span>)  <span style="color: #408080; font-style: italic"># (access_token, secret)</span>
+    <span style="color: #008000; font-weight: bold">return</span> authorize_user(user)
+
+<span style="color: #408080; font-style: italic"># Backdoor log in if you want to impersonate a user.</span>
+<span style="color: #408080; font-style: italic"># Will not give you a Google auth token.</span>
+<span style="color: #408080; font-style: italic"># Requires that TESTING_LOGIN = True in the config and we must not be running in prod.</span>
+</pre></div>
+</td></tr></table>

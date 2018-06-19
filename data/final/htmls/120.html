@@ -1,0 +1,27 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #AA22FF">@staticmethod</span>
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">create</span>(cid, usr_ids<span style="color: #666666">=</span>[], role<span style="color: #666666">=</span>STUDENT_ROLE):
+        new_records <span style="color: #666666">=</span> []
+        <span style="color: #008000; font-weight: bold">for</span> usr_id <span style="color: #AA22FF; font-weight: bold">in</span> usr_ids:
+            record <span style="color: #666666">=</span> Participant<span style="color: #666666">.</span>query<span style="color: #666666">.</span>filter_by(user_id<span style="color: #666666">=</span>usr_id,
+                                                   course_id<span style="color: #666666">=</span>cid)<span style="color: #666666">.</span>one_or_none()
+            <span style="color: #008000; font-weight: bold">if</span> record:
+                record<span style="color: #666666">.</span>role <span style="color: #666666">=</span> role
+            <span style="color: #008000; font-weight: bold">else</span>:
+                record <span style="color: #666666">=</span> Participant(course_id<span style="color: #666666">=</span>cid, user_id<span style="color: #666666">=</span>usr_id, role<span style="color: #666666">=</span>role)
+                new_records<span style="color: #666666">.</span>append(record)
+        db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>add_all(new_records)
+        db<span style="color: #666666">.</span>session<span style="color: #666666">.</span>commit()
+</pre></div>
+</td></tr></table>

@@ -1,0 +1,13 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #AA22FF">@auth.route</span>(<span style="color: #BA2121">&#39;/testing-login/authorized&#39;</span>, methods<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;POST&#39;</span>])
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">testing_authorized</span>():
+    <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> use_testing_login():
+        abort(<span style="color: #666666">404</span>)
+    user <span style="color: #666666">=</span> user_from_email(request<span style="color: #666666">.</span>form[<span style="color: #BA2121">&#39;email&#39;</span>])
+    <span style="color: #008000; font-weight: bold">return</span> authorize_user(user)
+</pre></div>
+</td></tr></table>

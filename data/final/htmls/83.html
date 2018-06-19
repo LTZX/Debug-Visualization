@@ -1,0 +1,27 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">validate</span>(<span style="color: #008000">self</span>):
+        check_validate <span style="color: #666666">=</span> <span style="color: #008000">super</span>(AssignmentForm, <span style="color: #008000">self</span>)<span style="color: #666666">.</span>validate()
+
+        <span style="color: #408080; font-style: italic"># if our validators do not pass</span>
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> check_validate:
+            <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">False</span>
+
+        <span style="color: #408080; font-style: italic"># Ensure assignment offering is unique</span>
+        assgn <span style="color: #666666">=</span> Assignment<span style="color: #666666">.</span>query<span style="color: #666666">.</span>filter_by(name<span style="color: #666666">=</span><span style="color: #008000">self</span><span style="color: #666666">.</span>name<span style="color: #666666">.</span>data)<span style="color: #666666">.</span>first()
+        <span style="color: #008000; font-weight: bold">if</span> assgn:
+            <span style="color: #008000">self</span><span style="color: #666666">.</span>name<span style="color: #666666">.</span>errors<span style="color: #666666">.</span>append(<span style="color: #BA2121">&#39;That offering already exists&#39;</span>)
+            <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">False</span>
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">True</span>
+</pre></div>
+</td></tr></table>

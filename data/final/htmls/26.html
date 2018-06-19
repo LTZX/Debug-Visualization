@@ -1,0 +1,19 @@
+<table class="sourcetable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="source" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">MessageSchema</span>(APISchema):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot; Messages do not have their own API (currently).</span>
+<span style="color: #BA2121; font-style: italic">    They are displayed through the backup/submission APIs.</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    get_fields <span style="color: #666666">=</span> {
+        <span style="color: #BA2121">&#39;kind&#39;</span>: fields<span style="color: #666666">.</span>String,
+        <span style="color: #BA2121">&#39;contents&#39;</span>: fields<span style="color: #666666">.</span>String,
+        <span style="color: #BA2121">&#39;created&#39;</span>: fields<span style="color: #666666">.</span>DateTime(dt_format<span style="color: #666666">=</span><span style="color: #BA2121">&#39;rfc822&#39;</span>)
+    }
+</pre></div>
+</td></tr></table>
